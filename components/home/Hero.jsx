@@ -3,7 +3,7 @@ import HeroFilter from "./HeroFilter";
 
 const Hero = () => {
   return (
-    <section className="home-one home1-overlay home1_bgi1">
+    <section className="home-one home1-overlay home1_bgi2">
       <div className="container">
         <div className="row posr">
           <div className="col-lg-12">
@@ -23,7 +23,7 @@ const Hero = () => {
             <Image
               width={21}
               height={35}
-              src="/assets/images/resource/mouse.png"
+              src="/assets/b1.png"
               alt="mouse.png"
             />
           </div>

@@ -22,10 +22,7 @@ const Header = () => {
 
   return (
     <header
-      className={`header-nav menu_style_home_one navbar-scrolltofixed stricky main-menu  ${
-        navbar ? "stricky-fixed " : ""
-      }`}
-    >
+      className={`header-nav menu_style_home_one navbar-scrolltofixed stricky main-menu  ${navbar ? "stricky-fixed " : ""}`}>
       <div className="container-fluid p0">
         {/* <!-- Ace Responsive Menu --> */}
 
@@ -34,17 +31,17 @@ const Header = () => {
             width={40}
             height={45}
             className="logo1 contain"
-            src="/assets/images/header-logo.png"
+            src="/assets/images/header-logo1.png"
             alt="header-logo.png"
           />
           <Image
             width={40}
             height={45}
             className="logo2 contain"
-            src="/assets/images/header-logo2.png"
+            src="/assets/images/header-logo3.png"
             alt="header-logo2.png"
           />
-          <span>FindHouse</span>
+          <span>JX real estate</span>
         </Link>
         {/* site logo brand */}
 

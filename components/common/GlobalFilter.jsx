@@ -20,14 +20,11 @@ const GlobalFilter = ({ className = "" }) => {
     <div className={`home1-advnc-search ${className}`}>
       <ul className="h1ads_1st_list mb0">
         <li className="list-inline-item">
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter keyword..."
-              onChange={(e) => dispatch(addKeyword(e.target.value))}
-            />
-          </div>
+          <select className="selectpicker w100 form-select show-tick">
+            <option value="">Montreal or Toronto</option>
+            <option>Montreal</option>
+            <option>Toronto</option>
+          </select>
         </li>
         {/* End li */}
 
@@ -35,13 +32,11 @@ const GlobalFilter = ({ className = "" }) => {
           <div className="search_option_two">
             <div className="candidate_revew_select">
               <select className="selectpicker w100 form-select show-tick">
-                <option value="">Property Type</option>
-                <option>Apartment</option>
-                <option>Bungalow</option>
-                <option>Condo</option>
-                <option>House</option>
-                <option>Land</option>
-                <option>Single Family</option>
+                <option value="">Residential Units</option>
+                <option>less than 10 units</option>
+                <option>11-20 units</option>
+                <option>21-30 units</option>
+                <option>31+ units</option>
               </select>
             </div>
           </div>
@@ -49,16 +44,15 @@ const GlobalFilter = ({ className = "" }) => {
         {/* End li */}
 
         <li className="list-inline-item">
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Location"
-              onChange={(e) => dispatch(addLocation(e.target.value))}
-            />
-            <label>
-              <span className="flaticon-maps-and-flags"></span>
-            </label>
+          <div className="small_dropdown2">
+            <div id="prncgs" className="btn dd_btn">
+              <span>Price Range</span>
+            </div>
+            <div className="dd_content2 dropdown-menu">
+              <div className="pricing_acontent">
+                <PricingRangeSlider min={300000} max={90000000} />
+              </div>
+            </div>
           </div>
         </li>
         {/* End li */}
