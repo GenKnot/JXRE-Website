@@ -1,4 +1,4 @@
-const CheckBoxFilter = () => {
+const CheckBoxFilter = ({ features, onChange }) => {
   return (
     <>
       <div className="col-xxs-6 col-sm col-lg col-xl">
@@ -9,41 +9,14 @@ const CheckBoxFilter = () => {
                 type="checkbox"
                 className="form-check-input"
                 id="customCheck1"
+                checked={features.elevator}
+                onChange={onChange('elevator')}
               />
               <label className="form-check-label" htmlFor="customCheck1">
-                Air Conditioning
+                Elevator
               </label>
             </div>
           </li>
-          {/* End li */}
-
-          <li>
-            <div className="form-check custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="customCheck2"
-              />
-              <label className="form-check-label" htmlFor="customCheck2">
-                Lawn
-              </label>
-            </div>
-          </li>
-          {/* End li */}
-
-          <li>
-            <div className="form-check custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="customCheck3"
-              />
-              <label className="form-check-label" htmlFor="customCheck3">
-                Swimming Pool
-              </label>
-            </div>
-          </li>
-          {/* End li */}
         </ul>
       </div>
       {/* End .col */}
@@ -56,41 +29,14 @@ const CheckBoxFilter = () => {
                 type="checkbox"
                 className="form-check-input"
                 id="customCheck4"
+                checked={features.separate_utilities}
+                onChange={onChange('separate_utilities')}
               />
               <label className="form-check-label" htmlFor="customCheck4">
-                Barbeque
+                Separate Utilities
               </label>
             </div>
           </li>
-          {/* End li */}
-
-          <li>
-            <div className="form-check custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="customCheck5"
-              />
-              <label className="form-check-label" htmlFor="customCheck5">
-                Microwave
-              </label>
-            </div>
-          </li>
-          {/* End li */}
-
-          <li>
-            <div className="form-check custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="customCheck6"
-              />
-              <label className="form-check-label" htmlFor="customCheck6">
-                TV Cable
-              </label>
-            </div>
-          </li>
-          {/* End li */}
         </ul>
       </div>
       {/* End .col */}
@@ -103,41 +49,14 @@ const CheckBoxFilter = () => {
                 type="checkbox"
                 className="form-check-input"
                 id="customCheck7"
+                checked={features.parking}
+                onChange={onChange('parking')}
               />
               <label className="form-check-label" htmlFor="customCheck7">
-                Dryer
+                Parking
               </label>
             </div>
           </li>
-          {/* End li */}
-
-          <li>
-            <div className="form-check custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="customCheck8"
-              />
-              <label className="form-check-label" htmlFor="customCheck8">
-                Outdoor Shower
-              </label>
-            </div>
-          </li>
-          {/* End li */}
-
-          <li>
-            <div className="form-check custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="customCheck9"
-              />
-              <label className="form-check-label" htmlFor="customCheck9">
-                Washer
-              </label>
-            </div>
-          </li>
-          {/* End li */}
         </ul>
       </div>
       {/* End .col */}
@@ -150,91 +69,16 @@ const CheckBoxFilter = () => {
                 type="checkbox"
                 className="form-check-input"
                 id="customCheck10"
+                checked={features.basement}
+                onChange={onChange('basement')}
               />
               <label className="form-check-label" htmlFor="customCheck10">
-                Gym
+                Basement
               </label>
             </div>
           </li>
-          {/* End li */}
-
-          <li>
-            <div className="form-check custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="customCheck11"
-              />
-              <label className="form-check-label" htmlFor="customCheck11">
-                Refrigerator
-              </label>
-            </div>
-          </li>
-          {/* End li */}
-
-          <li>
-            <div className="form-check custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="customCheck12"
-              />
-              <label className="form-check-label" htmlFor="customCheck12">
-                WiFi
-              </label>
-            </div>
-          </li>
-          {/* End li */}
         </ul>
       </div>
-      {/* End .col */}
-
-      <div className="col-xxs-6 col-sm col-lg col-xl">
-        <ul className="ui_kit_checkbox selectable-list">
-          <li>
-            <div className="form-check custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="customCheck13"
-              />
-              <label className="form-check-label" htmlFor="customCheck13">
-                Laundry
-              </label>
-            </div>
-          </li>
-          {/* End li */}
-
-          <li>
-            <div className="form-check custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="customCheck14"
-              />
-              <label className="form-check-label" htmlFor="customCheck14">
-                Sauna
-              </label>
-            </div>
-          </li>
-          {/* End li */}
-
-          <li>
-            <div className="form-check custom-checkbox">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="customCheck15"
-              />
-              <label className="form-check-label" htmlFor="customCheck15">
-                Window Coverings
-              </label>
-            </div>
-          </li>
-          {/* End li */}
-        </ul>
-      </div>
-      {/* End .col */}
     </>
   );
 };

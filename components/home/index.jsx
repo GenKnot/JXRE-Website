@@ -33,7 +33,7 @@ const Index = () => {
             <div className="col-lg-6 offset-lg-3">
               <div className="main-title text-center mb40">
                 <h2>Featured Properties</h2>
-                <p>Handpicked properties by our team.</p>
+                <p>Exceptional multi-family investments in prime locations.</p>
               </div>
             </div>
             <div className="col-lg-12">
@@ -96,22 +96,22 @@ const Index = () => {
         </div>
       </section>
 
-      {/* <!-- Our Partners --> */}
-      <section id="our-partners" className="our-partners">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-6 offset-lg-3">
-              <div className="main-title text-center">
-                <h2>Our Partners</h2>
-                <p>We only work with the best companies around the globe</p>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <Partners />
-          </div>
-        </div>
-      </section>
+      {/*/!* <!-- Our Partners --> *!/*/}
+      {/*<section id="our-partners" className="our-partners">*/}
+      {/*  <div className="container">*/}
+      {/*    <div className="row">*/}
+      {/*      <div className="col-lg-6 offset-lg-3">*/}
+      {/*        <div className="main-title text-center">*/}
+      {/*          <h2>Our Partners</h2>*/}
+      {/*          <p>We only work with the best companies around the globe</p>*/}
+      {/*        </div>*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*    <div className="row">*/}
+      {/*      <Partners />*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</section>*/}
 
       {/* <!-- Start Call to Action --> */}
       <section className="start-partners bgc-thm pt50 pb50">
