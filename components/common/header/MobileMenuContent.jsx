@@ -86,7 +86,7 @@ const listing = [
       },
       {
         name: "Grid v6",
-        routerPath: "/listing-grid-v6",
+        routerPath: "/listing",
       },
     ],
   },
@@ -316,10 +316,10 @@ const MobileMenuContent = () => {
               width={40}
               height={45}
               className="nav_logo_img img-fluid mt20"
-              src="/assets/images/header-logo2.png"
+              src="/assets/images/header-logo3.png"
               alt="header-logo.png"
             />
-            <span className="brand-text">FindHouse</span>
+            <span className="brand-text">JXRE</span>
           </Link>
           {/* End .logo */}
 
@@ -516,39 +516,40 @@ const MobileMenuContent = () => {
             </div>
           </MenuItem>
 
-          <MenuItem>
-            <div
-            onClick={()=>router.push("/login")}
-    
-              className={pathname === "/login" ? "ui-active" : 'inactive-mobile-menu'}
-            >
-              <span className="flaticon-user"></span> Login
-            </div>
-          </MenuItem>
+          {/*<MenuItem>*/}
+          {/*  <div*/}
+          {/*  onClick={()=>router.push("/login")}*/}
 
-          <MenuItem>
-            <div
-            onClick={()=>router.push("/register")}
-        
-              className={
-                pathname === "/register" ? "ui-active" : 'inactive-mobile-menu'
-              }
-            >
-              <span className="flaticon-edit"></span> Register
-            </div>
-          </MenuItem>
+          {/*    className={pathname === "/login" ? "ui-active" : 'inactive-mobile-menu'}*/}
+          {/*  >*/}
+          {/*    <span className="flaticon-user"></span> Login*/}
+          {/*  </div>*/}
+          {/*</MenuItem>*/}
+
+          {/*<MenuItem>*/}
+          {/*  <div*/}
+          {/*  onClick={()=>router.push("/register")}*/}
+
+          {/*    className={*/}
+          {/*      pathname === "/register" ? "ui-active" : 'inactive-mobile-menu'*/}
+          {/*    }*/}
+          {/*  >*/}
+          {/*    <span className="flaticon-edit"></span> Register*/}
+          {/*  </div>*/}
+          {/*</MenuItem>*/}
         </Menu>
         </div>
       {/* </Sidebar> */}
 
       
-        <Link
-          href="/create-listing"
-          className="btn btn-block btn-lg btn-thm circle"
-          style={{width:'90%',margin:'0px auto'}}
-        >
-          <span className="flaticon-plus"></span> Create Listing
-        </Link></>
+        {/*<Link*/}
+        {/*  href="/create-listing"*/}
+        {/*  className="btn btn-block btn-lg btn-thm circle"*/}
+        {/*  style={{width:'90%',margin:'0px auto'}}*/}
+        {/*>*/}
+        {/*  <span className="flaticon-plus"></span> Create Listing*/}
+        {/*</Link>*/}
+</>
      
    
   );

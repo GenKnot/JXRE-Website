@@ -1,25 +1,23 @@
 const WhyChoose = ({ style = "" }) => {
+
   const whyCooseContent = [
     {
       id: 1,
       icon: "flaticon-high-five",
-      title: "Trusted By Thousands",
-      descriptions: `Aliquam dictum elit vitae mauris facilisis at dictum urna
-      dignissim donec vel lectus vel felis.`,
+      title: "Expert Market Knowledge",
+      descriptions: `With deep expertise in Montreal and Toronto's real estate markets, we provide data-driven insights to help you make informed investment decisions.`,
     },
     {
       id: 2,
       icon: "flaticon-home-1",
-      title: "Wide Renge Of Properties",
-      descriptions: `Aliquam dictum elit vitae mauris facilisis at dictum urna
-      dignissim donec vel lectus vel felis.`,
+      title: "Premium Multi-Unit Properties",
+      descriptions: `We specialize in high-quality residential and mixed-use properties with strong financial fundamentals and excellent growth potential.`,
     },
     {
       id: 3,
       icon: "flaticon-profit",
-      title: "Financing Made Easy",
-      descriptions: `Aliquam dictum elit vitae mauris facilisis at dictum urna
-      dignissim donec vel lectus vel felis.`,
+      title: "Transparent Financial Analysis",
+      descriptions: `We provide comprehensive financial metrics including cap rates, ROI, and GRM to ensure you understand the true value of each investment opportunity.`,
     },
   ];
 

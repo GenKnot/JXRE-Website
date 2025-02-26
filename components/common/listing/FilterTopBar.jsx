@@ -65,18 +65,6 @@ const FilterTopBar = () => {
                 <option value="recent">Recent</option>
               </select>
             </li>
-            <li className="list-inline-item">
-              <span className="shrtby">Sort by:</span>
-              <select
-                className="selectpicker show-tick"
-                onChange={(e) => setFeatured(e.target.value)}
-                value={getFeatured}
-              >
-                <option value="">Featured All</option>
-                <option value="sale">Sale</option>
-                <option value="rent">Rent</option>
-              </select>
-            </li>
           </ul>
         </div>
       </div>

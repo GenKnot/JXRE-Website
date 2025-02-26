@@ -59,7 +59,7 @@ const HeaderMenuContent = ({ float = "" }) => {
         },
         {
           name: "Grid v6",
-          routerPath: "/listing-grid-v6",
+          routerPath: "/listing",
         },
       ],
     },

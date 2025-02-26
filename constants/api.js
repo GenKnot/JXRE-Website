@@ -8,9 +8,6 @@ export const ENDPOINTS = {
     },
 };
 
-/**
- * 基础fetch封装
- */
 async function fetchAPI(url) {
     try {
         const response = await fetch(url);
@@ -26,11 +23,8 @@ async function fetchAPI(url) {
     }
 }
 
-/**
- * 物业相关API
- */
+
 export const PropertyAPI = {
-    // 获取精选物业
     getFeaturedProperties: async () => {
         return fetchAPI(ENDPOINTS.PROPERTIES.FEATURED);
     },
