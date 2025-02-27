@@ -1,161 +1,62 @@
-import Ratings from "../../blog-details/Ratings";
+const WhatsNearby = ({ locations }) => {
+  if (!locations || locations.length === 0) return null;
 
-const WhatsNearby = () => {
-  const nearbyContent = [
-    {
-      id: 1,
-      styleClass: "",
-      title: " Education",
-      icon: "flaticon-college-graduation",
-      singleItem: [
-        {
-          id: 1,
-          name: "Eladia &apos;s Kids",
-          miles: "3.13",
-          totalReview: "8895",
-          ratings: (
-            <>
-              <Ratings />
-            </>
-          ),
-        },
-        {
-          id: 2,
-          name: " Gear Up With ACLS",
-          miles: "4.66",
-          totalReview: "7475",
-          ratings: (
-            <>
-              <Ratings />
-            </>
-          ),
-        },
-        {
-          id: 3,
-          name: "Brooklyn Brainery",
-          miles: "3.31",
-          totalReview: "3579",
-          ratings: (
-            <>
-              <Ratings />
-            </>
-          ),
-        },
-      ],
-    },
-    {
-      id: 2,
-      styleClass: "style2",
-      title: "Health & Medical",
-      icon: "flaticon-heartbeat",
-      singleItem: [
-        {
-          id: 1,
-          name: "Eladia &apos;s Kids",
-          miles: "3.13",
-          totalReview: "8895",
-          ratings: (
-            <>
-              <Ratings />
-            </>
-          ),
-        },
-        {
-          id: 2,
-          name: " Gear Up With ACLS",
-          miles: "4.66",
-          totalReview: "7475",
-          ratings: (
-            <>
-              <Ratings />
-            </>
-          ),
-        },
-        {
-          id: 3,
-          name: "Brooklyn Brainery",
-          miles: "3.31",
-          totalReview: "3579",
-          ratings: (
-            <>
-              <Ratings />
-            </>
-          ),
-        },
-      ],
-    },
-    {
-      id: 3,
-      styleClass: "style3",
-      title: " Transportation",
-      icon: "flaticon-front-of-bus",
-      singleItem: [
-        {
-          id: 1,
-          name: "Eladia &apos;s Kids",
-          miles: "3.13",
-          totalReview: "8895",
-          ratings: (
-            <>
-              <Ratings />
-            </>
-          ),
-        },
-        {
-          id: 2,
-          name: " Gear Up With ACLS",
-          miles: "4.66",
-          totalReview: "7475",
-          ratings: (
-            <>
-              <Ratings />
-            </>
-          ),
-        },
-        {
-          id: 3,
-          name: "Brooklyn Brainery",
-          miles: "3.31",
-          totalReview: "3579",
-          ratings: (
-            <>
-              <Ratings />
-            </>
-          ),
-        },
-      ],
-    },
-  ];
+
+  const groupedLocations = {};
+  locations.forEach(location => {
+    const typeName = location.location_type.name;
+    if (!groupedLocations[typeName]) {
+      groupedLocations[typeName] = {
+        id: location.location_type.id,
+        name: typeName,
+        order: location.location_type.order,
+        items: []
+      };
+    }
+    groupedLocations[typeName].items.push(location);
+  });
+
+
+  const locationTypes = Object.values(groupedLocations).sort((a, b) => a.order - b.order);
+
+
+  const styleClasses = ["", "style2", "style3"];
+  const iconClasses = {
+    "School": "flaticon-college-graduation",
+    "Hospital": "flaticon-heartbeat",
+    "Transportation": "flaticon-front-of-bus",
+    "Restaurant": "flaticon-food",
+    "Shopping": "flaticon-shopping-bag",
+    "Park": "flaticon-park",
+    "default": "flaticon-building"
+  };
 
   return (
-    <>
-      {nearbyContent.map((item) => (
-        <div
-          className={`education_distance mb15 ${item.styleClass}`}
-          key={item.id}
-        >
-          <h5>
-            <span className={`${item.icon}`}></span> {item.title}
-          </h5>
+      <>
+        {locationTypes.map((type, index) => {
+          const styleClass = styleClasses[index % styleClasses.length];
+          const iconClass = iconClasses[type.name] || iconClasses.default;
 
-          {item.singleItem.map((val) => (
-            <div className="single_line" key={val.id}>
-              <p className="para">
-                {val.name} <span>({val.miles} miles)</span>
-              </p>
-              <ul className="review">
-                <Ratings />
-                <li className="list-inline-item">
-                  <span className="total_rive_count">
-                    {val.totalReview} reviews
-                  </span>
-                </li>
-              </ul>
-            </div>
-          ))}
-        </div>
-      ))}
-    </>
+          return (
+              <div className={`education_distance mb15 ${styleClass}`} key={type.id}>
+                <h5>
+                  <span className={iconClass}></span> {type.name}
+                </h5>
+
+                {type.items.map((item) => (
+                    <div className="single_line" key={item.id}>
+                      <p className="para">
+                        {item.name} {item.distance && <span>({item.distance})</span>}
+                      </p>
+                      {item.notes && (
+                          <p className="details">{item.notes}</p>
+                      )}
+                    </div>
+                ))}
+              </div>
+          );
+        })}
+      </>
   );
 };
 

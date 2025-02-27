@@ -8,38 +8,42 @@ import properties from "@/data/properties";
 import DetailsContent from "@/components/listing-details-v1/DetailsContent";
 import Sidebar from "@/components/listing-details-v1/Sidebar";
 import ListingOne from "@/components/listing-single/ListingOne";
+import ListingGallery from "@/components/common/listing-details/ListingGallery";
+import { API_BASE_URL } from "@/constants/api";
 
 const ListingDynamicDetailsV1 = ({params}) => {
 
     const id = params.id;
-    const property = properties?.find((item) => item.id == id) || properties[0]
 
     return (
         <>
             {/* <!-- Main Header Nav --> */}
-            <Header/>
+            <Header />
 
             {/* <!--  Mobile Menu --> */}
-            <MobileMenu/>
+            <MobileMenu />
 
             {/* <!-- Modal --> */}
-            <PopupSignInUp/>
+            <PopupSignInUp />
 
             {/* <!-- Listing Single Property --> */}
-            <ListingOne property={property}/>
-
+            <section className="listing-title-area mt85 md-mt0">
+                <div className="container">
+                    <ListingGallery propertyId={id} />
+                </div>
+            </section>
 
             {/* <!-- Agent Single Grid View --> */}
             <section className="our-agent-single bgc-f7 pb30-991">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 col-lg-8">
-                            <DetailsContent/>
+                            <DetailsContent propertyId={id} />
                         </div>
                         {/* End details content .col-lg-8 */}
 
                         <div className="col-lg-4 col-xl-4">
-                            <Sidebar/>
+                            <Sidebar propertyId={id} />
                         </div>
                         {/* End sidebar content .col-lg-4 */}
                     </div>
@@ -51,7 +55,7 @@ const ListingDynamicDetailsV1 = ({params}) => {
             <section className="footer_one">
                 <div className="container">
                     <div className="row">
-                        <Footer/>
+                        <Footer />
                     </div>
                 </div>
             </section>
@@ -59,7 +63,7 @@ const ListingDynamicDetailsV1 = ({params}) => {
             {/* <!-- Our Footer Bottom Area --> */}
             <section className="footer_middle_area pt40 pb40">
                 <div className="container">
-                    <CopyrightFooter/>
+                    <CopyrightFooter />
                 </div>
             </section>
         </>
