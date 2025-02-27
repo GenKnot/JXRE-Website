@@ -6,8 +6,6 @@ import Footer from "../../common/footer/Footer";
 import Header from "../../common/header/DefaultHeader";
 import MobileMenu from "../../common/header/MobileMenu";
 import FilterTopBar from "../../common/listing/FilterTopBar";
-import ShowFilter from "../../common/listing/ShowFilter";
-import SidebarListing from "../../common/listing/SidebarListing";
 import BreadCrumb2 from "./BreadCrumb2";
 import FeaturedItem from "./FeaturedItem";
 import {useRouter, useSearchParams} from "next/navigation";
@@ -39,8 +37,12 @@ const index = () => {
                 // Get all the parameters from the URL
                 const city = searchParams.get('city');
                 const location = searchParams.get('location');
+
+                const residential_units = searchParams.get('residential_units');
                 const residential_units_range = searchParams.get('residential_units_range');
+                const commercial_units = searchParams.get('commercial_units');
                 const commercial_units_range = searchParams.get('commercial_units_range');
+
                 const price_min = searchParams.get('price_min');
                 const price_max = searchParams.get('price_max');
                 const grm_range = searchParams.get('grm_range');
@@ -57,9 +59,10 @@ const index = () => {
                 if (city) queryParams.append('city', city);
 
                 // Map UI values to API values for residential units
-                if (residential_units_range) {
+                const effective_residential_range = residential_units_range || residential_units;
+                if (effective_residential_range) {
                     let apiValue = '';
-                    switch (residential_units_range) {
+                    switch (effective_residential_range) {
                         case 'Below 10 units':
                             apiValue = 'below_10';
                             break;
@@ -70,22 +73,30 @@ const index = () => {
                             apiValue = '21-30';
                             break;
                         case '31+ units':
+                        case '31 plus units':
                             apiValue = '31_plus';
                             break;
                         default:
-                            apiValue = residential_units_range;
+                            apiValue = effective_residential_range;
                     }
                     queryParams.append('residential_units_range', apiValue);
                 }
 
+
                 // Map commercial units
-                if (commercial_units_range) {
-                    let apiValue = commercial_units_range;
-                    // Clean up the value if needed
-                    if (commercial_units_range === '5+') apiValue = '5+';
+                const effective_commercial_range = commercial_units_range || commercial_units;
+                if (effective_commercial_range) {
+                    let apiValue = effective_commercial_range;
+
+                    if (effective_commercial_range === '5+' ||
+                        effective_commercial_range === '5 plus') {
+                        apiValue = '5+';
+                    }
+
                     queryParams.append('commercial_units_range', apiValue);
                 }
 
+                // Price Range
                 if (price_min) queryParams.append('min_price', price_min);
                 if (price_max) queryParams.append('max_price', price_max);
 
@@ -93,7 +104,13 @@ const index = () => {
                 if (grm_range) queryParams.append('grm_range', grm_range);
 
                 // Map CAP rate
-                if (cap_rate_range) queryParams.append('cap_rate_range', cap_rate_range);
+                if (cap_rate_range) {
+                    let capRateValue = cap_rate_range;
+                    if (cap_rate_range.includes('%25')) {
+                        capRateValue = cap_rate_range.replace('%25', '%');
+                    }
+                    queryParams.append('cap_rate_range', capRateValue);
+                }
 
                 // Map cost per unit
                 if (cost_per_unit_range) queryParams.append('cost_per_unit_range', cost_per_unit_range);
@@ -139,6 +156,7 @@ const index = () => {
         fetchProperties();
     }, [searchParams]);
 
+
     // Handle page change - navigate to new URL
     const handlePageChange = (pageNumber) => {
         // Build current query parameters
@@ -168,7 +186,7 @@ const index = () => {
 
                         <div className="col-md-4 col-lg-6">
                             <div className="sidebar_switch text-right mobile-filter-menu">
-                                <ShowFilter/>
+                                {/*<ShowFilter/>*/}
                             </div>
                             {/* ENd button for mobile sidebar show  */}
                         </div>
@@ -214,26 +232,6 @@ const index = () => {
                         </div>
                         {/* End .col */}
 
-                        <div
-                            className="offcanvas offcanvas-start offcanvas-listing-sidebar"
-                            tabIndex="-1"
-                            id="sidebarListing"
-                        >
-                            <div className="offcanvas-header">
-                                <h5 className="offcanvas-title">Advanced Search</h5>
-                                <button
-                                    type="button"
-                                    className="btn-close text-reset"
-                                    data-bs-dismiss="offcanvas"
-                                    aria-label="Close"
-                                ></button>
-                            </div>
-                            {/* End .offcanvas-heade */}
-
-                            <div className="offcanvas-body">
-                                <SidebarListing/>
-                            </div>
-                        </div>
                         {/* End mobile sidebar listing  */}
                     </div>
                     {/* End .row */}

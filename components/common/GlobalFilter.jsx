@@ -27,6 +27,7 @@ const GlobalFilter = ({className = ""}) => {
         }
     });
 
+
     // 处理普通选择器的变化
     const handleSelectChange = (field) => (e) => {
         setFilters({
@@ -63,25 +64,33 @@ const GlobalFilter = ({className = ""}) => {
         });
     };
 
+
     const submitHandler = () => {
         // 构建 query string
         const queryParams = new URLSearchParams();
         const priceState = store.getState().properties.price;
 
-
         // 添加基本筛选条件
         if (filters.location) queryParams.append('location', filters.location);
-        if (filters.residential_units) queryParams.append('residential_units', filters.residential_units);
-        if (filters.commercial_units) queryParams.append('commercial_units', filters.commercial_units);
+
+        // 住宅单位 - 修正参数名称
+        if (filters.residential_units) {
+            queryParams.append('residential_units_range', filters.residential_units);
+        }
+
+        // 商业单位 - 修正参数名称
+        if (filters.commercial_units) {
+            queryParams.append('commercial_units_range', filters.commercial_units);
+        }
 
         // 价格范围
-        queryParams.append('price_min', priceState.min.toString());
-        queryParams.append('price_max', priceState.max.toString());
+        if (priceState.min) queryParams.append('min_price', priceState.min.toString());
+        if (priceState.max) queryParams.append('max_price', priceState.max.toString());
 
         // 财务指标
-        if (filters.grm) queryParams.append('grm', filters.grm);
-        if (filters.cap_rate) queryParams.append('cap_rate', filters.cap_rate);
-        if (filters.cost_per_unit) queryParams.append('cost_per_unit', filters.cost_per_unit);
+        if (filters.grm) queryParams.append('grm_range', filters.grm);
+        if (filters.cap_rate) queryParams.append('cap_rate_range', filters.cap_rate);
+        if (filters.cost_per_unit) queryParams.append('cost_per_unit_range', filters.cost_per_unit);
 
         // 特性过滤 - 只添加选中的
         Object.entries(filters.features)
@@ -113,10 +122,10 @@ const GlobalFilter = ({className = ""}) => {
                                     onChange={handleSelectChange('residential_units')}
                                     value={filters.residential_units}>
                                 <option value="">Residential Units</option>
-                                <option>Below 10 units</option>
-                                <option>11-20 units</option>
-                                <option>21-30 units</option>
-                                <option>31+ units</option>
+                                <option value="below_10">Below 10 units</option>
+                                <option value="11-20">11-20 units</option>
+                                <option value="21-30">21-30 units</option>
+                                <option value="31_plus">31+ units</option>
                             </select>
                         </div>
                     </div>
@@ -130,10 +139,10 @@ const GlobalFilter = ({className = ""}) => {
                                     onChange={handleSelectChange('commercial_units')}
                                     value={filters.commercial_units}>
                                 <option value="">Commercial Units</option>
-                                <option>0</option>
-                                <option>1</option>
-                                <option>2-5</option>
-                                <option>5+</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2-5">2-5</option>
+                                <option value="5+">5+</option>
                             </select>
                         </div>
                     </div>

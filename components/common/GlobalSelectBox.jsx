@@ -7,9 +7,9 @@ const GlobalSelectBox = ({filters, onChange}) => {
                             value={filters.grm}
                             onChange={onChange('grm')}>
                         <option value="">GRM</option>
-                        <option>Below 15</option>
-                        <option>15-20</option>
-                        <option>More than 20</option>
+                        <option value="Below 15">Below 15</option>
+                        <option value="15-20">15-20</option>
+                        <option value="More than 20">More than 20</option>
                     </select>
                 </div>
             </li>
@@ -21,9 +21,9 @@ const GlobalSelectBox = ({filters, onChange}) => {
                             value={filters.cap_rate}
                             onChange={onChange('cap_rate')}>
                         <option value="">CAP Rate</option>
-                        <option>2-3%</option>
-                        <option>3-4%</option>
-                        <option>4%+</option>
+                        <option value="2-3%">2-3%</option>
+                        <option value="3-4%">3-4%</option>
+                        <option value="4%+">4%+</option>
                     </select>
                 </div>
             </li>
@@ -35,9 +35,9 @@ const GlobalSelectBox = ({filters, onChange}) => {
                             value={filters.cost_per_unit}
                             onChange={onChange('cost_per_unit')}>
                         <option value="">Cost Per Unit</option>
-                        <option>Below 200k</option>
-                        <option>200k-300k</option>
-                        <option>300k+</option>
+                        <option value="Below 200k">Below 200k</option>
+                        <option value="200k-300k">200k-300k</option>
+                        <option value="300k+">300k+</option>
                     </select>
                 </div>
             </li>

@@ -2,7 +2,6 @@ import CallToAction from "../common/CallToAction";
 import CopyrightFooter from "../common/footer/CopyrightFooter";
 import Footer from "../common/footer/Footer";
 import MobileMenu from "../common/header/MobileMenu";
-import Partners from "../common/Partners";
 import Blogs from "../common/Blogs";
 import FeaturedProperties from "./FeaturedProperties";
 import FindProperties from "./FindProperties";
@@ -81,7 +80,7 @@ const Index = () => {
             </section>
 
             {/* <!-- Our Blog --> */}
-            <section className="our-blog bgc-f7 pb30">
+            <section id="new-properties" className="our-blog bgc-f7 pb30">
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 offset-lg-3">

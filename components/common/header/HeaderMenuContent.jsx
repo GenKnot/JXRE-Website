@@ -248,180 +248,216 @@ const HeaderMenuContent = ({ float = "" }) => {
 
       <li className="dropitem">
         <a
-          href="#"
-          className={
-            listing.some((parent) => {
-              return parent.items.some(
-                (page) => page.routerPath?.split('/')[1] === pathname?.split('/')[1]
-              );
-            })
-              ? "ui-active"
-              : undefined
-          }
+            href="/#feature-property"
         >
-          <span className="title">Listing</span>
-          <span className="arrow"></span>
+          <span className="title">Featured</span>
         </a>
         {/* <!-- Level Two--> */}
-        <ul className="sub-menu ">
-          {listing.map((item) => (
-            <li className="dropitem arrow" key={item.id}>
-              <a
-                href="#"
-                className={
-                  item.items.some((page) => page.routerPath?.split('/')[1] === pathname?.split('/')[1])
-                    ? "ui-active"
-                    : undefined
-                }
-              >
-                {item.title}
-              </a>
-              {/* <!-- Level Three--> */}
-              <ul className="sub-menu ">
-                {item.items.map((val, i) => (
-                  <li key={i}>
-                    <Link
-                      href={val.routerPath}
-                      className={
-                        pathname?.split('/')[1] === val.routerPath?.split('/')[1]
-                          ? "ui-active"
-                          : undefined
-                      }
-                    >
-                      {val.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
       </li>
-      {/* End .dropitem */}
 
       <li className="dropitem">
         <a
-          href="#"
-          className={
-            property.some((parent) => {
-              return parent.items.some(
-                (page) =>
-                  page.routerPath?.split('/')[1] === pathname?.split('/')[1] 
-                  // page.routerPath?.split('/')[1] + "/[id]" === pathname?.split('/')[1]
-              );
-            })
-              ? "ui-active"
-              : undefined
-          }
+            href="/#property-city"
         >
-          <span className="title">Property</span>{" "}
-          <span className="arrow"></span>
+          <span className="title">Cities</span>
         </a>
-        <ul className="sub-menu ">
-          {property.map((item) => (
-            <li className="dropitem arrow" key={item.id}>
-              <a
-                href="#"
-                className={
-                  item.items.some(
-                    (page) =>
-                      page.routerPath?.split('/')[1] === pathname?.split('/')[1] 
-                      // page.routerPath?.split('/')[1] + "/[id]" === pathname?.split('/')[1]
-                  )
-                    ? "ui-active"
-                    : undefined
-                }
-              >
-                {item.title}
-              </a>
-              {/* <!-- Level Three--> */}
-              <ul className="sub-menu ">
-                {item.items.map((val, i) => (
-                  <li key={i}>
-                    <Link
-                      href={val.routerPath}
-                      className={
-                        pathname?.split('/')[1] === val.routerPath?.split('/')[1] 
-                        // val.routerPath + "/[id]" === pathname?.split('/')[1]
-                          ? "ui-active"
-                          : undefined
-                      }
-                    >
-                      {val.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
+        {/* <!-- Level Two--> */}
       </li>
-      {/* End .dropitem */}
 
       <li className="dropitem">
         <a
-          href="#"
-          className={
-            pages.some((page) => page.routerPath?.split('/')[1] === pathname?.split('/')[1])
-              ? "ui-active"
-              : undefined
-          }
+            href="/#why-chose"
         >
-          <span className="title">Pages</span>
-          <span className="arrow"></span>
+          <span className="title">About</span>
         </a>
-        <ul className="sub-menu ">
-          {pages.map((item) => (
-            <li key={item.id}>
-              <Link
-                href={item.routerPath}
-                className={
-                  pathname?.split('/')[1] === item.routerPath?.split('/')[1] ? "ui-active" : undefined
-                }
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {/* <!-- Level Two--> */}
       </li>
-      {/* End .dropitem */}
 
       <li className="dropitem">
         <a
-          href="#"
-          className={
-            blog.some(
-              (page) =>
-                page.routerPath?.split('/')[1] === pathname?.split('/')[1] 
-                // page.routerPath?.split('/')[1] + "/[id]" === pathname?.split('/')[1]
-            )
-              ? "ui-active"
-              : undefined
-          }
+            href="/#new-properties"
         >
-          <span className="title">Blog</span>
-          <span className="arrow"></span>
+          <span className="title">New Properties</span>
         </a>
-        <ul className="sub-menu ">
-          {blog.map((item) => (
-            <li key={item.id}>
-              <Link
-                href={item.routerPath}
-                className={
-                  pathname?.split('/')[1] === item.routerPath?.split('/')[1]
-                  // item.routerPath + "/[id]" === pathname?.split('/')[1]
-                    ? "ui-active"
-                    : undefined
-                }
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {/* <!-- Level Two--> */}
       </li>
-      {/* End .dropitem */}
+
+      {/*<li className="dropitem">*/}
+      {/*  <a*/}
+      {/*    href="#"*/}
+      {/*    className={*/}
+      {/*      listing.some((parent) => {*/}
+      {/*        return parent.items.some(*/}
+      {/*          (page) => page.routerPath?.split('/')[1] === pathname?.split('/')[1]*/}
+      {/*        );*/}
+      {/*      })*/}
+      {/*        ? "ui-active"*/}
+      {/*        : undefined*/}
+      {/*    }*/}
+      {/*  >*/}
+      {/*    <span className="title">Listing</span>*/}
+      {/*    <span className="arrow"></span>*/}
+      {/*  </a>*/}
+      {/*  /!* <!-- Level Two--> *!/*/}
+      {/*  <ul className="sub-menu ">*/}
+      {/*    {listing.map((item) => (*/}
+      {/*      <li className="dropitem arrow" key={item.id}>*/}
+      {/*        <a*/}
+      {/*          href="#"*/}
+      {/*          className={*/}
+      {/*            item.items.some((page) => page.routerPath?.split('/')[1] === pathname?.split('/')[1])*/}
+      {/*              ? "ui-active"*/}
+      {/*              : undefined*/}
+      {/*          }*/}
+      {/*        >*/}
+      {/*          {item.title}*/}
+      {/*        </a>*/}
+      {/*        /!* <!-- Level Three--> *!/*/}
+      {/*        <ul className="sub-menu ">*/}
+      {/*          {item.items.map((val, i) => (*/}
+      {/*            <li key={i}>*/}
+      {/*              <Link*/}
+      {/*                href={val.routerPath}*/}
+      {/*                className={*/}
+      {/*                  pathname?.split('/')[1] === val.routerPath?.split('/')[1]*/}
+      {/*                    ? "ui-active"*/}
+      {/*                    : undefined*/}
+      {/*                }*/}
+      {/*              >*/}
+      {/*                {val.name}*/}
+      {/*              </Link>*/}
+      {/*            </li>*/}
+      {/*          ))}*/}
+      {/*        </ul>*/}
+      {/*      </li>*/}
+      {/*    ))}*/}
+      {/*  </ul>*/}
+      {/*</li>*/}
+      {/*/!* End .dropitem *!/*/}
+
+      {/*<li className="dropitem">*/}
+      {/*  <a*/}
+      {/*    href="#"*/}
+      {/*    className={*/}
+      {/*      property.some((parent) => {*/}
+      {/*        return parent.items.some(*/}
+      {/*          (page) =>*/}
+      {/*            page.routerPath?.split('/')[1] === pathname?.split('/')[1] */}
+      {/*            // page.routerPath?.split('/')[1] + "/[id]" === pathname?.split('/')[1]*/}
+      {/*        );*/}
+      {/*      })*/}
+      {/*        ? "ui-active"*/}
+      {/*        : undefined*/}
+      {/*    }*/}
+      {/*  >*/}
+      {/*    <span className="title">Property</span>{" "}*/}
+      {/*    <span className="arrow"></span>*/}
+      {/*  </a>*/}
+      {/*  <ul className="sub-menu ">*/}
+      {/*    {property.map((item) => (*/}
+      {/*      <li className="dropitem arrow" key={item.id}>*/}
+      {/*        <a*/}
+      {/*          href="#"*/}
+      {/*          className={*/}
+      {/*            item.items.some(*/}
+      {/*              (page) =>*/}
+      {/*                page.routerPath?.split('/')[1] === pathname?.split('/')[1] */}
+      {/*                // page.routerPath?.split('/')[1] + "/[id]" === pathname?.split('/')[1]*/}
+      {/*            )*/}
+      {/*              ? "ui-active"*/}
+      {/*              : undefined*/}
+      {/*          }*/}
+      {/*        >*/}
+      {/*          {item.title}*/}
+      {/*        </a>*/}
+      {/*        /!* <!-- Level Three--> *!/*/}
+      {/*        <ul className="sub-menu ">*/}
+      {/*          {item.items.map((val, i) => (*/}
+      {/*            <li key={i}>*/}
+      {/*              <Link*/}
+      {/*                href={val.routerPath}*/}
+      {/*                className={*/}
+      {/*                  pathname?.split('/')[1] === val.routerPath?.split('/')[1] */}
+      {/*                  // val.routerPath + "/[id]" === pathname?.split('/')[1]*/}
+      {/*                    ? "ui-active"*/}
+      {/*                    : undefined*/}
+      {/*                }*/}
+      {/*              >*/}
+      {/*                {val.name}*/}
+      {/*              </Link>*/}
+      {/*            </li>*/}
+      {/*          ))}*/}
+      {/*        </ul>*/}
+      {/*      </li>*/}
+      {/*    ))}*/}
+      {/*  </ul>*/}
+      {/*</li>*/}
+      {/*/!* End .dropitem *!/*/}
+
+      {/*<li className="dropitem">*/}
+      {/*  <a*/}
+      {/*    href="#"*/}
+      {/*    className={*/}
+      {/*      pages.some((page) => page.routerPath?.split('/')[1] === pathname?.split('/')[1])*/}
+      {/*        ? "ui-active"*/}
+      {/*        : undefined*/}
+      {/*    }*/}
+      {/*  >*/}
+      {/*    <span className="title">Pages</span>*/}
+      {/*    <span className="arrow"></span>*/}
+      {/*  </a>*/}
+      {/*  <ul className="sub-menu ">*/}
+      {/*    {pages.map((item) => (*/}
+      {/*      <li key={item.id}>*/}
+      {/*        <Link*/}
+      {/*          href={item.routerPath}*/}
+      {/*          className={*/}
+      {/*            pathname?.split('/')[1] === item.routerPath?.split('/')[1] ? "ui-active" : undefined*/}
+      {/*          }*/}
+      {/*        >*/}
+      {/*          {item.name}*/}
+      {/*        </Link>*/}
+      {/*      </li>*/}
+      {/*    ))}*/}
+      {/*  </ul>*/}
+      {/*</li>*/}
+      {/*/!* End .dropitem *!/*/}
+
+      {/*<li className="dropitem">*/}
+      {/*  <a*/}
+      {/*    href="#"*/}
+      {/*    className={*/}
+      {/*      blog.some(*/}
+      {/*        (page) =>*/}
+      {/*          page.routerPath?.split('/')[1] === pathname?.split('/')[1] */}
+      {/*          // page.routerPath?.split('/')[1] + "/[id]" === pathname?.split('/')[1]*/}
+      {/*      )*/}
+      {/*        ? "ui-active"*/}
+      {/*        : undefined*/}
+      {/*    }*/}
+      {/*  >*/}
+      {/*    <span className="title">Blog</span>*/}
+      {/*    <span className="arrow"></span>*/}
+      {/*  </a>*/}
+      {/*  <ul className="sub-menu ">*/}
+      {/*    {blog.map((item) => (*/}
+      {/*      <li key={item.id}>*/}
+      {/*        <Link*/}
+      {/*          href={item.routerPath}*/}
+      {/*          className={*/}
+      {/*            pathname?.split('/')[1] === item.routerPath?.split('/')[1]*/}
+      {/*            // item.routerPath + "/[id]" === pathname?.split('/')[1]*/}
+      {/*              ? "ui-active"*/}
+      {/*              : undefined*/}
+      {/*          }*/}
+      {/*        >*/}
+      {/*          {item.name}*/}
+      {/*        </Link>*/}
+      {/*      </li>*/}
+      {/*    ))}*/}
+      {/*  </ul>*/}
+      {/*</li>*/}
+      {/*/!* End .dropitem *!/*/}
 
       <li className="last">
         <Link
@@ -446,9 +482,9 @@ const HeaderMenuContent = ({ float = "" }) => {
       {/* End .dropitem */}
 
       <li className={`list-inline-item add_listing ${float}`}>
-        <Link href="/create-listing">
-          <span className="flaticon-plus"></span>
-          <span className="dn-lg"> Create Listing</span>
+        <Link href="/listing">
+          {/*<span className="flaticon-plus"></span>*/}
+          <span className="dn-lg">All Properties</span>
         </Link>
       </li>
       {/* End .dropitem */}
