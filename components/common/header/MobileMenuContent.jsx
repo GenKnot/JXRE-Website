@@ -237,7 +237,7 @@ const property = [
         items: [
             {
                 name: "Single V1",
-                routerPath: "/listing-details-v1",
+                routerPath: "/listing-details",
             },
             {
                 name: "Single V2",

@@ -9,6 +9,7 @@ import Header from "./Header";
 import Hero from "./Hero";
 import WhyChoose from "../common/WhyChoose";
 import PopupSignInUp from "../common/PopupSignInUp";
+import RecentProperties from "@/components/RecentProperties";
 
 const Index = () => {
     return (
@@ -85,13 +86,13 @@ const Index = () => {
                     <div className="row">
                         <div className="col-lg-6 offset-lg-3">
                             <div className="main-title text-center">
-                                <h2>Articles & Tips</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h2>New Investment Opportunities</h2>
+                                <p>Discover our latest multi-family properties with excellent income potential</p>
                             </div>
                         </div>
                     </div>
                     <div className="row">
-                        <Blogs/>
+                        <RecentProperties/>
                     </div>
                 </div>
             </section>

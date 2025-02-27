@@ -56,7 +56,7 @@ const FeaturedItem = ({ properties = [] }) => {
               </ul>
 
               <Link
-                  href={`/listing-details-v1/${property.id}`}
+                  href={`/listing-details/${property.id}`}
                   className="fp_price"
               >
                 ${property.price.toLocaleString()}
@@ -71,7 +71,7 @@ const FeaturedItem = ({ properties = [] }) => {
                 {property.commercial_units > 0 ? `${property.commercial_units} Commercial Units` : ''}
               </p>
               <h4>
-                <Link href={`/listing-details-v1/${property.id}`}>
+                <Link href={`/listing-details/${property.id}`}>
                   {property.title}
                 </Link>
               </h4>

@@ -84,7 +84,7 @@ const FeaturedProperties = () => {
                 </li>
               </ul>
 
-              <Link href={`/listing-details-v1/${item.id}`} className="fp_price">
+              <Link href={`/listing-details/${item.id}`} className="fp_price">
                 ${Number(item.price).toLocaleString()}
               </Link>
             </div>
@@ -100,7 +100,7 @@ const FeaturedProperties = () => {
                         : "Commercial"}
               </p>
               <h4>
-                <Link href={`/listing-details-v1/${item.id}`}>{item.title}</Link>
+                <Link href={`/listing-details/${item.id}`}>{item.title}</Link>
               </h4>
               <p>
                 <span className="flaticon-placeholder"></span>

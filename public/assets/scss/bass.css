@@ -1,9 +1,80 @@
+@charset "UTF-8";
 .home1_bgi2 {
   background-image: url(../../b1.png);
   -webkit-background-size: cover;
   background-size: cover;
   background-position: center center;
   height: 960px;
+}
+
+/* 紧凑型属性卡片样式 */
+.compact-property {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.compact-property:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+/* 降低图片容器高度 */
+.compact-property .property-img-container {
+  height: 180px;
+  overflow: hidden;
+}
+
+.compact-property .property-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* 减少内部填充使卡片更紧凑 */
+.compact-property .details {
+  padding: 12px 15px;
+}
+
+/* 标题样式调整 */
+.compact-property .property-title {
+  font-size: 16px;
+  line-height: 1.3;
+  margin-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 单位信息样式 */
+.compact-property .property-units {
+  font-size: 13px;
+}
+
+/* 城市标签样式 */
+.compact-property .property-city {
+  font-size: 13px;
+  color: #777;
+}
+
+/* 确保在小屏幕上有适当的间距和排列 */
+@media (max-width: 767px) {
+  .compact-property {
+    margin-bottom: 20px;
+  }
+  .compact-property .property-img-container {
+    height: 160px;
+  }
+  .compact-property .property-title {
+    font-size: 15px;
+  }
+}
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  .compact-property .details {
+    padding: 10px;
+  }
 }
 
 /*# sourceMappingURL=bass.css.map */

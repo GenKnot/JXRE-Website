@@ -16,9 +16,6 @@ const index = () => {
       {/* <!--  Mobile Menu --> */}
       <MobileMenu />
 
-      {/* <!-- Modal --> */}
-      <PopupSignInUp />
-
       {/* <!-- Listing Single Property --> */}
       <section className="listing-title-area mt85 md-mt0">
         <div className="container">

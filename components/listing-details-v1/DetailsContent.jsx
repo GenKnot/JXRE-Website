@@ -93,54 +93,12 @@ const DetailsContent = () => {
       </div>
       {/* End property-video  */}
 
-      <div className="walkscore_area mt30">
-        <WalkScore />
-      </div>
-      {/* End walkscore_area */}
 
       <div className="whats_nearby mt30">
         <h4 className="mb10">What&apos;s Nearby</h4>
         <WhatsNearby />
       </div>
       {/* End what's nearby area */}
-
-      <div className="product_single_content">
-        <div className="mbp_pagination_comments mt30">
-          <div className="total_review">
-            <h4>896 Reviews</h4>
-            <ul className="review_star_list mb0 pl10">
-              <Ratings />
-            </ul>
-            <a className="tr_outoff pl10" href="#">
-              ( 4.5 out of 5 )
-            </a>
-            <a className="write_review float-end fn-xsd" href="#">
-              Write a Review
-            </a>
-          </div>
-          {/* End .total_review */}
-          <Comments />
-          <div className="custom_hr"></div>
-
-          <div className="mbp_comment_form style2">
-            <h4>Write a Review</h4>
-            <ul className="review_star">
-              <li className="list-inline-item">
-                <span className="sspd_review">
-                  <ul>
-                    <Ratings />
-                  </ul>
-                </span>
-              </li>
-              <li className="list-inline-item pr15">
-                <p>Your Rating & Review</p>
-              </li>
-            </ul>
-            <ReviewBox />
-          </div>
-        </div>
-      </div>
-      {/* End review and comment area area */}
     </>
   );
 };
