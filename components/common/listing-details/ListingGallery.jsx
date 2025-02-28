@@ -39,7 +39,7 @@ const ListingGallery = ({ propertyId }) => {
         return <div className="alert alert-warning">Property not found</div>;
     }
 
-    // Get the first 4 images for the gallery
+    // 获取特色图片和额外图片
     const featuredImage = property.featured_image;
     const additionalImages = property.images?.filter(img => img.id !== featuredImage?.id).slice(0, 3) || [];
 
@@ -52,6 +52,19 @@ const ListingGallery = ({ propertyId }) => {
                             <div className="single_property_title mt30-767">
                                 <h2>{property.title}</h2>
                                 <p>{property.address}, {property.city}</p>
+
+                                {/* 添加装饰性标签 */}
+                                <div className="property-tags mt-2">
+                                    {property.residential_units > 0 && (
+                                        <span className="badge bg-p me-2">Residential</span>
+                                    )}
+                                    {property.commercial_units > 0 && (
+                                        <span className="badge bg-p me-2">Commercial</span>
+                                    )}
+                                    {property.is_sold && (
+                                        <span className="badge bg-danger me-2">Sold</span>
+                                    )}
+                                </div>
                             </div>
                         </div>
                         <div className="col-lg-5 col-xl-4">
@@ -59,7 +72,7 @@ const ListingGallery = ({ propertyId }) => {
                                 <div className="price float-start fn-400">
                                     <h2>
                                         ${Number(property.price).toLocaleString()}
-                                        {property.is_sold && <span className="badge bg-danger ms-2">Sold</span>}
+                                        {property.is_sold && <small className="ms-2">(Sold)</small>}
                                     </h2>
                                 </div>
 
@@ -70,11 +83,7 @@ const ListingGallery = ({ propertyId }) => {
                                                 <span className="flaticon-printer"></span>
                                             </a>
                                         </li>
-                                        {property.is_featured && (
-                                            <li className="list-inline-item">
-                                                <span className="badge bg-success">Featured</span>
-                                            </li>
-                                        )}
+                                        {/* 移除 Featured 标签 */}
                                     </ul>
                                 </div>
                             </div>
@@ -86,7 +95,7 @@ const ListingGallery = ({ propertyId }) => {
                             <div className="row">
                                 <div className="col-lg-12">
                                     <div className="spls_style_two mb30-520">
-                                        {featuredImage && (
+                                        {featuredImage ? (
                                             <Item
                                                 original={featuredImage.image_url}
                                                 thumbnail={featuredImage.image_url}
@@ -94,20 +103,57 @@ const ListingGallery = ({ propertyId }) => {
                                                 height={450}
                                             >
                                                 {({ ref, open }) => (
-                                                    <div role="button" ref={ref} onClick={open}>
+                                                    <div
+                                                        ref={ref}
+                                                        onClick={open}
+                                                        className="main-image-container"
+                                                        style={{
+                                                            position: 'relative',
+                                                            width: '100%',
+                                                            height: '450px',
+                                                            overflow: 'hidden',
+                                                            borderRadius: '10px',
+                                                            boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                                                            cursor: 'pointer'
+                                                        }}
+                                                    >
                                                         <Image
-                                                            width={752}
-                                                            height={450}
-                                                            className="img-fluid w100 lds-1 cover h-100"
+                                                            fill
                                                             src={featuredImage.image_url}
                                                             alt={featuredImage.title || property.title}
+                                                            style={{ objectFit: 'cover' }}
+                                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                            priority
                                                         />
+                                                        <div
+                                                            className="image-overlay"
+                                                            style={{
+                                                                position: 'absolute',
+                                                                bottom: '0',
+                                                                left: '0',
+                                                                width: '100%',
+                                                                background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)',
+                                                                padding: '30px 15px 15px',
+                                                                color: 'white'
+                                                            }}
+                                                        >
+                                                            <span className="view-all">View gallery</span>
+                                                        </div>
                                                     </div>
                                                 )}
                                             </Item>
-                                        )}
-                                        {!featuredImage && (
-                                            <div className="no-image-placeholder" style={{ height: 450, background: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        ) : (
+                                            <div
+                                                className="no-image-placeholder"
+                                                style={{
+                                                    height: '450px',
+                                                    background: '#f5f5f5',
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    borderRadius: '10px'
+                                                }}
+                                            >
                                                 <span>No image available</span>
                                             </div>
                                         )}
@@ -119,8 +165,8 @@ const ListingGallery = ({ propertyId }) => {
                         <div className="col-sm-5 col-lg-4">
                             <div className="row">
                                 {additionalImages.map((image, i) => (
-                                    <div className="col-6" key={image.id}>
-                                        <div className="spls_style_two img-gallery-box mb24">
+                                    <div className="col-6 mb-4" key={image.id}>
+                                        <div className="spls_style_two img-gallery-box">
                                             <Item
                                                 original={image.image_url}
                                                 thumbnail={image.image_url}
@@ -128,13 +174,25 @@ const ListingGallery = ({ propertyId }) => {
                                                 height={450}
                                             >
                                                 {({ ref, open }) => (
-                                                    <div role="button" ref={ref} onClick={open}>
+                                                    <div
+                                                        ref={ref}
+                                                        onClick={open}
+                                                        style={{
+                                                            position: 'relative',
+                                                            width: '100%',
+                                                            height: '133px',
+                                                            overflow: 'hidden',
+                                                            borderRadius: '8px',
+                                                            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                                                            cursor: 'pointer'
+                                                        }}
+                                                    >
                                                         <Image
-                                                            width={170}
-                                                            height={133}
-                                                            className="img-fluid w100 cover"
+                                                            fill
                                                             src={image.image_url}
                                                             alt={image.title || `Property image ${i + 1}`}
+                                                            style={{ objectFit: 'cover' }}
+                                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                                         />
                                                     </div>
                                                 )}
@@ -143,10 +201,19 @@ const ListingGallery = ({ propertyId }) => {
                                     </div>
                                 ))}
                                 {additionalImages.length < 1 && featuredImage && (
-                                    <div className="col-12">
-                                        <div className="view-all-images" style={{ height: 133, background: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                            <span>No additional images</span>
-                                        </div>
+                                    <div
+                                        className="col-12"
+                                        style={{
+                                            height: '133px',
+                                            background: '#f8f9fa',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            borderRadius: '8px',
+                                            marginTop: '10px'
+                                        }}
+                                    >
+                                        <span className="text-muted">No additional images</span>
                                     </div>
                                 )}
                             </div>
@@ -154,6 +221,24 @@ const ListingGallery = ({ propertyId }) => {
                     </div>
                 </div>
             </Gallery>
+            <style jsx global>{`
+                .main-image-container:hover .image-overlay {
+                    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+                }
+                .view-all {
+                    font-size: 14px;
+                    opacity: 0.8;
+                    transition: opacity 0.3s;
+                }
+                .main-image-container:hover .view-all {
+                    opacity: 1;
+                }
+                .property-tags .badge {
+                    font-size: 12px;
+                    padding: 6px 12px;
+                    border-radius: 4px;
+                }
+            `}</style>
         </>
     );
 };

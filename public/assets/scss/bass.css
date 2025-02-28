@@ -7,6 +7,34 @@
   height: 960px;
 }
 
+.bg-p {
+  background-color: #ff5a5f;
+}
+
+.vh-50s {
+  min-height: 50vh;
+}
+
+.color-p {
+  color: #ff5a5f;
+}
+
+.my-30s {
+  margin: 100px 0;
+}
+
+.py-30s {
+  padding: 100px 0;
+}
+
+.inner_page_breadcrumb1 {
+  background-image: url(../../d1.jpg);
+  background-repeat: no-repeat;
+  height: 370px;
+  margin-top: 88px;
+  position: relative;
+}
+
 /* 紧凑型属性卡片样式 */
 .compact-property {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);

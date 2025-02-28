@@ -1,55 +1,64 @@
 'use client'
 
 import Image from "next/image";
-import featureProContent from "../../../data/properties";
+import Link from "next/link";
 import Slider from "react-slick";
 
-const FeatureProperties = () => {
+const FeatureProperties = ({ properties = [] }) => {
+  if (!properties || properties.length === 0) return null;
+
   const settings = {
     dots: true,
     arrows: false,
     fade: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     speed: 1000,
+    autoplaySpeed: 5000,
   };
 
   return (
-    <>
-      <Slider {...settings} arrows={false}>
-        {featureProContent.slice(0, 5).map((item) => (
-          <div className="item" key={item.id}>
-            <div className="feat_property home7">
-              <div className="thumb">
-                <Image
-                  width={300}
-                  height={220}
-                  className="img-whp w-100 h-100 cover"
-                  src={item.img}
-                  alt="properties identity"
-                />
+      <>
+        <Slider {...settings} arrows={false}>
+          {properties.map((item) => (
+              <div className="item" key={item.id}>
+                <div className="feat_property home7">
+                  <div className="thumb">
+                    <Link href={`/listing-details/${item.id}`}>
+                      <div style={{ position: 'relative', width: '100%', height: '220px' }}>
+                        <Image
+                            src={item.featured_image?.image_url || "/assets/images/property/no-image.jpg"}
+                            alt={item.title}
+                            fill
+                            style={{ objectFit: 'cover' }}
+                            sizes="(max-width: 768px) 100vw, 300px"
+                        />
+                      </div>
+                    </Link>
 
-                <div className="thmb_cntnt">
-                  <ul className="tag mb0">
-                    {item.saleTag.map((val, i) => (
-                      <li className="list-inline-item" key={i}>
-                        <a href="#">{val}</a>
-                      </li>
-                    ))}
-                  </ul>
-                  <a className="fp_price" href="#">
-                    ${item.price}
-                    <small>/mo</small>
-                  </a>
-                  <h4 className="posr color-white">{item.title}</h4>
+                    <div className="thmb_cntnt">
+                      <ul className="tag mb0">
+                        <li className="list-inline-item">
+                          <a href="#">{item.city}</a>
+                        </li>
+                        {item.is_sold && (
+                            <li className="list-inline-item">
+                              <a href="#" className="bg-danger">Sold</a>
+                            </li>
+                        )}
+                      </ul>
+                      <Link href={`/listing-details/${item.id}`} className="fp_price">
+                        ${Number(item.price).toLocaleString()}
+                      </Link>
+                      <h4 className="posr color-white">{item.title}</h4>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        ))}
-      </Slider>
-    </>
+          ))}
+        </Slider>
+      </>
   );
 };
 

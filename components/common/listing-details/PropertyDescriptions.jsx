@@ -1,42 +1,52 @@
 'use client'
 
-import {useState} from "react";
-
 const PropertyDescriptions = ({description, highlights}) => {
-    const [showMore, setShowMore] = useState(false);
-
     if (!description && !highlights) return null;
 
     return (
         <>
             {description && (
                 <div className="mb25">
-                    <h5>Description</h5>
-                    <p className={showMore ? "" : "gpara white_goverlay mt10 mb10"}>
-                        {description}
-                    </p>
-                    {description.length > 300 && (
-                        <p className="overlay_close">
-                            <a
-
-                                className="text-thm fz14"
-                                onClick={() => setShowMore(!showMore)}
-                                role="button"
-                            >
-                                {showMore ? "Show Less" : "Show More"} <span
-                                className="flaticon-download-1 fz12"></span>
-                            </a>
-                        </p>
-                    )}
+                    {/*<h5 className="description-title">Description</h5>*/}
+                    <div
+                        className="property-description mt10 mb10"
+                        dangerouslySetInnerHTML={{
+                            __html: description.replace(/\n/g, '<br />')
+                        }}
+                    />
                 </div>
             )}
 
             {highlights && (
                 <div className="mt20">
-                    <h5>Highlights</h5>
-                    <p>{highlights}</p>
+                    <h5 className="highlights-title">Highlights</h5>
+                    <div
+                        className="property-highlights"
+                        dangerouslySetInnerHTML={{
+                            __html: highlights.replace(/\n/g, '<br />')
+                        }}
+                    />
                 </div>
             )}
+
+            <style jsx global>{`
+                .property-description,
+                .property-highlights {
+                    font-size: 15px;
+                    line-height: 1.7;
+                    color: #484848;
+                    word-wrap: break-word;
+                    overflow-wrap: break-word;
+                }
+                
+                .description-title,
+                .highlights-title {
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: #222;
+                    margin-bottom: 15px;
+                }
+            `}</style>
         </>
     );
 };

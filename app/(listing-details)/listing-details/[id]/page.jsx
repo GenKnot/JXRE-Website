@@ -3,13 +3,16 @@ import CopyrightFooter from "@/components/common/footer/CopyrightFooter";
 import Footer from "@/components/common/footer/Footer";
 import Header from "@/components/common/header/DefaultHeader";
 import MobileMenu from "@/components/common/header/MobileMenu";
-import PopupSignInUp from "@/components/common/PopupSignInUp";
-import properties from "@/data/properties";
 import DetailsContent from "@/components/listing-details-v1/DetailsContent";
 import Sidebar from "@/components/listing-details-v1/Sidebar";
-import ListingOne from "@/components/listing-single/ListingOne";
 import ListingGallery from "@/components/common/listing-details/ListingGallery";
-import { API_BASE_URL } from "@/constants/api";
+
+export const metadata = {
+    title: 'JXRE | Property Details',
+    description:
+        'Explore premium real estate listings in Montreal and Toronto. Specializing in high-value multi-plex properties with strong rental income potential. Get expert advice on investing in prime urban locations.',
+};
+
 
 const ListingDynamicDetailsV1 = ({params}) => {
 
@@ -22,9 +25,6 @@ const ListingDynamicDetailsV1 = ({params}) => {
 
             {/* <!--  Mobile Menu --> */}
             <MobileMenu />
-
-            {/* <!-- Modal --> */}
-            <PopupSignInUp />
 
             {/* <!-- Listing Single Property --> */}
             <section className="listing-title-area mt85 md-mt0">

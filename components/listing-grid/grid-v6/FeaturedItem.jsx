@@ -59,7 +59,7 @@ const FeaturedItem = ({ properties = [] }) => {
                   href={`/listing-details/${property.id}`}
                   className="fp_price"
               >
-                ${property.price.toLocaleString()}
+                ${Number(property.price).toLocaleString('en-US', {maximumFractionDigits: 0})}
               </Link>
             </div>
           </div>

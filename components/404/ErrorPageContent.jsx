@@ -1,10 +1,9 @@
 import Link from "next/link";
-import Form from "./Form";
 import Image from "next/image";
 
 const ErrorPageContent = () => {
   return (
-    <div className="error_page footer_apps_widget">
+    <div className="error_page footer_apps_widget vh-50s">
       <Image
         width={266}
         height={200}
@@ -16,8 +15,6 @@ const ErrorPageContent = () => {
         <h1>Ohh! Page Not Found</h1>
       </div>
       <p>We can’t seem to find the page you’re looking for</p>
-
-      <Form />
       {/* End form */}
 
       <Link href="/" className="btn btn_error btn-thm">
