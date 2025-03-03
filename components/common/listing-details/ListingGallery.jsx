@@ -39,9 +39,9 @@ const ListingGallery = ({ propertyId }) => {
         return <div className="alert alert-warning">Property not found</div>;
     }
 
-    // 获取特色图片和额外图片
+
     const featuredImage = property.featured_image;
-    const additionalImages = property.images?.filter(img => img.id !== featuredImage?.id).slice(0, 3) || [];
+    const additionalImages = property.images?.filter(img => img.id !== featuredImage?.id).slice(0, 6) || [];
 
     return (
         <>
@@ -53,7 +53,7 @@ const ListingGallery = ({ propertyId }) => {
                                 <h2>{property.title}</h2>
                                 <p>{property.address}, {property.city}</p>
 
-                                {/* 添加装饰性标签 */}
+
                                 <div className="property-tags mt-2">
                                     {property.residential_units > 0 && (
                                         <span className="badge bg-p me-2">Residential</span>
@@ -71,8 +71,7 @@ const ListingGallery = ({ propertyId }) => {
                             <div className="single_property_social_share position-static transform-none">
                                 <div className="price float-start fn-400">
                                     <h2>
-                                        ${Number(property.price).toLocaleString()}
-                                        {property.is_sold && <small className="ms-2">(Sold)</small>}
+                                        Price : <span>{property.is_sold ? 'Sold' : Number(property.price).toLocaleString()}</span>
                                     </h2>
                                 </div>
 
@@ -80,10 +79,10 @@ const ListingGallery = ({ propertyId }) => {
                                     <ul className="mb0">
                                         <li className="list-inline-item">
                                             <a href="#" onClick={(e) => { e.preventDefault(); window.print(); }}>
-                                                <span className="flaticon-printer"></span>
+                                                <span className="flaticon-printer fs-5"></span>
                                             </a>
                                         </li>
-                                        {/* 移除 Featured 标签 */}
+
                                     </ul>
                                 </div>
                             </div>
@@ -237,6 +236,20 @@ const ListingGallery = ({ propertyId }) => {
                     font-size: 12px;
                     padding: 6px 12px;
                     border-radius: 4px;
+                }
+                .print-button {
+                    font-size: 24px;
+                    padding: 8px 12px;
+                    display: inline-block;
+                    background: #f7f7f7;
+                    border-radius: 5px;
+                    transition: all 0.3s ease;
+                }
+                .print-button:hover {
+                    background: #e9e9e9;
+                }
+                .print-button .flaticon-printer {
+                    font-size: 20px;
                 }
             `}</style>
         </>

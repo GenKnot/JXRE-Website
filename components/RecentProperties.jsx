@@ -95,7 +95,11 @@ const RecentProperties = () => {
                                             )}
                                         </ul>
                                         <Link href={`/listing-details/${property.id}`} className="fp_price">
-                                            {formatPrice(property.price)}
+                                            {property.is_sold ? (
+                                                <span className="text-white">SOLD</span>
+                                            ) : (
+                                                `${formatPrice(property.price)}`
+                                            )}
                                         </Link>
                                     </div>
                                 </div>

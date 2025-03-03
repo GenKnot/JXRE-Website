@@ -1,5 +1,3 @@
-import Social from "../common/footer/Social";
-
 const AddressSidebar = () => {
     return (
         <div className="contact_localtion">
@@ -24,7 +22,7 @@ const AddressSidebar = () => {
             </div>
             <div className="content_list">
                 <h5>Mail</h5>
-                <p>info@findhouse.com</p>
+                <p>info@jxre.ca</p>
             </div>
         </div>
     );

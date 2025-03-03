@@ -85,7 +85,11 @@ const FeaturedProperties = () => {
               </ul>
 
               <Link href={`/listing-details/${item.id}`} className="fp_price">
-                ${Number(item.price).toLocaleString()}
+                {item.is_sold ? (
+                    <span className="text-danger">SOLD</span>
+                ) : (
+                    `$${Number(item.price).toLocaleString()}`
+                )}
               </Link>
             </div>
           </div>

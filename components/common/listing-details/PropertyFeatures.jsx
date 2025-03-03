@@ -17,7 +17,7 @@ const PropertyFeatures = ({ features, buildingDetails }) => {
 
     if (buildingDetails) {
       if (buildingDetails.has_elevator) featuresList.push('Elevator');
-      if (buildingDetails.has_garage) featuresList.push('Garage');
+      if (buildingDetails.has_garage) featuresList.push('Parking');
       if (buildingDetails.has_basement) featuresList.push('Basement');
     }
 

@@ -121,7 +121,7 @@ const GlobalFilter = ({className = ""}) => {
                             <select className="selectpicker w100 form-select show-tick"
                                     onChange={handleSelectChange('residential_units')}
                                     value={filters.residential_units}>
-                                <option value="">Residential Units</option>
+                                <option value="">Multifamily</option>
                                 <option value="below_10">Below 10 units</option>
                                 <option value="11-20">11-20 units</option>
                                 <option value="21-30">21-30 units</option>
@@ -138,7 +138,7 @@ const GlobalFilter = ({className = ""}) => {
                             <select className="selectpicker w100 form-select show-tick"
                                     onChange={handleSelectChange('commercial_units')}
                                     value={filters.commercial_units}>
-                                <option value="">Commercial Units</option>
+                                <option value="">Commercial</option>
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2-5">2-5</option>

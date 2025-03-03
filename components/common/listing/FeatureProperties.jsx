@@ -49,7 +49,11 @@ const FeatureProperties = ({ properties = [] }) => {
                         )}
                       </ul>
                       <Link href={`/listing-details/${item.id}`} className="fp_price">
-                        ${Number(item.price).toLocaleString()}
+                        {item.is_sold ? (
+                            <span className="">Sold</span>
+                        ) : (
+                            `$${Number(item.price).toLocaleString()}`
+                        )}
                       </Link>
                       <h4 className="posr color-white">{item.title}</h4>
                     </div>

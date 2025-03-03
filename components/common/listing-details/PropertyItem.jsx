@@ -11,11 +11,11 @@ const PropertyItem = ({ property }) => {
 
         if (distribution.studio) total += 1 * distribution.studio;
         if (distribution.one_half) total += 1 * distribution.one_half;
-        if (distribution.two_half) total += 2 * distribution.two_half;
-        if (distribution.three_half) total += 3 * distribution.three_half;
-        if (distribution.four_half) total += 4 * distribution.four_half;
-        if (distribution.five_half) total += 5 * distribution.five_half;
-        if (distribution.six_plus) total += 6 * distribution.six_plus;
+        if (distribution.two_half) total += 1 * distribution.two_half;
+        if (distribution.three_half) total += 1 * distribution.three_half;
+        if (distribution.four_half) total += 2 * distribution.four_half;
+        if (distribution.five_half) total += 3 * distribution.five_half;
+        if (distribution.six_plus) total += 4 * distribution.six_plus;
 
         return total;
     };
@@ -32,17 +32,18 @@ const PropertyItem = ({ property }) => {
                 <a href="#">Units: {totalUnits}</a>
             </li>
 
-            {property.residential_units && (
+            {property.residential_units > 0 && (
                 <li className="list-inline-item">
                     <a href="#">Residential Units: {property.residential_units}</a>
                 </li>
             )}
 
-            {property.commercial_units && (
+            {property.commercial_units > 0 && (
                 <li className="list-inline-item">
                     <a href="#">Commercial Units: {property.commercial_units}</a>
                 </li>
             )}
+
 
             {property.unit_distribution && (
                 <li className="list-inline-item">
