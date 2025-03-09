@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'http://138.197.173.210';
+export const API_BASE_URL = 'https://api.jxre.ca';
 // PROD
 // export const API_BASE_URL = 'https://api.yoursite.com';
 
