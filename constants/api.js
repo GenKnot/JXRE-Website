@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'http://localhost:8000';
+export const API_BASE_URL = 'http://138.197.173.210';
 // PROD
 // export const API_BASE_URL = 'https://api.yoursite.com';
 
