@@ -3,18 +3,22 @@
 import Link from "next/link";
 import Slider from "react-slick";
 import Image from "next/image";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {PropertyAPI} from "@/constants/api";
 
 const FeaturedProperties = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
+  const fetchedRef = useRef(false);
 
   useEffect(() => {
+    if (fetchedRef.current) return;
+
     const fetchData = async () => {
       try {
+        fetchedRef.current = true;
         const featuredProperties = await PropertyAPI.getFeaturedProperties();
-        setProperties(featuredProperties); // 更新状态
+        setProperties(featuredProperties);
       } catch (error) {
         console.error("Failed to fetch featured properties:", error);
       } finally {
@@ -32,6 +36,7 @@ const FeaturedProperties = () => {
     slidesToShow: 3,
     slidesToScroll: 3,
     autoplay: false,
+    infinite: false,
     speed: 1200,
     responsive: [
       {
