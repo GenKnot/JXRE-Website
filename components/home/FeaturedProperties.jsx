@@ -33,8 +33,8 @@ const FeaturedProperties = () => {
   const settings = {
     dots: true,
     arrows: false,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: properties.length < 3 ? properties.length : 3,
+    slidesToScroll: 1,
     autoplay: false,
     infinite: false,
     speed: 1200,
@@ -42,7 +42,7 @@ const FeaturedProperties = () => {
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: Math.min(properties.length, 2),
           slidesToScroll: 4,
         },
       },
@@ -50,7 +50,7 @@ const FeaturedProperties = () => {
         breakpoint: 576,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
         },
       },
     ],
