@@ -1,0 +1,70 @@
+.testimonial-card {
+  transition: all 0.3s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+.testimonial-card .card {
+  border-radius: 10px;
+  border: none;
+  overflow: hidden;
+}
+.testimonial-card .card-body {
+  padding: 1.5rem;
+}
+
+.testimonial-rating {
+  font-size: 18px;
+}
+.testimonial-rating .fa-star.text-warning {
+  color: #FFC107 !important;
+}
+.testimonial-rating .fa-star.text-muted {
+  color: #e0e0e0 !important;
+}
+
+.testimonial-date {
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.rating-select .btn {
+  padding: 0.5rem 1rem;
+  margin-right: 5px;
+}
+.rating-select .btn-thm {
+  background-color: #ff5a5f;
+  border-color: #ff5a5f;
+  color: white;
+}
+.rating-select .btn-thm:hover, .rating-select .btn-thm:focus, .rating-select .btn-thm:active {
+  background-color: rgb(255, 39, 45.5454545455);
+  border-color: rgb(255, 39, 45.5454545455);
+}
+.rating-select .btn-outline-secondary:hover {
+  color: #ff5a5f;
+}
+
+.sign_up_modal.fade.show {
+  padding-right: 0 !important;
+}
+.sign_up_modal.fade.show .modal-content {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.sign_up_modal.fade.show .modal-header {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 1.5rem;
+}
+.sign_up_modal.fade.show .modal-header .modal-title {
+  font-weight: 600;
+}
+.sign_up_modal.fade.show .modal-header .btn-close {
+  font-size: 12px;
+}
+.sign_up_modal.fade.show .modal-body {
+  padding: 1.5rem;
+}
+
+/*# sourceMappingURL=testimonials.css.map */

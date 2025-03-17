@@ -9,6 +9,7 @@ import Hero from "./Hero";
 import WhyChoose from "../common/WhyChoose";
 import PopupSignInUp from "../common/PopupSignInUp";
 import RecentProperties from "@/components/RecentProperties";
+import TestimonialSection from "@/components/TestimonialSection";
 
 const Index = () => {
     return (
@@ -77,6 +78,21 @@ const Index = () => {
                         <WhyChoose/>
                     </div>
                 </div>
+            </section>
+
+            {/* <!-- Our Testimonials --> */}
+            <section className="our-testimonials">
+                <div className="container ovh">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="testimonial_slider_home9 gutter-x15">
+                                <TestimonialSection />
+                            </div>
+                        </div>
+                    </div>
+                    {/* End .row */}
+                </div>
+                {/* End container */}
             </section>
 
             {/* <!-- Our Blog --> */}

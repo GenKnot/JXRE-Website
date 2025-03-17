@@ -34,7 +34,7 @@ const PropertyItem = ({ property }) => {
 
             {property.residential_units > 0 && (
                 <li className="list-inline-item">
-                    <a href="#">Residential Units: {property.residential_units}</a>
+                    <a href="#">Multifamily: {property.residential_units}</a>
                 </li>
             )}
 
@@ -53,7 +53,7 @@ const PropertyItem = ({ property }) => {
 
             {property.building_details?.lot_area && (
                 <li className="list-inline-item">
-                    <a href="#">Area: {property.building_details.lot_area} sq ft</a>
+                    <a href="#">Lot Area: {property.building_details.lot_area} sq ft</a>
                 </li>
             )}
         </ul>

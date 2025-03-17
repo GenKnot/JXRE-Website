@@ -71,7 +71,7 @@ const FeaturedItem = ({properties = []}) => {
                 <div className="details">
                     <div className="tc_content">
                         <p className="text-thm">
-                            {property.residential_units > 0 ? `${property.residential_units} Residential Units` : ''}
+                            {property.residential_units > 0 ? `${property.residential_units} Multifamily` : ''}
                             {property.residential_units > 0 && property.commercial_units > 0 ? ' | ' : ''}
                             {property.commercial_units > 0 ? `${property.commercial_units} Commercial Units` : ''}
                         </p>

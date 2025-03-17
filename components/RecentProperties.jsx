@@ -107,9 +107,9 @@ const RecentProperties = () => {
                                     <div className="tc_content">
                                         <div className="d-flex justify-content-between align-items-center">
                                             <p className="text-thm property-units mb-0">
-                                                {property.residential_units > 0 ? `${property.residential_units} Res.` : ''}
+                                                {property.residential_units > 0 ? `${property.residential_units} Multifamily` : ''}
                                                 {property.residential_units > 0 && property.commercial_units > 0 ? ' | ' : ''}
-                                                {property.commercial_units > 0 ? `${property.commercial_units} Comm.` : ''}
+                                                {property.commercial_units > 0 ? `${property.commercial_units} Commercial` : ''}
                                             </p>
                                             <p className="mb-0 property-city">{property.city}</p>
                                         </div>

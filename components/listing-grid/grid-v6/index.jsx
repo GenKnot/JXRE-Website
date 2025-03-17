@@ -31,10 +31,9 @@ const index = () => {
             setLoading(true);
 
             try {
-                // Build query parameters from URL
                 const queryParams = new URLSearchParams();
 
-                // Get all the parameters from the URL
+
                 const city = searchParams.get('city');
                 const location = searchParams.get('location');
 
@@ -51,14 +50,14 @@ const index = () => {
                 const page = searchParams.get('page') || '1';
                 const page_size = searchParams.get('page_size') || '10';
 
-                // Map feature checkboxes
+
                 const features = searchParams.getAll('features');
 
-                // Map query parameters to API parameters
+
                 if (location) queryParams.append('location', location);
                 if (city) queryParams.append('city', city);
 
-                // Map UI values to API values for residential units
+
                 const effective_residential_range = residential_units_range || residential_units;
                 if (effective_residential_range) {
                     let apiValue = '';
@@ -83,7 +82,7 @@ const index = () => {
                 }
 
 
-                // Map commercial units
+
                 const effective_commercial_range = commercial_units_range || commercial_units;
                 if (effective_commercial_range) {
                     let apiValue = effective_commercial_range;
@@ -96,14 +95,14 @@ const index = () => {
                     queryParams.append('commercial_units_range', apiValue);
                 }
 
-                // Price Range
+
                 if (price_min) queryParams.append('min_price', price_min);
                 if (price_max) queryParams.append('max_price', price_max);
 
-                // Map GRM ranges
+
                 if (grm_range) queryParams.append('grm_range', grm_range);
 
-                // Map CAP rate
+
                 if (cap_rate_range) {
                     let capRateValue = cap_rate_range;
                     if (cap_rate_range.includes('%25')) {
@@ -112,21 +111,21 @@ const index = () => {
                     queryParams.append('cap_rate_range', capRateValue);
                 }
 
-                // Map cost per unit
+
                 if (cost_per_unit_range) queryParams.append('cost_per_unit_range', cost_per_unit_range);
 
-                // Handle multiple features
+
                 if (features && features.length > 0) {
                     features.forEach(feature => queryParams.append('features', feature));
                 }
 
-                // Pagination
+
                 queryParams.append('page', page);
                 queryParams.append('page_size', page_size);
 
                 console.log("Fetching with params:", queryParams.toString());
 
-                // API endpoint
+
                 const apiUrl = `${API_BASE_URL}/api/properties/?${queryParams.toString()}`;
 
                 const response = await fetch(apiUrl);
@@ -157,13 +156,13 @@ const index = () => {
     }, [searchParams]);
 
 
-    // Handle page change - navigate to new URL
+
     const handlePageChange = (pageNumber) => {
-        // Build current query parameters
+
         const params = new URLSearchParams(searchParams.toString());
-        // Update page parameter
+
         params.set('page', pageNumber);
-        // Navigate to the new URL
+
         router.push(`/listing?${params.toString()}`);
     };
 

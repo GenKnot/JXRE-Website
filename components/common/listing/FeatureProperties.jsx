@@ -44,7 +44,7 @@ const FeatureProperties = ({ properties = [] }) => {
                         </li>
                         {item.is_sold && (
                             <li className="list-inline-item">
-                              <a href="#" className="bg-danger">Sold</a>
+                              <a href="#" className="">Sold</a>
                             </li>
                         )}
                       </ul>

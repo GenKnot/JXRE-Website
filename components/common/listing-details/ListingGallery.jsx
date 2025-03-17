@@ -71,7 +71,7 @@ const ListingGallery = ({ propertyId }) => {
                             <div className="single_property_social_share position-static transform-none">
                                 <div className="price float-start fn-400">
                                     <h2>
-                                        Price : <span>{property.is_sold ? 'Sold' : Number(property.price).toLocaleString()}</span>
+                                        Price : <span>{property.is_sold ? 'Sold' : `$${Number(property.price).toLocaleString()}`}</span>
                                     </h2>
                                 </div>
 

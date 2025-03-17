@@ -1,7 +1,7 @@
 const PropertyDetails = ({property}) => {
     if (!property) return null;
 
-    // 格式化价格
+
     const formatPrice = (price) => {
         return new Intl.NumberFormat('en-US', {
             style: 'currency',
@@ -35,14 +35,25 @@ const PropertyDetails = ({property}) => {
                     {property.building_details?.lot_area && (
                         <li>
                             <p>
-                                Property Size : <span>{property.building_details.lot_area} Sq Ft</span>
+                                Lot Area :
+                                <span>
+                                    {!property.is_sold
+                                        ? `${property.building_details?.lot_area} Sq Ft`
+                                        : " SOLD"}
+                                </span>
                             </p>
                         </li>
                     )}
                     {property.building_details?.year_built && (
                         <li>
                             <p>
-                                Year Built : <span>{property.building_details.year_built}</span>
+                                Year Built :
+
+                                <span>
+                                    {!property.is_sold
+                                        ? `${property.building_details?.year_built}`
+                                        : " SOLD"}
+                                </span>
                             </p>
                         </li>
                     )}
@@ -54,7 +65,7 @@ const PropertyDetails = ({property}) => {
                 <ul className="list-inline-item">
                     <li>
                         <p>
-                            Residential Units : <span>{property.residential_units}</span>
+                            Multifamily : <span>{property.residential_units}</span>
                         </p>
                     </li>
                     <li>
