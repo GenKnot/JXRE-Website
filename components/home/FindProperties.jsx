@@ -31,9 +31,15 @@ const FindProperties = () => {
           Toronto: 0
         };
 
-        // Count properties by city
+        // If you need without Sold
+        // data.results.forEach(property => {
+        //   if (property.city in counts && !property.is_sold) {
+        //     counts[property.city]++;
+        //   }
+        // });
+
         data.results.forEach(property => {
-          if (property.city in counts && !property.is_sold) {
+          if (property.city in counts) {
             counts[property.city]++;
           }
         });
