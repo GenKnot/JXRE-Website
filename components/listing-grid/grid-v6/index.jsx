@@ -42,15 +42,16 @@ const index = () => {
                 const residential_units_range = searchParams.get('residential_units_range');
                 const commercial_units = searchParams.get('commercial_units');
                 const commercial_units_range = searchParams.get('commercial_units_range');
+                const residential_type = searchParams.get('residential_type');
 
-                const price_min = searchParams.get('price_min');
-                const price_max = searchParams.get('price_max');
+                const min_price = searchParams.get('min_price');
+                const max_price = searchParams.get('max_price');
                 const grm_range = searchParams.get('grm_range');
                 const cap_rate_range = searchParams.get('cap_rate_range');
                 const cost_per_unit_range = searchParams.get('cost_per_unit_range');
                 const page = searchParams.get('page') || '1';
 
-                // 25 Per Page
+                // 51 Per Page
                 const page_size = searchParams.get('page_size') || '51';
 
 
@@ -59,6 +60,8 @@ const index = () => {
 
                 if (location) queryParams.append('location', location);
                 if (city) queryParams.append('city', city);
+
+                if (residential_type) queryParams.append('residential_type', residential_type);
 
 
                 const effective_residential_range = residential_units_range || residential_units;
@@ -84,22 +87,27 @@ const index = () => {
                     queryParams.append('residential_units_range', apiValue);
                 }
 
-
                 const effective_commercial_range = commercial_units_range || commercial_units;
                 if (effective_commercial_range) {
-                    let apiValue = effective_commercial_range;
+                    if (effective_commercial_range === 'without') {
+                        // "Without Property" -> commercial_units = 0
+                        queryParams.append('commercial_units', '1');
+                    } else if (effective_commercial_range === 'with') {
+                        // "With Property" -> commercial_units > 0
+                        queryParams.append('min_commercial_units', '2');
+                    } else {
 
-                    if (effective_commercial_range === '5+' ||
-                        effective_commercial_range === '5 plus') {
-                        apiValue = '5+';
+                        let apiValue = effective_commercial_range;
+                        if (effective_commercial_range === '5+' || effective_commercial_range === '5 plus') {
+                            apiValue = '5+';
+                        }
+                        queryParams.append('commercial_units_range', apiValue);
                     }
-
-                    queryParams.append('commercial_units_range', apiValue);
                 }
 
 
-                if (price_min) queryParams.append('min_price', price_min);
-                if (price_max) queryParams.append('max_price', price_max);
+                if (min_price) queryParams.append('min_price', min_price);
+                if (max_price) queryParams.append('max_price', max_price);
 
 
                 if (grm_range) queryParams.append('grm_range', grm_range);
@@ -125,7 +133,7 @@ const index = () => {
                 queryParams.append('page', page);
                 queryParams.append('page_size', page_size);
 
-                console.log("Fetching with params:", queryParams.toString());
+                // console.log("Fetching with params:", queryParams.toString());
 
 
                 const apiUrl = `${API_BASE_URL}/api/properties/?${queryParams.toString()}`;
@@ -137,7 +145,7 @@ const index = () => {
                 }
 
                 const data = await response.json();
-                console.log("API response:", data);
+                // console.log("API response:", data);
 
                 setProperties(data.results || []);
                 setPagination({

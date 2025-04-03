@@ -273,7 +273,7 @@ const HeaderMenuContent = ({float = ""}) => {
                 <ul className="sub-menu">
                     <li>
                         <Link
-                            href="/listing?commercial_units=0"
+                            href="/listing?commercial_units=without"
                             className={pathname === "/listing" && new URLSearchParams(window.location.search).get('commercial_units') === '0' ? "ui-active" : undefined}
                         >
                             Without Property
@@ -281,7 +281,7 @@ const HeaderMenuContent = ({float = ""}) => {
                     </li>
                     <li>
                         <Link
-                            href="/listing?min_commercial_units=1"
+                            href="/listing?commercial_units=with"
                             className={pathname === "/listing" && new URLSearchParams(window.location.search).get('min_commercial_units') === '1' ? "ui-active" : undefined}
                         >
                             With Property

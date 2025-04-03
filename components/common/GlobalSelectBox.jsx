@@ -4,6 +4,19 @@ const GlobalSelectBox = ({filters, onChange}) => {
             <li className="list-inline-item">
                 <div className="candidate_revew_select">
                     <select className="selectpicker w100 show-tick form-select"
+                            value={filters.residential_type}
+                            onChange={onChange('residential_type')}>
+                        <option value="">Residential Type</option>
+                        <option value="house">House</option>
+                        <option value="townhouse">Townhouse</option>
+                        <option value="condo">Condo</option>
+                    </select>
+                </div>
+            </li>
+
+            <li className="list-inline-item">
+                <div className="candidate_revew_select">
+                    <select className="selectpicker w100 show-tick form-select"
                             value={filters.grm}
                             onChange={onChange('grm')}>
                         <option value="">GRM</option>

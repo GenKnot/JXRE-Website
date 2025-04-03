@@ -81,9 +81,13 @@ const GlobalFilter = ({className = ""}) => {
         // 商业单位
         if (filters.commercial_units) {
             if (filters.commercial_units === 'without') {
+                // "Without Property" -> commercial_units = 0
                 queryParams.append('commercial_units', '0');
             } else if (filters.commercial_units === 'with') {
+                // "With Property" -> commercial_units >= 1
                 queryParams.append('min_commercial_units', '1');
+            } else {
+                queryParams.append('commercial_units', filters.commercial_units);
             }
         }
 
@@ -94,6 +98,7 @@ const GlobalFilter = ({className = ""}) => {
         if (filters.price_range) {
             switch(filters.price_range) {
                 case 'under_200k':
+                    queryParams.append('min_price', '0');
                     queryParams.append('max_price', '200000');
                     break;
                 case '200k_500k':
@@ -168,21 +173,6 @@ const GlobalFilter = ({className = ""}) => {
                                 <option value="">Commercial</option>
                                 <option value="without">Without Property</option>
                                 <option value="with">With Property</option>
-                            </select>
-                        </div>
-                    </div>
-                </li>
-
-                <li className="list-inline-item">
-                    <div className="search_option_two">
-                        <div className="candidate_revew_select">
-                            <select className="selectpicker w100 form-select show-tick"
-                                    onChange={handleSelectChange('residential_type')}
-                                    value={filters.residential_type}>
-                                <option value="">Residential Type</option>
-                                <option value="house">House</option>
-                                <option value="townhouse">Townhouse</option>
-                                <option value="condo">Condo</option>
                             </select>
                         </div>
                     </div>

@@ -70,9 +70,15 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
                 <div className="details">
                     <div className="tc_content">
                         <p className="text-thm">
-                            {property.residential_units > 0 ? `${property.residential_units} Multifamily` : ''}
-                            {property.residential_units > 0 && property.commercial_units > 0 ? ' | ' : ''}
-                            {property.commercial_units > 0 ? `${property.commercial_units} Commercial Units` : ''}
+                            {property.residential_type ? (
+                                property.residential_type.charAt(0).toUpperCase() + property.residential_type.slice(1)
+                            ) : (
+                                <>
+                                    {property.residential_units > 0 ? `${property.residential_units} Multifamily` : ''}
+                                    {property.residential_units > 0 && property.commercial_units > 0 ? ' | ' : ''}
+                                    {property.commercial_units > 0 ? `${property.commercial_units} Commercial Units` : ''}
+                                </>
+                            )}
                         </p>
                         <h4>
                             <Link href={`/listing-details/${property.id}`}>
@@ -140,7 +146,7 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
                         )}
                         {property.commercial_units > 0 && (
                             <span className="small text-muted">
-                            <i className="fa fa-store me-1"></i>
+                            <i className="fa fa-building me-1"></i>
                                 {property.commercial_units} Com.
                         </span>
                         )}

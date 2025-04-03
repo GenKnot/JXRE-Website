@@ -364,12 +364,12 @@ const MobileMenuContent = () => {
 
                     <SubMenu label="Commercial">
                         <MenuItem>
-                            <div onClick={() => router.push("/listing?commercial_units=0")}>
+                            <div onClick={() => router.push("/listing?commercial_units=without")}>
                                 Without Property
                             </div>
                         </MenuItem>
                         <MenuItem>
-                            <div onClick={() => router.push("/listing?min_commercial_units=1")}>
+                            <div onClick={() => router.push("/listing?commercial_units=with")}>
                                 With Property
                             </div>
                         </MenuItem>
