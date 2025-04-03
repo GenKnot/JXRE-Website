@@ -82,7 +82,11 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
                                 <>
                                     {property.residential_units > 0 ? `${property.residential_units} Multifamily` : ''}
                                     {property.residential_units > 0 && property.commercial_units > 0 ? ' | ' : ''}
-                                    {property.commercial_units > 0 ? `${property.commercial_units} Commercial Units` : ''}
+                                    {property.commercial_units > 0 ? (
+                                        property.commercial_units === 1 ?
+                                            "Commercial Without Property" :
+                                            "Commercial With Property"
+                                    ) : ''}
                                 </>
                             )}
                         </p>

@@ -82,10 +82,11 @@ const GlobalFilter = ({className = ""}) => {
         if (filters.commercial_units) {
             if (filters.commercial_units === 'without') {
                 // "Without Property" -> commercial_units = 0
-                queryParams.append('commercial_units', '0');
+                queryParams.append('commercial_units', 'without');
             } else if (filters.commercial_units === 'with') {
                 // "With Property" -> commercial_units >= 1
-                queryParams.append('min_commercial_units', '1');
+                // commercial_units=without
+                queryParams.append('commercial_units', 'with');
             } else {
                 queryParams.append('commercial_units', filters.commercial_units);
             }

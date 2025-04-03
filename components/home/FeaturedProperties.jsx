@@ -128,7 +128,7 @@ const FeaturedProperties = () => {
                             {item.commercial_units > 0 && (
                                 <li className="list-inline-item">
                                     <a href="#" className="text-thm">
-                                        Commercial Units: {item.commercial_units}
+                                        {item.commercial_units === 1 ? "Commercial Without Property" : "Commercial With Property"}
                                     </a>
                                 </li>
                             )}

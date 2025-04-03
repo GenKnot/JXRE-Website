@@ -88,6 +88,12 @@ const RecentProperties = () => {
                                     </Link>
                                     <div className="thmb_cntnt">
                                         <ul className="tag mb0">
+                                            {property.city && (
+                                                <li className="list-inline-item">
+                                                    <a href="#" className="text-white">{property.city}</a>
+                                                </li>
+                                            )}
+
                                             {property.is_featured && (
                                                 <li className="list-inline-item">
                                                     <a href="#" className="text-white">Featured</a>
@@ -109,9 +115,12 @@ const RecentProperties = () => {
                                             <p className="text-thm property-units mb-0">
                                                 {property.residential_units > 0 ? `${property.residential_units} Multifamily` : ''}
                                                 {property.residential_units > 0 && property.commercial_units > 0 ? ' | ' : ''}
-                                                {property.commercial_units > 0 ? `${property.commercial_units} Commercial` : ''}
+                                                {property.commercial_units > 0 ? (
+                                                    property.commercial_units === 1 ?
+                                                        "Commercial Without Property" :
+                                                        "Commercial With Property"
+                                                ) : ''}
                                             </p>
-                                            <p className="mb-0 property-city">{property.city}</p>
                                         </div>
                                         <h5 className="property-title mt-2 mb-0">
                                             <Link href={`/listing-details/${property.id}`}>{property.title}</Link>
