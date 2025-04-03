@@ -18,6 +18,7 @@ const index = () => {
 
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [viewMode, setViewMode] = useState('grid');
     const [pagination, setPagination] = useState({
         count: 0,
         current_page: 1,
@@ -48,7 +49,9 @@ const index = () => {
                 const cap_rate_range = searchParams.get('cap_rate_range');
                 const cost_per_unit_range = searchParams.get('cost_per_unit_range');
                 const page = searchParams.get('page') || '1';
-                const page_size = searchParams.get('page_size') || '10';
+
+                // 25 Per Page
+                const page_size = searchParams.get('page_size') || '51';
 
 
                 const features = searchParams.getAll('features');
@@ -80,7 +83,6 @@ const index = () => {
                     }
                     queryParams.append('residential_units_range', apiValue);
                 }
-
 
 
                 const effective_commercial_range = commercial_units_range || commercial_units;
@@ -156,7 +158,6 @@ const index = () => {
     }, [searchParams]);
 
 
-
     const handlePageChange = (pageNumber) => {
 
         const params = new URLSearchParams(searchParams.toString());
@@ -195,12 +196,24 @@ const index = () => {
 
                     <div className="row">
                         <div className="col-md-12">
-                            <div className="grid_list_search_result ">
-                                <div className="row align-items-center">
-                                    <FilterTopBar propertyCount={pagination.count}/>
+                            <div className="grid_list_search_result d-flex justify-content-between align-items-center">
+                                <p className="mb-0">{pagination.count} Search results</p>
+
+                                <div className="view_switch">
+                                    <button
+                                        className={`btn ${viewMode === 'grid' ? 'btn-thm' : 'btn-light'} mx-1`}
+                                        onClick={() => setViewMode('grid')}
+                                    >
+                                        <i className="fa fa-th-large"></i>
+                                    </button>
+                                    <button
+                                        className={`btn ${viewMode === 'list' ? 'btn-thm' : 'btn-light'} mx-1`}
+                                        onClick={() => setViewMode('list')}
+                                    >
+                                        <i className="fa fa-th-list"></i>
+                                    </button>
                                 </div>
                             </div>
-                            {/* End .row */}
 
                             <div className="row">
                                 {loading ? (
@@ -210,28 +223,10 @@ const index = () => {
                                         </div>
                                     </div>
                                 ) : (
-                                    <FeaturedItem properties={properties}/>
+                                    <FeaturedItem properties={properties} viewMode={viewMode}/>
                                 )}
                             </div>
-                            {/* End .row */}
-
-                            <div className="row">
-                                <div className="col-lg-12 mt20">
-                                    <div className="mbp_pagination">
-                                        <Pagination
-                                            currentPage={pagination.current_page}
-                                            totalPages={pagination.total_pages}
-                                            onPageChange={handlePageChange}
-                                        />
-                                    </div>
-                                </div>
-                                {/* End paginaion .col */}
-                            </div>
-                            {/* End .row */}
                         </div>
-                        {/* End .col */}
-
-                        {/* End mobile sidebar listing  */}
                     </div>
                     {/* End .row */}
                 </div>
