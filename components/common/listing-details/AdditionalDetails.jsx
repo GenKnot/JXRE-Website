@@ -1,60 +1,68 @@
-const AdditionalDetails = ({ buildingDetails }) => {
-  if (!buildingDetails) return null;
+const AdditionalDetails = ({ buildingDetails, isSold = false }) => {
 
-  return (
-      <>
-        <div className="col-md-6 col-lg-6">
-          <ul className="list-inline-item">
-            {buildingDetails.zoning && (
-                <li>
-                  <p>
-                    Zoning : <span>{buildingDetails.zoning}</span>
-                  </p>
-                </li>
-            )}
-            {buildingDetails.heating_type && (
-                <li>
-                  <p>
-                    Heating Type : <span>{buildingDetails.heating_type}</span>
-                  </p>
-                </li>
-            )}
-            {buildingDetails.hot_water_type && (
-                <li>
-                  <p>
-                    Hot Water Type : <span>{buildingDetails.hot_water_type}</span>
-                  </p>
-                </li>
-            )}
-          </ul>
+    if (isSold) {
+        return (
+            <div className="building-details-sold-notice">
+                <p className="text-center">
+                    <strong>This property has been sold.</strong> Building features information is no longer available for sold properties.
+                </p>
+                <style jsx>{`
+          .building-details-sold-notice {
+            background-color: #f8f9fa;
+            border-left: 4px solid #ff5a5f;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+          }
+        `}</style>
+            </div>
+        );
+    }
+
+
+    if (!buildingDetails) return null;
+
+
+    const buildingFeatures = [
+        { id: 'zoning', label: 'Zoning', value: buildingDetails.zoning },
+        { id: 'heating-type', label: 'Heating Type', value: buildingDetails.heating_type },
+        { id: 'hot-water-type', label: 'Hot Water Type', value: buildingDetails.hot_water_type },
+        { id: 'elevator', label: 'Elevator', value: buildingDetails.has_elevator !== undefined ? (buildingDetails.has_elevator ? 'Yes' : 'No') : null },
+        { id: 'basement', label: 'Basement', value: buildingDetails.has_basement !== undefined ? (buildingDetails.has_basement ? 'Yes' : 'No') : null },
+        { id: 'heating-responsibility', label: 'Heating Responsibility', value: buildingDetails.heating_responsibility }
+    ];
+
+
+    const availableFeatures = buildingFeatures.filter(feature =>
+        feature.value !== null && feature.value !== undefined && feature.value !== ''
+    );
+
+
+    if (availableFeatures.length === 0) return null;
+
+    return (
+        <div className="building-details-grid">
+            {availableFeatures.map(feature => (
+                <div className="detail-item" key={feature.id}>
+                    <p>
+                        {feature.label} : <span>{feature.value}</span>
+                    </p>
+                </div>
+            ))}
+
+            <style jsx>{`
+                .building-details-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                    gap: 15px;
+                    width: 100%;
+                }
+                .detail-item p {
+                    margin: 0;
+                }
+            `}</style>
         </div>
-        <div className="col-md-6 col-lg-6">
-          <ul className="list-inline-item">
-            {buildingDetails.has_elevator !== undefined && (
-                <li>
-                  <p>
-                    Elevator : <span>{buildingDetails.has_elevator ? 'Yes' : 'No'}</span>
-                  </p>
-                </li>
-            )}
-            {buildingDetails.has_basement !== undefined && (
-                <li>
-                  <p>
-                    Basement : <span>{buildingDetails.has_basement ? 'Yes' : 'No'}</span>
-                  </p>
-                </li>
-            )}
-            {buildingDetails.heating_responsibility && (
-                <li>
-                  <p>
-                    Heating Responsibility : <span>{buildingDetails.heating_responsibility}</span>
-                  </p>
-                </li>
-            )}
-          </ul>
-        </div>
-      </>
-  );
+    );
 };
 
 export default AdditionalDetails;

@@ -1,10 +1,10 @@
-const PropertyFeatures = ({ features, buildingDetails }) => {
-  if (!features && !buildingDetails) return null;
+const PropertyFeatures = ({ features, buildingDetails, isSold = false }) => {
+
+  if (isSold || (!features && !buildingDetails)) return null;
 
 
   const getFeaturesList = () => {
     const featuresList = [];
-
 
     if (features) {
       Object.keys(features).forEach(key => {
@@ -13,7 +13,6 @@ const PropertyFeatures = ({ features, buildingDetails }) => {
         }
       });
     }
-
 
     if (buildingDetails) {
       if (buildingDetails.has_elevator) featuresList.push('Elevator');
@@ -27,26 +26,28 @@ const PropertyFeatures = ({ features, buildingDetails }) => {
   const featuresList = getFeaturesList();
 
 
-  const columns = [[], [], []];
-  featuresList.forEach((feature, index) => {
-    columns[index % 3].push(feature);
-  });
+  if (featuresList.length === 0) return null;
 
   return (
-      <>
-        {columns.map((column, index) => (
-            <div className="col-sm-6 col-md-6 col-lg-4" key={index}>
-              <ul className="order_list list-inline-item">
-                {column.map((feature, i) => (
-                    <li key={i}>
-                      <span className="flaticon-tick"></span>
-                      {feature}
-                    </li>
-                ))}
-              </ul>
+      <div className="property-features-grid">
+        {featuresList.map((feature, index) => (
+            <div className="feature-item" key={index}>
+              <span className="flaticon-tick"></span> {feature}
             </div>
         ))}
-      </>
+
+        <style jsx>{`
+        .property-features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 10px;
+          width: 100%;
+        }
+        .feature-item {
+          padding: 5px 0;
+        }
+      `}</style>
+      </div>
   );
 };
 

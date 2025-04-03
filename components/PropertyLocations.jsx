@@ -1,5 +1,26 @@
-const PropertyLocations = ({ address }) => {
+const PropertyLocations = ({ address, isSold = false }) => {
+
     if (!address) return null;
+
+
+    if (isSold) {
+        return (
+            <div className="location-sold-notice">
+                <p className="text-center">
+                    <strong>This property has been sold.</strong> Exact location information is no longer displayed for sold properties.
+                </p>
+                <style jsx>{`
+                    .location-sold-notice {
+                        background-color: #f8f9fa;
+                        border-left: 4px solid #ff5a5f;
+                        padding: 15px;
+                        margin: 20px 0;
+                        border-radius: 4px;
+                    }
+                `}</style>
+            </div>
+        );
+    }
 
     const encodedAddress = encodeURIComponent(address);
 

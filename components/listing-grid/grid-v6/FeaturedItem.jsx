@@ -48,6 +48,12 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
                     )}
                     <div className="thmb_cntnt">
                         <ul className="tag mb0">
+                            {property.is_sold && (
+                                <li className="list-inline-item">
+                                    <a href="#" className="text-white">Sold</a>
+                                </li>
+                            )}
+
                             {property.is_featured && (
                                 <li className="list-inline-item">
                                     <a href="#" className="text-white">Featured</a>

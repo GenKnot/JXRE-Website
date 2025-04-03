@@ -1,6 +1,21 @@
 const PropertyItem = ({ property }) => {
     if (!property) return null;
 
+    if (property.is_sold) {
+        return (
+            <ul className="mb0">
+                <li className="list-inline-item mb-2">
+                    <a href="#">{property.residential_units > 0 ? 'Residential' : 'Commercial'}
+                        {property.residential_units > 0 && property.commercial_units > 0 ? ' & Commercial' : ''}
+                    </a>
+                </li>
+                <li className="list-inline-item">
+                    <a href="#">Status: Sold</a>
+                </li>
+            </ul>
+        );
+    }
+
     const totalUnits = property.residential_units + property.commercial_units;
 
     const getBedrooms = () => {
@@ -40,7 +55,7 @@ const PropertyItem = ({ property }) => {
 
             {property.commercial_units > 0 && (
                 <li className="list-inline-item">
-                    <a href="#">Commercial Units: {property.commercial_units}</a>
+                    <a href="#">Commercial: {property.commercial_units === 1 ? 'Without Property' : 'With Property'}</a>
                 </li>
             )}
 

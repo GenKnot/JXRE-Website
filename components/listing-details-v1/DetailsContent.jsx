@@ -75,7 +75,8 @@ const DetailsContent = ({propertyId}) => {
                 {/* End .lsd_list */}
 
                 <h4 className="mb30">Description</h4>
-                <PropertyDescriptions description={property.description} highlights={property.highlights}/>
+                <PropertyDescriptions description={property.description} highlights={property.highlights}
+                                      isSold={property.is_sold}/>
             </div>
             {/* End .listing_single_description */}
 
@@ -89,7 +90,7 @@ const DetailsContent = ({propertyId}) => {
             </div>
             {/* End .additional_details */}
 
-            {hasUnitDistribution && (
+            {hasUnitDistribution && !property.is_sold && (
                 <div className="additional_details mt-4">
                     <div className="row">
                         <div className="col-lg-12">
@@ -101,56 +102,64 @@ const DetailsContent = ({propertyId}) => {
             )}
 
 
+
             {property.building_details && (
                 <div className="additional_details">
                     <div className="row">
                         <div className="col-lg-12">
                             <h4 className="mb15">Building Features</h4>
                         </div>
-                        <AdditionalDetails buildingDetails={property.building_details}/>
+                        <AdditionalDetails buildingDetails={property.building_details} isSold={property.is_sold}/>
                     </div>
                 </div>
             )}
             {/* End .additional_details */}
 
-            {hasAttachments && (
+            {hasAttachments && !property.is_sold && (
                 <div className="property_attachment_area">
                     <h4 className="mb30">Property Attachments</h4>
                     <div className="iba_container style2">
-                        <Attachments attachments={property.attachments} />
+                        <Attachments attachments={property.attachments}/>
                     </div>
                 </div>
             )}
 
-            <div className="application_statics mt30">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <h4 className="mb10">Features</h4>
-                    </div>
-                    {/* End .col */}
 
-                    <PropertyFeatures features={property.features} buildingDetails={property.building_details}/>
+            {!property.is_sold && (
+                <div className="application_statics mt30">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <h4 className="mb10">Features</h4>
+                        </div>
+                        {/* End .col */}
+
+                        <PropertyFeatures features={property.features} buildingDetails={property.building_details}
+                                          isSold={property.is_sold}/>
+                    </div>
                 </div>
-            </div>
+            )}
             {/* End .feature_area */}
 
 
-            {hasAddress && (
+            {hasAddress && !property.is_sold && (
                 <div className="application_statics mt30">
                     <h4 className="mb30">
                         Location{" "}
                         <small className="float-end">
-                            {property.address}, {property.city}
+                            {property.is_sold ? "Sold" : `${property.address}, ${property.city}`}
                         </small>
                     </h4>
                     <div className="property_video p0">
-                        <PropertyLocations address={`${property.address}, ${property.city}`} />
+                        <PropertyLocations
+                            address={property.is_sold ? "Sold" : `${property.address}, ${property.city}`}
+                            isSold={property.is_sold}
+                        />
                     </div>
                 </div>
             )}
 
 
-            {hasFloorPlans && (
+            {hasFloorPlans && !property.is_sold && (
                 <div className="application_statics mt30">
                     <h4 className="mb30">Floor plans</h4>
                     <div className="faq_according style2">
@@ -161,7 +170,7 @@ const DetailsContent = ({propertyId}) => {
             {/* End .floor_plane */}
 
 
-            {hasVideo && (
+            {hasVideo && !property.is_sold && (
                 <div className="shop_single_tab_content style2 mt30">
                     <PropertyVideo video={property.video} videoUrl={property.video_url}/>
                 </div>
@@ -169,10 +178,10 @@ const DetailsContent = ({propertyId}) => {
             {/* End property-video */}
 
 
-            {hasNearbyLocations && (
+            {hasNearbyLocations && !property.is_sold && (
                 <div className="whats_nearby mt30">
                     <h4 className="mb10">What&apos;s Nearby</h4>
-                    <WhatsNearby locations={property.locations} />
+                    <WhatsNearby locations={property.locations}/>
                 </div>
             )}
         </>

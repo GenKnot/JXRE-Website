@@ -1,6 +1,26 @@
 const PropertyDetails = ({property}) => {
+
     if (!property) return null;
 
+
+    if (property.is_sold) {
+        return (
+            <div className="property-details-sold-notice">
+                <p className="text-center">
+                    <strong>This property has been sold.</strong> Detailed property information is no longer available for sold properties.
+                </p>
+                <style jsx>{`
+                    .property-details-sold-notice {
+                        background-color: #f8f9fa;
+                        border-left: 4px solid #ff5a5f;
+                        padding: 15px;
+                        margin: 20px 0;
+                        border-radius: 4px;
+                    }
+                `}</style>
+            </div>
+        );
+    }
 
     const formatPrice = (price) => {
         return new Intl.NumberFormat('en-US', {
@@ -10,129 +30,64 @@ const PropertyDetails = ({property}) => {
         }).format(price);
     };
 
+
+    const fields = [
+        { id: 'property-id', label: 'Property ID', value: property.id },
+        { id: 'price', label: 'Price', value: formatPrice(property.price) },
+        { id: 'year-built', label: 'Year Built', value: property.building_details?.year_built },
+        { id: 'revenue', label: 'Revenue', value: property.revenue ? formatPrice(property.revenue) : null },
+        { id: 'cost-per-unit', label: 'Cost per Unit', value: property.cost_per_unit ? formatPrice(property.cost_per_unit) : null },
+        { id: 'multifamily', label: 'Multifamily', value: property.residential_units },
+        { id: 'commercial-units', label: 'Commercial Units',
+            value: property.commercial_units === 1 ? 'Without Property' :
+                property.commercial_units >= 2 ? 'With Property' :
+                    property.commercial_units },
+        { id: 'parking', label: 'Parking',
+            value: property.building_details?.has_garage !== undefined ?
+                (property.building_details.has_garage ? 'Yes' : 'No') : null },
+        { id: 'floors', label: 'Floors', value: property.building_details?.floors },
+        { id: 'lot-area', label: 'Lot Area',
+            value: property.building_details?.lot_area ?
+                `${property.building_details.lot_area} Sq Ft` : null },
+        { id: 'property-type', label: 'Property Type', value: property.building_details?.building_type },
+        { id: 'property-status', label: 'Property Status', value: 'For Sale' },
+        { id: 'assessment-year', label: 'Assessment Year', value: property.assessment_year },
+        { id: 'cap-rate', label: 'Cap Rate', value: property.cap_rate ? `${property.cap_rate}%` : null },
+        { id: 'grm', label: 'Gross Rent Multiplier', value: property.grm }
+    ].filter(field => field.value !== null && field.value !== undefined);
+
+
+    if (fields.length === 0) {
+        return null;
+    }
+
     return (
-        <>
-            <div className="col-md-6 col-lg-6 col-xl-4">
-                <ul className="list-inline-item">
-                    {property.id && (
-                        <li>
-                            <p>
-                                Property ID : <span>{property.id}</span>
-                            </p>
-                        </li>
-                    )}
-                    <li>
-                        <p>
-                            Price : <span>
-                                {property.is_sold ? (
-                                    <span className="">SOLD</span>
-                                ) : (
-                                    `${formatPrice(property.price)}`
-                                )}
-                            </span>
-                        </p>
-                    </li>
-                    {property.building_details?.year_built && (
-                        <li>
-                            <p>
-                                Year Built : <span>{property.building_details.year_built}</span>
-                            </p>
-                        </li>
-                    )}
+        <div className="property-details-grid">
+            {fields.map(field => (
+                <div className="detail-item" key={field.id}>
+                    <p>
+                        <strong>{field.label}:</strong> {field.value}
+                    </p>
+                </div>
+            ))}
 
-                    {property.revenue && (
-                        <li>
-                            <p>
-                                Revenue : <span>{formatPrice(property.revenue)}</span>
-                            </p>
-                        </li>
-                    )}
-                    {property.cost_per_unit && (
-                        <li>
-                            <p>
-                                Cost per Unit : <span>{formatPrice(property.cost_per_unit)}</span>
-                            </p>
-                        </li>
-                    )}
-                </ul>
-            </div>
-            {/* End .col */}
-
-            <div className="col-md-6 col-lg-6 col-xl-4">
-                <ul className="list-inline-item">
-                    <li>
-                        <p>
-                            Multifamily : <span>{property.residential_units}</span>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            Commercial Units : <span>{property.commercial_units}</span>
-                        </p>
-                    </li>
-                    {property.building_details?.has_garage !== undefined && (
-                        <li>
-                            <p>
-                                Parking : <span>{property.building_details.has_garage ? 'Yes' : 'No'}</span>
-                            </p>
-                        </li>
-                    )}
-                    {property.building_details?.floors && (
-                        <li>
-                            <p>
-                                Floors : <span>{property.building_details.floors}</span>
-                            </p>
-                        </li>
-                    )}
-                    {property.building_details?.lot_area && (
-                        <li>
-                            <p>
-                                Lot Area : <span>{property.building_details.lot_area} Sq Ft</span>
-                            </p>
-                        </li>
-                    )}
-                </ul>
-            </div>
-            {/* End .col */}
-
-            <div className="col-md-6 col-lg-6 col-xl-4">
-                <ul className="list-inline-item">
-                    {property.building_details?.building_type && (
-                        <li>
-                            <p>
-                                Property Type : <span>{property.building_details.building_type}</span>
-                            </p>
-                        </li>
-                    )}
-                    <li>
-                        <p>
-                            Property Status : <span>{property.is_sold ? 'Sold' : 'For Sale'}</span>
-                        </p>
-                    </li>
-                    {property.assessment_year && (
-                        <li>
-                            <p>
-                                Assessment Year : <span>{property.assessment_year}</span>
-                            </p>
-                        </li>
-                    )}
-                    {property.cap_rate && (
-                        <li>
-                            <p>
-                                Cap Rate : <span>{property.cap_rate}%</span>
-                            </p>
-                        </li>
-                    )}
-                    {property.grm && (
-                        <li>
-                            <p>
-                                Gross Rent Multiplier : <span>{property.grm}</span>
-                            </p>
-                        </li>
-                    )}
-                </ul>
-            </div>
-        </>
+            <style jsx>{`
+                .property-details-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                    gap: 15px;
+                    width: 100%;
+                }
+                .detail-item {
+                    //background-color: #f9f9f9;
+                    border-radius: 5px;
+                    padding: 10px 15px;
+                }
+                .detail-item p {
+                    margin: 0;
+                }
+            `}</style>
+        </div>
     );
 };
 
