@@ -24,36 +24,33 @@ const PropertyDetails = ({property}) => {
                     <li>
                         <p>
                             Price : <span>
-                                            {property.is_sold ? (
-                                                <span className="">SOLD</span>
-                                            ) : (
-                                                `${formatPrice(property.price)}`
-                                            )}
-              </span>
+                                {property.is_sold ? (
+                                    <span className="">SOLD</span>
+                                ) : (
+                                    `${formatPrice(property.price)}`
+                                )}
+                            </span>
                         </p>
                     </li>
-                    {property.building_details?.lot_area && (
-                        <li>
-                            <p>
-                                Lot Area :
-                                <span>
-                                    {!property.is_sold
-                                        ? `${property.building_details?.lot_area} Sq Ft`
-                                        : " SOLD"}
-                                </span>
-                            </p>
-                        </li>
-                    )}
                     {property.building_details?.year_built && (
                         <li>
                             <p>
-                                Year Built :
+                                Year Built : <span>{property.building_details.year_built}</span>
+                            </p>
+                        </li>
+                    )}
 
-                                <span>
-                                    {!property.is_sold
-                                        ? `${property.building_details?.year_built}`
-                                        : " SOLD"}
-                                </span>
+                    {property.revenue && (
+                        <li>
+                            <p>
+                                Revenue : <span>{formatPrice(property.revenue)}</span>
+                            </p>
+                        </li>
+                    )}
+                    {property.cost_per_unit && (
+                        <li>
+                            <p>
+                                Cost per Unit : <span>{formatPrice(property.cost_per_unit)}</span>
                             </p>
                         </li>
                     )}
@@ -87,6 +84,13 @@ const PropertyDetails = ({property}) => {
                             </p>
                         </li>
                     )}
+                    {property.building_details?.lot_area && (
+                        <li>
+                            <p>
+                                Lot Area : <span>{property.building_details.lot_area} Sq Ft</span>
+                            </p>
+                        </li>
+                    )}
                 </ul>
             </div>
             {/* End .col */}
@@ -116,6 +120,13 @@ const PropertyDetails = ({property}) => {
                         <li>
                             <p>
                                 Cap Rate : <span>{property.cap_rate}%</span>
+                            </p>
+                        </li>
+                    )}
+                    {property.grm && (
+                        <li>
+                            <p>
+                                Gross Rent Multiplier : <span>{property.grm}</span>
                             </p>
                         </li>
                     )}

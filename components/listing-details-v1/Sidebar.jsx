@@ -18,7 +18,9 @@ const Sidebar = ({ propertyId }) => {
                 }
                 const data = await response.json();
 
-                const filteredProperties = data.filter(prop => prop.id !== parseInt(propertyId));
+                const currentPropertyId = parseInt(propertyId, 10);
+                const filteredProperties = data.filter(prop => prop.id !== currentPropertyId);
+
                 setFeaturedProperties(filteredProperties);
             } catch (error) {
                 console.error("Error fetching featured properties:", error);

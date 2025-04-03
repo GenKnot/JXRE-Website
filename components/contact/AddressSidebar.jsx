@@ -18,7 +18,7 @@ const AddressSidebar = () => {
             </div>
             <div className="content_list">
                 <h5>Montreal</h5>
-                <p>(514)-364-3315</p>
+                <p>(514)-651-4588</p>
             </div>
             <div className="content_list">
                 <h5>Mail</h5>

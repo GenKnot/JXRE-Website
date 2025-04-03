@@ -362,6 +362,37 @@ const MobileMenuContent = () => {
                         </div>
                     </MenuItem>
 
+                    <SubMenu label="Commercial">
+                        <MenuItem>
+                            <div onClick={() => router.push("/listing?commercial_units=0")}>
+                                Without Property
+                            </div>
+                        </MenuItem>
+                        <MenuItem>
+                            <div onClick={() => router.push("/listing?min_commercial_units=1")}>
+                                With Property
+                            </div>
+                        </MenuItem>
+                    </SubMenu>
+
+                    <SubMenu label="Residential">
+                        <MenuItem>
+                            <div onClick={() => router.push("/listing?residential_type=house")}>
+                                House
+                            </div>
+                        </MenuItem>
+                        <MenuItem>
+                            <div onClick={() => router.push("/listing?residential_type=townhouse")}>
+                                Townhouse
+                            </div>
+                        </MenuItem>
+                        <MenuItem>
+                            <div onClick={() => router.push("/listing?residential_type=condo")}>
+                                Condo
+                            </div>
+                        </MenuItem>
+                    </SubMenu>
+
                     <MenuItem>
                         <div onClick={() => router.push("/#new-properties")}>
                             New Properties

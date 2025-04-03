@@ -14,6 +14,8 @@ const GlobalFilter = ({className = ""}) => {
         location: '',
         residential_units: '',
         commercial_units: '',
+        residential_type: '',
+        price_range: '',
         price_min: 200000,
         price_max: 50000000,
         grm: '',
@@ -66,9 +68,7 @@ const GlobalFilter = ({className = ""}) => {
 
 
     const submitHandler = () => {
-        // 构建 query string
         const queryParams = new URLSearchParams();
-        const priceState = store.getState().properties.price;
 
         // 添加基本筛选条件
         if (filters.location) queryParams.append('location', filters.location);
@@ -78,26 +78,53 @@ const GlobalFilter = ({className = ""}) => {
             queryParams.append('residential_units_range', filters.residential_units);
         }
 
-        // 商业单位 - 修正参数名称
+        // 商业单位
         if (filters.commercial_units) {
-            queryParams.append('commercial_units_range', filters.commercial_units);
+            if (filters.commercial_units === 'without') {
+                queryParams.append('commercial_units', '0');
+            } else if (filters.commercial_units === 'with') {
+                queryParams.append('min_commercial_units', '1');
+            }
         }
 
-        // 价格范围
-        if (priceState.min) queryParams.append('min_price', priceState.min.toString());
-        if (priceState.max) queryParams.append('max_price', priceState.max.toString());
+        if (filters.residential_type) {
+            queryParams.append('residential_type', filters.residential_type);
+        }
+
+        if (filters.price_range) {
+            switch(filters.price_range) {
+                case 'under_200k':
+                    queryParams.append('max_price', '200000');
+                    break;
+                case '200k_500k':
+                    queryParams.append('min_price', '200000');
+                    queryParams.append('max_price', '500000');
+                    break;
+                case '500k_1m':
+                    queryParams.append('min_price', '500000');
+                    queryParams.append('max_price', '1000000');
+                    break;
+                case '1m_1.5m':
+                    queryParams.append('min_price', '1000000');
+                    queryParams.append('max_price', '1500000');
+                    break;
+                case 'over_1.5m':
+                    queryParams.append('min_price', '1500000');
+                    break;
+            }
+        }
 
         // 财务指标
         if (filters.grm) queryParams.append('grm_range', filters.grm);
         if (filters.cap_rate) queryParams.append('cap_rate_range', filters.cap_rate);
         if (filters.cost_per_unit) queryParams.append('cost_per_unit_range', filters.cost_per_unit);
 
-        // 特性过滤 - 只添加选中的
+
         Object.entries(filters.features)
             .filter(([_, value]) => value)
             .forEach(([key, _]) => queryParams.append('features', key));
 
-        // 跳转到列表页面
+
         router.push(`/listing?${queryParams.toString()}`);
     };
 
@@ -139,10 +166,23 @@ const GlobalFilter = ({className = ""}) => {
                                     onChange={handleSelectChange('commercial_units')}
                                     value={filters.commercial_units}>
                                 <option value="">Commercial</option>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2-5">2-5</option>
-                                <option value="5+">5+</option>
+                                <option value="without">Without Property</option>
+                                <option value="with">With Property</option>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+
+                <li className="list-inline-item">
+                    <div className="search_option_two">
+                        <div className="candidate_revew_select">
+                            <select className="selectpicker w100 form-select show-tick"
+                                    onChange={handleSelectChange('residential_type')}
+                                    value={filters.residential_type}>
+                                <option value="">Residential Type</option>
+                                <option value="house">House</option>
+                                <option value="townhouse">Townhouse</option>
+                                <option value="condo">Condo</option>
                             </select>
                         </div>
                     </div>
@@ -151,23 +191,18 @@ const GlobalFilter = ({className = ""}) => {
 
 
                 <li className="list-inline-item">
-                    <div className="small_dropdown2">
-                        <div
-                            id="prncgs"
-                            className="btn dd_btn"
-                            data-bs-toggle="dropdown"
-                            data-bs-auto-close="outside"
-                            aria-expanded="false"
-                        >
-                            <span>Price Range</span>
-                            <label htmlFor="InputEmail2">
-                                <span className="fa fa-angle-down"></span>
-                            </label>
-                        </div>
-                        <div className="dd_content2 dropdown-menu">
-                            <div className="pricing_acontent">
-                                <PricingRangeSlider/>
-                            </div>
+                    <div className="search_option_two">
+                        <div className="candidate_revew_select">
+                            <select className="selectpicker w100 form-select show-tick"
+                                    onChange={handleSelectChange('price_range')}
+                                    value={filters.price_range}>
+                                <option value="">Price Range</option>
+                                <option value="under_200k">Under $200k</option>
+                                <option value="200k_500k">$200k - $500k</option>
+                                <option value="500k_1m">$500k - $1M</option>
+                                <option value="1m_1.5m">$1M - $1.5M</option>
+                                <option value="over_1.5m">Over $1.5M</option>
+                            </select>
                         </div>
                     </div>
                 </li>

@@ -85,14 +85,14 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
                         </p>
 
                         <ul className="prop_details mb0">
-                            <li className="list-inline-item">
-                                <a href="#">Created: {new Date(property.created_at).toLocaleDateString()}</a>
-                            </li>
-                            {property.images_count > 0 && (
-                                <li className="list-inline-item">
-                                    <a href="#">Images: {property.images_count}</a>
-                                </li>
-                            )}
+                            {/*<li className="list-inline-item">*/}
+                            {/*    <a href="#">Created: {new Date(property.created_at).toLocaleDateString()}</a>*!/*/}
+                            {/*</li>*/}
+                            {/*{property.images_count > 0 && (*/}
+                            {/*    <li className="list-inline-item">*/}
+                            {/*        <a href="#">Images: {property.images_count}</a>*/}
+                            {/*    </li>*/}
+                            {/*)}*/}
                         </ul>
                     </div>
                     {/* End .tc_content */}
@@ -107,9 +107,9 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
     const listContent = properties.map((property) => (
         <div className="col-lg-12" key={property.id}>
             <Link
-                href={property.is_sold ? '#' : `/listing-details/${property.id}`}
+                // href={property.is_sold ? '#' : `/listing-details/${property.id}`}
+                href={`/listing-details/${property.id}`}
                 className={`property-list-item d-flex align-items-center py-3 px-2 border-bottom text-decoration-none ${property.is_sold ? 'cursor-default' : 'cursor-pointer'}`}
-                onClick={(e) => property.is_sold && e.preventDefault()}
             >
                 {/* SOLD Tag */}
                 {property.is_sold && (

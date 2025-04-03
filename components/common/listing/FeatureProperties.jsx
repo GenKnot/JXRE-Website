@@ -1,26 +1,39 @@
 'use client'
 
-import Image from "next/image";
 import Link from "next/link";
 import Slider from "react-slick";
+import Image from "next/image";
 
 const FeatureProperties = ({ properties = [] }) => {
-  if (!properties || properties.length === 0) return null;
+  if (!properties || properties.length === 0) {
+    return null;
+  }
+
 
   const settings = {
     dots: true,
     arrows: false,
-    fade: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 1000,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 8000,
+    infinite: true,
+    speed: 500,
+    cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
-      <>
-        <Slider {...settings} arrows={false}>
+      <div className="featured-slider-container">
+        <Slider {...settings}>
           {properties.map((item) => (
               <div className="item" key={item.id}>
                 <div className="feat_property home7">
@@ -55,14 +68,39 @@ const FeatureProperties = ({ properties = [] }) => {
                             `$${Number(item.price).toLocaleString()}`
                         )}
                       </Link>
-                      <h4 className="posr color-white">{item.title}</h4>
+                      <h4 className="posr color-white text-white">
+                        <Link href={`/listing-details/${item.id}`}><p className="text-white">{item.title}</p></Link>
+                      </h4>
                     </div>
                   </div>
                 </div>
               </div>
           ))}
         </Slider>
-      </>
+
+
+        <style jsx global>{`
+        .featured-slider-container .slick-slide {
+          padding: 5px;
+        }
+        .featured-slider-container .slick-prev,
+        .featured-slider-container .slick-next {
+          z-index: 10;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .featured-slider-container .slick-prev {
+          left: 10px;
+        }
+        .featured-slider-container .slick-next {
+          right: 10px;
+        }
+        .featured-slider-container .slick-prev:before,
+        .featured-slider-container .slick-next:before {
+          color: #ff5a5f;
+        }
+      `}</style>
+      </div>
   );
 };
 

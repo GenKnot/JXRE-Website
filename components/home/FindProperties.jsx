@@ -17,32 +17,21 @@ const FindProperties = () => {
   useEffect(() => {
     const fetchPropertyCounts = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/properties/`);
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch property data');
-        }
-
-        const data = await response.json();
-
-        // Calculate counts by city
         const counts = {
           Montreal: 0,
           Toronto: 0
         };
 
-        // If you need without Sold
-        // data.results.forEach(property => {
-        //   if (property.city in counts && !property.is_sold) {
-        //     counts[property.city]++;
-        //   }
-        // });
+        for (const city of Object.keys(counts)) {
+          const response = await fetch(`${API_BASE_URL}/api/properties/?city=${city}&page_size=1`);
 
-        data.results.forEach(property => {
-          if (property.city in counts) {
-            counts[property.city]++;
+          if (!response.ok) {
+            throw new Error(`Get ${city} Error`);
           }
-        });
+
+          const data = await response.json();
+          counts[city] = data.count || 0;
+        }
 
         setPropertyCounts(counts);
         setLoading(false);

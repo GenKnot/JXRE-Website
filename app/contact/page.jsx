@@ -4,7 +4,7 @@ import Contact from "@/components/contact";
 export const metadata = {
   title: 'JXRE | Contact',
   description:
-      'Explore premium real estate listings in Montreal and Toronto. Specializing in high-value multi-plex properties with strong rental income potential. Get expert advice on investing in prime urban locations.',
+      'Explore premium real estate listings in Montreal and Toronto. Specializing in high-value multifamily properties with strong rental income potential. Get expert advice on investing in prime urban locations.',
 };
 
 const index = () => {

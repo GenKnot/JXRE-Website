@@ -54,7 +54,7 @@ const Footer = () => {
                 <a href="tel:+16476169785">Toronto: (647) 616-9785</a>
               </li>
               <li>
-                <a href="tel:+15143643315">Montreal: (514) 364-3315</a>
+                <a href="tel:+15143643315">Montreal: (514) 651-4588</a>
               </li>
             </ul>
           </div>
