@@ -6,7 +6,7 @@ const CallToAction = () => {
             <div className="col-lg-8">
                 <div className="start_partner tac-smd">
                     <h2>Invest In Premium Income Properties</h2>
-                    <p>Generate passive income with high-yield multi-family properties. We offer financing solutions and proven rental management to maximize your ROI.</p>
+                    <p>Generate passive income with high-yield multifamily properties. We offer financing solutions and proven rental management to maximize your ROI.</p>
                 </div>
             </div>
             {/* End .col */}

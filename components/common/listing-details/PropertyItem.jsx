@@ -16,7 +16,7 @@ const PropertyItem = ({ property }) => {
         );
     }
 
-    const totalUnits = property.residential_units + property.commercial_units;
+    // const totalUnits = property.residential_units + property.commercial_units;
 
     const getBedrooms = () => {
         if (!property.unit_distribution) return 'N/A';
@@ -43,9 +43,9 @@ const PropertyItem = ({ property }) => {
                     {property.residential_units > 0 && property.commercial_units > 0 ? ' & Commercial' : ''}
                 </a>
             </li>
-            <li className="list-inline-item">
-                <a href="#">Units: {totalUnits}</a>
-            </li>
+            {/*<li className="list-inline-item">*/}
+            {/*    <a href="#">Units: {totalUnits}</a>*/}
+            {/*</li>*/}
 
             {property.residential_units > 0 && (
                 <li className="list-inline-item">

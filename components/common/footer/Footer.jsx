@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="footer_about_widget">
             <h4>JXRE</h4>
             <p>
-              Specializing in premium multi-family investment properties in Montreal and Toronto.
+              Specializing in premium multifamily  investment properties in Montreal and Toronto.
               Our expert team helps investors acquire high-yield income properties with financing
               solutions and rental management services.
             </p>
