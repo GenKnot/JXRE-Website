@@ -53,10 +53,14 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
                                     <a href="#" className="text-white">Sold</a>
                                 </li>
                             )}
-
-                            {property.is_featured && (
+                            {property.property_status === 'for_lease' && (
                                 <li className="list-inline-item">
-                                    <a href="#" className="text-white">Featured</a>
+                                    <a href="#" className="text-white">For Lease</a>
+                                </li>
+                            )}
+                            {property.is_active && (
+                                <li className="list-inline-item">
+                                    <a href="#" className="text-white">Active</a>
                                 </li>
                             )}
                         </ul>
@@ -67,8 +71,10 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
                         >
                             {property.is_sold ? (
                                 <span className="text-white">SOLD</span>
+                            ) : property.property_status === 'for_lease' ? (
+                                `$${Number(property.monthly_rent).toLocaleString()}/month`
                             ) : (
-                                `$${Number(property.price).toLocaleString('en-US', {maximumFractionDigits: 0})}`
+                                `$${Number(property.price).toLocaleString()}`
                             )}
                         </Link>
                     </div>
@@ -76,19 +82,11 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
                 <div className="details">
                     <div className="tc_content">
                         <p className="text-thm">
-                            {property.residential_type ? (
-                                property.residential_type.charAt(0).toUpperCase() + property.residential_type.slice(1)
-                            ) : (
-                                <>
-                                    {property.residential_units > 0 ? `${property.residential_units} Multifamily` : ''}
-                                    {property.residential_units > 0 && property.commercial_units > 0 ? ' | ' : ''}
-                                    {property.commercial_units > 0 ? (
-                                        property.commercial_units === 1 ?
-                                            "Commercial Without Property" :
-                                            "Commercial With Property"
-                                    ) : ''}
-                                </>
-                            )}
+                            {property.is_house ? "House" :
+                                property.is_townhouse ? "Townhouse" :
+                                    property.is_condo ? "Condo" :
+                                        (property.residential_units > 0 && property.commercial_units > 0) ? "Mixed Use" :
+                                            property.residential_units > 0 ? "Residential" : "Commercial"}
                         </p>
                         <h4>
                             <Link href={`/listing-details/${property.id}`}>
@@ -101,21 +99,39 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
                         </p>
 
                         <ul className="prop_details mb0">
-                            {/*<li className="list-inline-item">*/}
-                            {/*    <a href="#">Created: {new Date(property.created_at).toLocaleDateString()}</a>*!/*/}
-                            {/*</li>*/}
-                            {/*{property.images_count > 0 && (*/}
-                            {/*    <li className="list-inline-item">*/}
-                            {/*        <a href="#">Images: {property.images_count}</a>*/}
-                            {/*    </li>*/}
-                            {/*)}*/}
+
+                            {(property.is_house || property.is_townhouse || property.is_condo) ? (
+                                <>
+                                    {property.bedrooms > 0 && (
+                                        <li className="list-inline-item">
+                                            <a href="#">Bedrooms: {property.bedrooms}</a>
+                                        </li>
+                                    )}
+                                    {property.bathrooms > 0 && (
+                                        <li className="list-inline-item">
+                                            <a href="#">Bathrooms: {property.bathrooms}</a>
+                                        </li>
+                                    )}
+                                </>
+                            ) : (
+                                <>
+                                    {property.residential_units > 0 && (
+                                        <li className="list-inline-item">
+                                            <a href="#">{property.residential_units === 1 ? "Unit" : "Units"}: {property.residential_units}</a>
+                                        </li>
+                                    )}
+                                    {property.commercial_units > 0 && (
+                                        <li className="list-inline-item">
+                                            <a href="#">
+                                                {property.commercial_units === 1 ? "Commercial Without Property" : "Commercial With Property"}
+                                            </a>
+                                        </li>
+                                    )}
+                                </>
+                            )}
                         </ul>
                     </div>
-                    {/* End .tc_content */}
-
-                    {/* End .fp_footer */}
                 </div>
-
             </div>
         </div>
     ));

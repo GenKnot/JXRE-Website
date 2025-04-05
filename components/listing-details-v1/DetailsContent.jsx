@@ -47,17 +47,17 @@ const DetailsContent = ({propertyId}) => {
         return <div className="alert alert-warning">Property not found</div>;
     }
 
+
+    const isResidentialType = property.is_house || property.is_townhouse || property.is_condo;
+
     const hasVideo = property.video || property.video_url;
-
     const hasFloorPlans = property.floor_plans && property.floor_plans.length > 0;
-
     const hasNearbyLocations = property.locations && property.locations.length > 0;
-
     const hasAttachments = property.attachments && property.attachments.length > 0;
-
     const hasAddress = property.address && property.city;
 
-    const hasUnitDistribution = property.unit_distribution &&
+
+    const hasUnitDistribution = !isResidentialType && property.unit_distribution &&
         (property.unit_distribution.studio > 0 ||
             property.unit_distribution.one_half > 0 ||
             property.unit_distribution.two_half > 0 ||
@@ -100,8 +100,6 @@ const DetailsContent = ({propertyId}) => {
                     </div>
                 </div>
             )}
-
-
 
             {property.building_details && (
                 <div className="additional_details">

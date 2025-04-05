@@ -1,12 +1,12 @@
 'use client'
 
-import { Gallery, Item } from "react-photoswipe-gallery";
+import {Gallery, Item} from "react-photoswipe-gallery";
 import "photoswipe/dist/photoswipe.css";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { API_BASE_URL } from "@/constants/api";
+import {useEffect, useState} from "react";
+import {API_BASE_URL} from "@/constants/api";
 
-const ListingGallery = ({ propertyId }) => {
+const ListingGallery = ({propertyId}) => {
     const [property, setProperty] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -39,6 +39,24 @@ const ListingGallery = ({ propertyId }) => {
         return <div className="alert alert-warning">Property not found</div>;
     }
 
+    const getPriceDisplay = () => {
+        if (property.is_sold) {
+            return 'Sold';
+        } else if (property.property_status === 'for_lease') {
+            return `$${Number(property.monthly_rent).toLocaleString()}/month`;
+        } else {
+            return `$${Number(property.price).toLocaleString()}`;
+        }
+    };
+
+    const getPropertyTypeTag = () => {
+        if (property.is_house) return "House";
+        if (property.is_townhouse) return "Townhouse";
+        if (property.is_condo) return "Condo";
+        if (property.residential_units > 0 && property.commercial_units > 0) return "Mixed Use";
+        if (property.residential_units > 0) return "Residential";
+        return "Commercial";
+    };
 
     const featuredImage = property.featured_image;
     const additionalImages = property.images?.filter(img => img.id !== featuredImage?.id).slice(0, 6) || [];
@@ -55,14 +73,18 @@ const ListingGallery = ({ propertyId }) => {
 
 
                                 <div className="property-tags mt-2">
-                                    {property.residential_units > 0 && (
-                                        <span className="badge bg-p me-2">Residential</span>
-                                    )}
-                                    {property.commercial_units > 0 && (
-                                        <span className="badge bg-p me-2">Commercial</span>
-                                    )}
-                                    {property.is_sold && (
+                                    <span className="badge bg-p me-2">{getPropertyTypeTag()}</span>
+
+                                    {property.is_sold ? (
                                         <span className="badge bg-danger me-2">Sold</span>
+                                    ) : (
+                                        <span className="badge bg-danger me-2">
+                                            {property.property_status === 'for_lease' ? 'For Lease' : 'For Sale'}
+                                        </span>
+                                    )}
+
+                                    {property.is_active && (
+                                        <span className="badge bg-p me-2">Active</span>
                                     )}
                                 </div>
                             </div>
@@ -71,17 +93,21 @@ const ListingGallery = ({ propertyId }) => {
                             <div className="single_property_social_share position-static transform-none">
                                 <div className="price float-start fn-400">
                                     <h2>
-                                        Price : <span>{property.is_sold ? 'Sold' : `$${Number(property.price).toLocaleString()}`}</span>
+                                        Price : {getPriceDisplay()}
                                     </h2>
                                 </div>
 
                                 <div className="spss style2 mt20 text-end tal-400">
                                     <ul className="mb0">
                                         <li className="list-inline-item">
-                                            <a href="#" onClick={(e) => { e.preventDefault(); window.print(); }}>
+                                            <a href="#" onClick={(e) => {
+                                                e.preventDefault();
+                                                window.print();
+                                            }}>
                                                 <span className="flaticon-printer fs-5"></span>
                                             </a>
                                         </li>
+                                        
 
                                     </ul>
                                 </div>
@@ -101,7 +127,7 @@ const ListingGallery = ({ propertyId }) => {
                                                 width={752}
                                                 height={450}
                                             >
-                                                {({ ref, open }) => (
+                                                {({ref, open}) => (
                                                     <div
                                                         ref={ref}
                                                         onClick={open}
@@ -120,7 +146,7 @@ const ListingGallery = ({ propertyId }) => {
                                                             fill
                                                             src={featuredImage.image_url}
                                                             alt={featuredImage.title || property.title}
-                                                            style={{ objectFit: 'cover' }}
+                                                            style={{objectFit: 'cover'}}
                                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                                             priority
                                                         />
@@ -172,7 +198,7 @@ const ListingGallery = ({ propertyId }) => {
                                                 width={752}
                                                 height={450}
                                             >
-                                                {({ ref, open }) => (
+                                                {({ref, open}) => (
                                                     <div
                                                         ref={ref}
                                                         onClick={open}
@@ -190,7 +216,7 @@ const ListingGallery = ({ propertyId }) => {
                                                             fill
                                                             src={image.image_url}
                                                             alt={image.title || `Property image ${i + 1}`}
-                                                            style={{ objectFit: 'cover' }}
+                                                            style={{objectFit: 'cover'}}
                                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                                         />
                                                     </div>
@@ -222,21 +248,25 @@ const ListingGallery = ({ propertyId }) => {
             </Gallery>
             <style jsx global>{`
                 .main-image-container:hover .image-overlay {
-                    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+                    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 100%);
                 }
+
                 .view-all {
                     font-size: 14px;
                     opacity: 0.8;
                     transition: opacity 0.3s;
                 }
+
                 .main-image-container:hover .view-all {
                     opacity: 1;
                 }
+
                 .property-tags .badge {
                     font-size: 12px;
                     padding: 6px 12px;
                     border-radius: 4px;
                 }
+
                 .print-button {
                     font-size: 24px;
                     padding: 8px 12px;
@@ -245,9 +275,11 @@ const ListingGallery = ({ propertyId }) => {
                     border-radius: 5px;
                     transition: all 0.3s ease;
                 }
+
                 .print-button:hover {
                     background: #e9e9e9;
                 }
+
                 .print-button .flaticon-printer {
                     font-size: 20px;
                 }
