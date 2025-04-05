@@ -13,7 +13,7 @@ const RecentProperties = () => {
         const fetchProperties = async () => {
             try {
 
-                const response = await fetch(`${API_BASE_URL}/api/properties/?is_active=false&page_size=9&ordering=-created_at`);
+                const response = await fetch(`${API_BASE_URL}/api/properties/?is_active=false&is_sold=false&page_size=9&ordering=-created_at`);
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch properties');
