@@ -1,12 +1,12 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import ContactForm from "./ContactForm";
-import { API_BASE_URL } from "@/constants/api";
+import {API_BASE_URL} from "@/constants/api";
 import Image from "next/image";
 import Link from "next/link";
 
-const Sidebar = ({ propertyId }) => {
+const Sidebar = ({propertyId}) => {
     const [featuredProperties, setFeaturedProperties] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -39,7 +39,7 @@ const Sidebar = ({ propertyId }) => {
             <div className="sidebar_listing_list">
                 <div className="sidebar_advanced_search_widget">
                     <h4 className="mb25">Contact Us</h4>
-                    <ContactForm propertyId={propertyId} />
+                    <ContactForm propertyId={propertyId}/>
                 </div>
             </div>
 
@@ -60,7 +60,13 @@ const Sidebar = ({ propertyId }) => {
                                                 alt={property.featured_image.title || property.title}
                                             />
                                         ) : (
-                                            <div className="no-image-placeholder" style={{ height: 220, background: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                            <div className="no-image-placeholder" style={{
+                                                height: 220,
+                                                background: '#f5f5f5',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center'
+                                            }}>
                                                 <span>No image</span>
                                             </div>
                                         )}
@@ -82,10 +88,12 @@ const Sidebar = ({ propertyId }) => {
                                                 ${Number(property.price).toLocaleString()}
                                             </Link>
                                             <h4 className="posr color-white">
-                                                <Link href={`/listing-details-v1/${property.id}`}>{property.title}</Link>
+                                                <Link
+                                                    href={`/listing-details-v1/${property.id}`}>{property.title}</Link>
                                             </h4>
                                             <p className="color-white">
-                                                <span className="flaticon-placeholder"></span> {property.address}, {property.city}
+                                                <span
+                                                    className="flaticon-placeholder"></span> {property.address}, {property.city}
                                             </p>
                                         </div>
                                     </div>

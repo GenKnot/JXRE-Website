@@ -26,59 +26,61 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
     const gridContent = properties.map((property) => (
         <div className="col-md-6 col-lg-4" key={property.id}>
             <div className="feat_property home7 style4">
-                <div className="thumb">
-                    {property.featured_image ? (
-                        <Image
-                            width={342}
-                            height={220}
-                            className="img-whp w-100 h-100 cover"
-                            src={property.featured_image.image_url || '/images/no-image.jpg'}
-                            alt={property.featured_image.title || property.title}
-                        />
-                    ) : (
-                        <div className="no-image-placeholder" style={{
-                            height: 220,
-                            background: '#f5f5f5',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }}>
-                            <span>No image available</span>
-                        </div>
-                    )}
-                    <div className="thmb_cntnt">
-                        <ul className="tag mb0">
-                            {property.is_sold && (
-                                <li className="list-inline-item">
-                                    <a href="#" className="text-white">Sold</a>
-                                </li>
-                            )}
-                            {property.property_status === 'for_lease' && (
-                                <li className="list-inline-item">
-                                    <a href="#" className="text-white">For Lease</a>
-                                </li>
-                            )}
-                            {property.is_active && (
-                                <li className="list-inline-item">
-                                    <a href="#" className="text-white">Active</a>
-                                </li>
-                            )}
-                        </ul>
+                <Link href={`/listing-details/${property.id}`}>
+                    <div className="thumb">
+                        {property.featured_image ? (
+                            <Image
+                                width={342}
+                                height={220}
+                                className="img-whp w-100 h-100 cover"
+                                src={property.featured_image.image_url || '/images/no-image.jpg'}
+                                alt={property.featured_image.title || property.title}
+                            />
+                        ) : (
+                            <div className="no-image-placeholder" style={{
+                                height: 220,
+                                background: '#f5f5f5',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}>
+                                <span>No image available</span>
+                            </div>
+                        )}
+                        <div className="thmb_cntnt">
+                            <ul className="tag mb0">
+                                {property.is_sold && (
+                                    <li className="list-inline-item">
+                                        <a href="#" className="text-white">Sold</a>
+                                    </li>
+                                )}
+                                {property.property_status === 'for_lease' && (
+                                    <li className="list-inline-item">
+                                        <a href="#" className="text-white">For Lease</a>
+                                    </li>
+                                )}
+                                {property.is_active && (
+                                    <li className="list-inline-item">
+                                        <a href="#" className="text-white">Active</a>
+                                    </li>
+                                )}
+                            </ul>
 
-                        <Link
-                            href={`/listing-details/${property.id}`}
-                            className="fp_price"
-                        >
-                            {property.is_sold ? (
-                                <span className="text-white">SOLD</span>
-                            ) : property.property_status === 'for_lease' ? (
-                                `$${Number(property.monthly_rent).toLocaleString()}/month`
-                            ) : (
-                                `$${Number(property.price).toLocaleString()}`
-                            )}
-                        </Link>
+                            <Link
+                                href={`/listing-details/${property.id}`}
+                                className="fp_price"
+                            >
+                                {property.is_sold ? (
+                                    <span className="text-white">SOLD</span>
+                                ) : property.property_status === 'for_lease' ? (
+                                    `$${Number(property.monthly_rent).toLocaleString()}/month`
+                                ) : (
+                                    `$${Number(property.price).toLocaleString()}`
+                                )}
+                            </Link>
+                        </div>
                     </div>
-                </div>
+                </Link>
                 <div className="details">
                     <div className="tc_content">
                         <p className="text-thm">
@@ -151,13 +153,13 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
                 )}
 
                 {/* Title */}
-                <div className="property-title me-auto" style={{ color: property.is_sold ? '#6c757d' : '#333' }}>
+                <div className="property-title me-auto" style={{color: property.is_sold ? '#6c757d' : '#333'}}>
                     <span className="me-1">{property.title}</span>
                     <span className="text-muted small">({property.city})</span>
                 </div>
 
                 {/* Price */}
-                <div className="property-price me-4" style={{ color: '#ff5a5f', fontWeight: 'bold' }}>
+                <div className="property-price me-4" style={{color: '#ff5a5f', fontWeight: 'bold'}}>
                     {!property.is_sold ? `$${Number(property.price).toLocaleString()}` : ''}
                 </div>
 

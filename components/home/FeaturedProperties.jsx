@@ -69,97 +69,98 @@ const FeaturedProperties = () => {
     let content = properties.map((item) => (
         <div className="item" key={item.id}>
             <div className="feat_property">
-                <div className="thumb">
-                    <Image
-                        width={343}
-                        height={220}
-                        className="img-whp cover"
-                        src={item.featured_image?.image_url || "/assets/images/property/no-image.jpg"}
-                        alt={item.title}
-                    />
-                    <div className="thmb_cntnt">
-                        <ul className="tag mb0">
-                            {item.city && (
+                <Link href={`/listing-details/${item.id}`}>
+                    <div className="thumb">
+                        <Image
+                            width={343}
+                            height={220}
+                            className="img-whp cover"
+                            src={item.featured_image?.image_url || "/assets/images/property/no-image.jpg"}
+                            alt={item.title}
+                        />
+                        <div className="thmb_cntnt">
+                            <ul className="tag mb0">
+                                {item.city && (
+                                    <li className="list-inline-item">
+                                        <a href="#">{item.city}</a>
+                                    </li>
+                                )}
                                 <li className="list-inline-item">
-                                    <a href="#">{item.city}</a>
+                                    <a href="#">
+                                        {item.property_status_display || (item.is_sold ? "Sold" : "For Sale")}
+                                    </a>
                                 </li>
-                            )}
-                            <li className="list-inline-item">
-                                <a href="#">
-                                    {item.property_status_display || (item.is_sold ? "Sold" : "For Sale")}
-                                </a>
-                            </li>
-                        </ul>
+                            </ul>
 
-                        <Link href={`/listing-details/${item.id}`} className="fp_price">
-                            {item.is_sold ? (
-                                <span className="">SOLD</span>
-                            ) : item.property_status === 'for_lease' ? (
-                                `$${Number(item.monthly_rent).toLocaleString()}/month`
-                            ) : (
-                                `$${Number(item.price).toLocaleString()}`
-                            )}
-                        </Link>
+                            <Link href={`/listing-details/${item.id}`} className="fp_price">
+                                {item.is_sold ? (
+                                    <span className="">SOLD</span>
+                                ) : item.property_status === 'for_lease' ? (
+                                    `$${Number(item.monthly_rent).toLocaleString()}/month`
+                                ) : (
+                                    `$${Number(item.price).toLocaleString()}`
+                                )}
+                            </Link>
+                        </div>
                     </div>
-                </div>
 
-                <div className="details">
-                    <div className="tc_content">
-                        <p className="text-thm">
-                            {item.is_house ? "House" :
-                                item.is_townhouse ? "Townhouse" :
-                                    item.is_condo ? "Condo" :
-                                        (item.residential_units > 0 && item.commercial_units > 0) ? "Mixed Use" :
-                                            item.residential_units > 0 ? "Residential" : "Commercial"}
-                        </p>
-                        <h4>
-                            <Link href={`/listing-details/${item.id}`}>{item.title}</Link>
-                        </h4>
-                        <p>
-                            <span className="flaticon-placeholder"></span>
-                            {item.address}, {item.city}
-                        </p>
+                    <div className="details">
+                        <div className="tc_content">
+                            <p className="text-thm">
+                                {item.is_house ? "House" :
+                                    item.is_townhouse ? "Townhouse" :
+                                        item.is_condo ? "Condo" :
+                                            (item.residential_units > 0 && item.commercial_units > 0) ? "Mixed Use" :
+                                                item.residential_units > 0 ? "Residential" : "Commercial"}
+                            </p>
+                            <h4>
+                                <Link href={`/listing-details/${item.id}`}>{item.title}</Link>
+                            </h4>
+                            <p>
+                                <span className="flaticon-placeholder"></span>
+                                {item.address}, {item.city}
+                            </p>
 
-                        <ul className="prop_details mb0">
-                            {/* 根据不同类型显示不同信息 */}
-                            {(item.is_house || item.is_townhouse || item.is_condo) ? (
-                                <>
-                                    {item.bedrooms > 0 && (
-                                        <li className="list-inline-item">
-                                            <a href="#" className="text-thm">
-                                                Bedrooms: {item.bedrooms}
-                                            </a>
-                                        </li>
-                                    )}
-                                    {item.bathrooms > 0 && (
-                                        <li className="list-inline-item">
-                                            <a href="#" className="text-thm">
-                                                Bathrooms: {item.bathrooms}
-                                            </a>
-                                        </li>
-                                    )}
-                                </>
-                            ) : (
-                                <>
-                                    {item.residential_units > 0 && (
-                                        <li className="list-inline-item">
-                                            <a href="#" className="text-thm">
-                                                {item.residential_units === 1 ? "Unit" : "Units"}: {item.residential_units}
-                                            </a>
-                                        </li>
-                                    )}
-                                    {item.commercial_units > 0 && (
-                                        <li className="list-inline-item">
-                                            <a href="#" className="text-thm">
-                                                {item.commercial_units === 1 ? "Commercial Without Property" : "Commercial With Property"}
-                                            </a>
-                                        </li>
-                                    )}
-                                </>
-                            )}
-                        </ul>
+                            <ul className="prop_details mb0">
+                                {(item.is_house || item.is_townhouse || item.is_condo) ? (
+                                    <>
+                                        {item.bedrooms > 0 && (
+                                            <li className="list-inline-item">
+                                                <a href="#" className="text-thm">
+                                                    Bedrooms: {item.bedrooms}
+                                                </a>
+                                            </li>
+                                        )}
+                                        {item.bathrooms > 0 && (
+                                            <li className="list-inline-item">
+                                                <a href="#" className="text-thm">
+                                                    Bathrooms: {item.bathrooms}
+                                                </a>
+                                            </li>
+                                        )}
+                                    </>
+                                ) : (
+                                    <>
+                                        {item.residential_units > 0 && (
+                                            <li className="list-inline-item">
+                                                <a href="#" className="text-thm">
+                                                    {item.residential_units === 1 ? "Unit" : "Units"}: {item.residential_units}
+                                                </a>
+                                            </li>
+                                        )}
+                                        {item.commercial_units > 0 && (
+                                            <li className="list-inline-item">
+                                                <a href="#" className="text-thm">
+                                                    {item.commercial_units === 1 ? "Commercial Without Property" : "Commercial With Property"}
+                                                </a>
+                                            </li>
+                                        )}
+                                    </>
+                                )}
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
     ));
