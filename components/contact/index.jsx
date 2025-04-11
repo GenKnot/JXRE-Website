@@ -47,7 +47,7 @@ const index = () => {
                     </div>
                     {/* End .row */}
 
-                    {/* Google Map (可选) */}
+
                     <div className="row mt-5">
                         <div className="col-12">
                             <div className="h400">
