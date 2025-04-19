@@ -237,6 +237,19 @@ const index = () => {
                         </div>
                     </div>
                     {/* End .row */}
+
+                    {/* Page */}
+                    <div className="row">
+                        <div className="col-lg-12 mt20">
+                            <div className="mbp_pagination">
+                                <Pagination 
+                                    currentPage={pagination.current_page} 
+                                    totalPages={pagination.total_pages} 
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    {/* End .row */}
                 </div>
             </section>
 

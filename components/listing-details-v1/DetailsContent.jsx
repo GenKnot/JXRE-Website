@@ -139,7 +139,7 @@ const DetailsContent = ({propertyId}) => {
             {/* End .feature_area */}
 
 
-            {hasAddress && !property.is_sold && (
+            {hasAddress && (
                 <div className="application_statics mt30">
                     <h4 className="mb30">
                         Location{" "}
@@ -149,7 +149,7 @@ const DetailsContent = ({propertyId}) => {
                     </h4>
                     <div className="property_video p0">
                         <PropertyLocations
-                            address={property.is_sold ? "Sold" : `${property.address}, ${property.city}`}
+                            address={property.is_sold ? `${property.address}, ${property.city}` : `${property.address}, ${property.city}`}
                             isSold={property.is_sold}
                         />
                     </div>
