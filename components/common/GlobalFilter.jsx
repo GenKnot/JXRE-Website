@@ -141,9 +141,9 @@ const GlobalFilter = ({className = ""}) => {
                     <select className="selectpicker w100 form-select show-tick"
                             onChange={handleSelectChange('location')}
                             value={filters.location}>
-                        <option value="">Montreal or Toronto</option>
-                        <option>Montreal</option>
-                        <option>Toronto</option>
+                        <option value="">Quebec or Ontario</option>
+                        <option>Quebec</option>
+                        <option>Ontario</option>
                     </select>
                 </li>
                 {/* End li */}

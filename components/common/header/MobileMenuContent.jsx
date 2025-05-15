@@ -358,7 +358,7 @@ const MobileMenuContent = () => {
 
                     <MenuItem>
                         <div onClick={() => router.push("/#property-city")}>
-                            Cities
+                            Provinces
                         </div>
                     </MenuItem>
 

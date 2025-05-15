@@ -259,7 +259,7 @@ const HeaderMenuContent = ({float = ""}) => {
                 <a
                     href="/#property-city"
                 >
-                    <span className="title">Cities</span>
+                    <span className="title">Provinces</span>
                 </a>
                 {/* <!-- Level Two--> */}
             </li>

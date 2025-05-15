@@ -51,7 +51,7 @@ const Index = () => {
                     <div className="row">
                         <div className="col-lg-6 offset-lg-3">
                             <div className="main-title text-center">
-                                <h2>Find Properties in These Cities</h2>
+                                <h2>Find Properties in These Provinces</h2>
                                 <p>Explore our curated selection of investment properties in Canada's premier real
                                     estate markets.</p>
                             </div>
@@ -70,7 +70,7 @@ const Index = () => {
                         <div className="col-lg-6 offset-lg-3">
                             <div className="main-title text-center">
                                 <h2>Why Choose JXRE</h2>
-                                <p>Your trusted partner for premium investment properties in Montreal and Toronto</p>
+                                <p>Your trusted partner for premium investment properties in Quebec and Ontario</p>
                             </div>
                         </div>
                     </div>

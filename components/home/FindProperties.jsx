@@ -8,8 +8,8 @@ import {API_BASE_URL} from "@/constants/api";
 
 const FindProperties = () => {
   const [propertyCounts, setPropertyCounts] = useState({
-    Montreal: 0,
-    Toronto: 0
+    Quebec: 0,
+    Ontario: 0
   });
 
   const [loading, setLoading] = useState(true);
@@ -18,19 +18,19 @@ const FindProperties = () => {
     const fetchPropertyCounts = async () => {
       try {
         const counts = {
-          Montreal: 0,
-          Toronto: 0
+          Quebec: 0,
+          Ontario: 0
         };
 
-        for (const city of Object.keys(counts)) {
-          const response = await fetch(`${API_BASE_URL}/api/properties/?city=${city}&page_size=1`);
+        for (const province of Object.keys(counts)) {
+          const response = await fetch(`${API_BASE_URL}/api/properties/?province=${province}&page_size=1`);
 
           if (!response.ok) {
-            throw new Error(`Get ${city} Error`);
+            throw new Error(`Get ${province} Error`);
           }
 
           const data = await response.json();
-          counts[city] = data.count || 0;
+          counts[province] = data.count || 0;
         }
 
         setPropertyCounts(counts);
@@ -49,15 +49,15 @@ const FindProperties = () => {
     {
       id: 1,
       img: "/m.jpg",
-      name: "Montreal",
-      number: propertyCounts.Montreal,
+      name: "Quebec",
+      number: propertyCounts.Quebec,
       column: "col-lg-6 col-xl-6",
     },
     {
       id: 2,
       img: "/t.jpg",
-      name: "Toronto",
-      number: propertyCounts.Toronto,
+      name: "Ontario",
+      number: propertyCounts.Ontario,
       column: "col-lg-6 col-xl-6",
     },
   ];
