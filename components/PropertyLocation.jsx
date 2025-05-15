@@ -5,7 +5,7 @@ const PropertyLocation = ({ property }) => {
 
     // Create Google Maps URL with the property address
     const mapAddress = encodeURIComponent(`${property.address}, ${property.city}`);
-    const googleMapsUrl = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${mapAddress}`;
+    const googleMapsUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&q=${mapAddress}`;
 
     return (
         <>

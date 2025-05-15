@@ -97,7 +97,7 @@ const FeaturedItem = ({properties = [], viewMode = 'grid'}) => {
                         </h4>
                         <p>
                             <span className="flaticon-placeholder"></span>
-                            {property.address}, {property.city}
+                            {property.address}, {property.province}
                         </p>
 
                         <ul className="prop_details mb0">

@@ -67,7 +67,7 @@ const FindProperties = () => {
         {cityProperties.map((item) => (
             <div className={`col-lg-4 ${item.column}`} key={item.id}>
               <Link
-                  href={`/listing?city=${item.name}`}
+                  href={`/listing?province=${item.name}`}
                   className="properti_city d-block"
               >
                 <div className="thumb">

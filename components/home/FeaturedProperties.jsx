@@ -80,9 +80,9 @@ const FeaturedProperties = () => {
                         />
                         <div className="thmb_cntnt">
                             <ul className="tag mb0">
-                                {item.city && (
+                                {item.province && (
                                     <li className="list-inline-item">
-                                        <a href="#">{item.city}</a>
+                                        <a href="#">{item.province}</a>
                                     </li>
                                 )}
                                 <li className="list-inline-item">
@@ -118,7 +118,7 @@ const FeaturedProperties = () => {
                             </h4>
                             <p>
                                 <span className="flaticon-placeholder"></span>
-                                {item.address}, {item.city}
+                                {item.address}, {item.province}
                             </p>
 
                             <ul className="prop_details mb0">

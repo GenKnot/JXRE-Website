@@ -11,7 +11,7 @@ const GlobalFilter = ({className = ""}) => {
     const router = useRouter()
 
     const [filters, setFilters] = useState({
-        location: '',
+        province: '',
         residential_units: '',
         commercial_units: '',
         residential_type: '',
@@ -71,7 +71,7 @@ const GlobalFilter = ({className = ""}) => {
         const queryParams = new URLSearchParams();
 
         // 添加基本筛选条件
-        if (filters.location) queryParams.append('location', filters.location);
+        if (filters.province) queryParams.append('province', filters.province);
 
         // 住宅单位 - 修正参数名称
         if (filters.residential_units) {
@@ -139,8 +139,8 @@ const GlobalFilter = ({className = ""}) => {
             <ul className="h1ads_1st_list mb0">
                 <li className="list-inline-item">
                     <select className="selectpicker w100 form-select show-tick"
-                            onChange={handleSelectChange('location')}
-                            value={filters.location}>
+                            onChange={handleSelectChange('province')}
+                            value={filters.province}>
                         <option value="">Quebec or Ontario</option>
                         <option>Quebec</option>
                         <option>Ontario</option>

@@ -114,9 +114,9 @@ const RecentProperties = () => {
                                         </div>
                                         <div className="thmb_cntnt">
                                             <ul className="tag mb0">
-                                                {property.city && (
+                                                {property.province && (
                                                     <li className="list-inline-item">
-                                                        <a href="#" className="text-white">{property.city}</a>
+                                                        <a href="#" className="text-white">{property.province}</a>
                                                     </li>
                                                 )}
                                                 <li className="list-inline-item">
@@ -145,7 +145,7 @@ const RecentProperties = () => {
                                             </h5>
                                             <p>
                                                 <span className="flaticon-placeholder"></span>
-                                                {property.address}, {property.city}
+                                                {property.address}, {property.province}
                                             </p>
 
                                             <ul className="prop_details mb0">
