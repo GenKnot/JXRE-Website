@@ -54,7 +54,7 @@ const DetailsContent = ({propertyId}) => {
     const hasFloorPlans = property.floor_plans && property.floor_plans.length > 0;
     const hasNearbyLocations = property.locations && property.locations.length > 0;
     const hasAttachments = property.attachments && property.attachments.length > 0;
-    const hasAddress = property.address && property.city;
+    const hasAddress = property.address && property.province;
 
 
     const hasUnitDistribution = !isResidentialType && property.unit_distribution &&
@@ -144,12 +144,12 @@ const DetailsContent = ({propertyId}) => {
                     <h4 className="mb30">
                         Location{" "}
                         <small className="float-end">
-                            {property.is_sold ? "Sold" : `${property.address}, ${property.city}`}
+                            {property.is_sold ? "Sold" : `${property.address}, ${property.province}`}
                         </small>
                     </h4>
                     <div className="property_video p0">
                         <PropertyLocations
-                            address={property.is_sold ? `${property.address}, ${property.city}` : `${property.address}, ${property.city}`}
+                            address={property.is_sold ? `${property.address}, ${property.province}` : `${property.address}, ${property.province}`}
                             isSold={property.is_sold}
                         />
                     </div>

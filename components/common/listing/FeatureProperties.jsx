@@ -53,7 +53,7 @@ const FeatureProperties = ({ properties = [] }) => {
                     <div className="thmb_cntnt">
                       <ul className="tag mb0">
                         <li className="list-inline-item">
-                          <a href="#">{item.city}</a>
+                          <a href="#">{item.province}</a>
                         </li>
                         {item.is_sold && (
                             <li className="list-inline-item">
