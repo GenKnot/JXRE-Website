@@ -31,17 +31,17 @@ const Header = () => {
             width={40}
             height={45}
             className="logo1 contain"
-            src="/assets/images/header-logo1.png"
+            src="/assets/images/JXRE-WHITE.png"
             alt="header-logo.png"
           />
           <Image
             width={40}
             height={45}
             className="logo2 contain"
-            src="/assets/images/header-logo3.png"
+            src="/assets/images/JXRE-RED.png"
             alt="header-logo2.png"
           />
-          <span>JX real estate</span>
+          <span>JXRE</span>
         </Link>
         {/* site logo brand */}
 
