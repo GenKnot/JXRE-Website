@@ -34,6 +34,7 @@ const index = () => {
             try {
                 const queryParams = new URLSearchParams();
 
+                const type = searchParams.get('type');
                 const province = searchParams.get('province');
                 const location = searchParams.get('location');
 
@@ -56,7 +57,7 @@ const index = () => {
 
                 const features = searchParams.getAll('features');
 
-
+                if (type) queryParams.append('type', type);
                 if (location) queryParams.append('location', location);
                 if (province) queryParams.append('province', province);
 
