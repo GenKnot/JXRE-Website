@@ -351,44 +351,20 @@ const MobileMenuContent = () => {
                     </MenuItem>
 
                     <MenuItem>
-                        <div onClick={() => router.push("/#feature-property")}>
-                            Featured
-                        </div>
-                    </MenuItem>
-
-                    <MenuItem>
                         <div onClick={() => router.push("/#property-city")}>
                             Provinces
                         </div>
                     </MenuItem>
 
-                    <SubMenu label="Commercial">
+                    <SubMenu label="Properties">
                         <MenuItem>
-                            <div onClick={() => router.push("/listing?commercial_units=without")}>
-                                Without Property
+                            <div onClick={() => router.push("/listing?type=multifamily")}>
+                                Multi-family
                             </div>
                         </MenuItem>
                         <MenuItem>
-                            <div onClick={() => router.push("/listing?commercial_units=with")}>
-                                With Property
-                            </div>
-                        </MenuItem>
-                    </SubMenu>
-
-                    <SubMenu label="Residential">
-                        <MenuItem>
-                            <div onClick={() => router.push("/listing?residential_type=house")}>
-                                House
-                            </div>
-                        </MenuItem>
-                        <MenuItem>
-                            <div onClick={() => router.push("/listing?residential_type=townhouse")}>
-                                Townhouse
-                            </div>
-                        </MenuItem>
-                        <MenuItem>
-                            <div onClick={() => router.push("/listing?residential_type=condo")}>
-                                Condo
+                            <div onClick={() => router.push("/listing?type=other")}>
+                                Other Commercial
                             </div>
                         </MenuItem>
                     </SubMenu>
@@ -400,12 +376,16 @@ const MobileMenuContent = () => {
                     </MenuItem>
 
                     <MenuItem>
+                        <div onClick={() => router.push("/about")}
+                             className={pathname === "/about" ? "ui-active" : 'inactive-mobile-menu'}>
+                            About
+                        </div>
+                    </MenuItem>
+
+                    <MenuItem>
                         <div
                             onClick={() => router.push("/contact")}
-
-                            className={
-                                pathname === "/contact" ? "ui-active" : 'inactive-mobile-menu'
-                            }
+                            className={pathname === "/contact" ? "ui-active" : 'inactive-mobile-menu'}
                         >
                             Contact
                         </div>

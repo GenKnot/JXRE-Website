@@ -242,17 +242,6 @@ const HeaderMenuContent = ({float = ""}) => {
                 >
                     <span className="title">Home</span>
                 </a>
-                {/* <!-- Level Two--> */}
-            </li>
-            {/* End .dropitem */}
-
-            <li className="dropitem">
-                <a
-                    href="/#feature-property"
-                >
-                    <span className="title">Featured</span>
-                </a>
-                {/* <!-- Level Two--> */}
             </li>
 
             <li className="dropitem">
@@ -261,63 +250,23 @@ const HeaderMenuContent = ({float = ""}) => {
                 >
                     <span className="title">Provinces</span>
                 </a>
-                {/* <!-- Level Two--> */}
             </li>
 
 
             <li className="dropitem">
                 <a href="#">
-                    <span className="title">Commercial</span>
+                    <span className="title">Properties</span>
                     <span className="arrow"></span>
                 </a>
                 <ul className="sub-menu">
                     <li>
-                        <Link
-                            href="/listing?commercial_units=without"
-                            className={pathname === "/listing" && new URLSearchParams(window.location.search).get('commercial_units') === '0' ? "ui-active" : undefined}
-                        >
-                            Without Property
+                        <Link href="/listing?type=multifamily">
+                            Multi-family
                         </Link>
                     </li>
                     <li>
-                        <Link
-                            href="/listing?commercial_units=with"
-                            className={pathname === "/listing" && new URLSearchParams(window.location.search).get('min_commercial_units') === '1' ? "ui-active" : undefined}
-                        >
-                            With Property
-                        </Link>
-                    </li>
-                </ul>
-            </li>
-
-            <li className="dropitem">
-                <a href="#">
-                    <span className="title">Residential</span>
-                    <span className="arrow"></span>
-                </a>
-                <ul className="sub-menu">
-                    <li>
-                        <Link
-                            href="/listing?residential_type=house"
-                            className={pathname === "/listing" && new URLSearchParams(window.location.search).get('residential_type') === 'house' ? "ui-active" : undefined}
-                        >
-                            House
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="/listing?residential_type=townhouse"
-                            className={pathname === "/listing" && new URLSearchParams(window.location.search).get('residential_type') === 'townhouse' ? "ui-active" : undefined}
-                        >
-                            Townhouse
-                        </Link>
-                    </li>
-                    <li>
-                        <Link
-                            href="/listing?residential_type=condo"
-                            className={pathname === "/listing" && new URLSearchParams(window.location.search).get('residential_type') === 'condo' ? "ui-active" : undefined}
-                        >
-                            Condo
+                        <Link href="/listing?type=other">
+                            Other Commercial
                         </Link>
                     </li>
                 </ul>
@@ -520,6 +469,15 @@ const HeaderMenuContent = ({float = ""}) => {
             {/*/!* End .dropitem *!/*/}
 
             <li className="last">
+                <Link
+                    href="/about"
+                    className={pathname === "/about" ? "ui-active" : undefined}
+                >
+                    About
+                </Link>
+            </li>
+
+            <li>
                 <Link
                     href="/contact"
                     className={pathname === "/contact" ? "ui-active" : undefined}

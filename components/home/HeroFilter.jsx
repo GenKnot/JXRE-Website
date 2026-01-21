@@ -1,17 +1,22 @@
-import GlobalHeroFilter from "../common/GlobalHeroFilter";
+import Link from "next/link";
 
 const HeroFilter = () => {
     return (
         <div className="home_content">
             <div className="home-text text-center">
-                <h2 className="fz55">Invest in Premium <span className='text-thm'> Multifamily </span> Properties</h2>
+                <h2 className="fz55">Strategic <span className='text-thm'>Multifamily</span> Investment Advisory</h2>
                 <p className="fz18 color-white">
-                    Discover high-value income properties in Quebec and Ontario's most desirable neighborhoods
+                    Focused on long-term value, structure, and stability across Ontario and Quebec.
                 </p>
+                <div className="mt-4">
+                    <Link href="/listing" className="btn btn-thm btn-lg me-3">
+                        View Properties
+                    </Link>
+                    <Link href="/contact" className="btn btn-lg hero-contact-btn">
+                        Contact Us
+                    </Link>
+                </div>
             </div>
-            {/* End .home-text */}
-
-            <GlobalHeroFilter />
         </div>
     );
 };

@@ -10,20 +10,15 @@ import WhyChoose from "../common/WhyChoose";
 import PopupSignInUp from "../common/PopupSignInUp";
 import RecentProperties from "@/components/RecentProperties";
 import TestimonialSection from "@/components/TestimonialSection";
+import JsonLd from "../common/JsonLd";
 
 const Index = () => {
     return (
         <>
-            {/* <!-- Main Header Nav --> */}
+            <JsonLd />
             <Header/>
-
-            {/* <!--  Mobile Menu --> */}
             <MobileMenu/>
-
-            {/* <!-- Modal --> */}
             <PopupSignInUp/>
-
-            {/* <!-- Home Design --> */}
             <Hero/>
 
             {/* <!-- Feature Properties --> */}
@@ -69,8 +64,8 @@ const Index = () => {
                     <div className="row">
                         <div className="col-lg-6 offset-lg-3">
                             <div className="main-title text-center">
-                                <h2>Why Choose JXRE</h2>
-                                <p>Your trusted partner for premium investment properties in Quebec and Ontario</p>
+                                <h2>Useful Tools</h2>
+                                <p>Free calculators to help you plan your real estate investment</p>
                             </div>
                         </div>
                     </div>

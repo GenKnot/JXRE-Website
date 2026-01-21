@@ -1,26 +1,17 @@
-import Image from "next/image";
 import CallToAction from "../common/CallToAction";
 import CopyrightFooter from "../common/footer/CopyrightFooter";
 import Footer from "../common/footer/Footer";
 import Header from "../common/header/DefaultHeader";
 import MobileMenu from "../common/header/MobileMenu";
 import PopupSignInUp from "../common/PopupSignInUp";
-import AddressSidebar from "./AddressSidebar";
-import Form from "./Form";
 
 const index = () => {
     return (
         <>
-            {/* <!-- Main Header Nav --> */}
             <Header />
-
-            {/* <!--  Mobile Menu --> */}
             <MobileMenu />
-
-            {/* <!-- Modal --> */}
             <PopupSignInUp />
 
-            {/* <!-- Contact Section --> */}
             <section className="our-contact pb0 pt85 mt-5">
                 <div className="container">
                     <div className="row">
@@ -31,22 +22,53 @@ const index = () => {
                     </div>
 
                     <div className="row">
-                        <div className="col-lg-7 col-xl-8">
-                            <div className="form_grid p-4 rounded shadow-sm bg-white">
-                                <h4 className="mb-4">Send Us A Message</h4>
-                                <Form />
+                        <div className="col-lg-4 col-md-6 mb-4">
+                            <div className="p-4 rounded shadow-sm bg-white h-100 text-center">
+                                <div className="icon mb-3">
+                                    <span className="flaticon-phone-call" style={{fontSize: '48px', color: '#ff5a5f'}}></span>
+                                </div>
+                                <h5>Toronto</h5>
+                                <p className="mb-1">
+                                    <a href="tel:+16476169785" style={{color: '#ff5a5f', fontSize: '18px'}}>(647)-616-9785</a>
+                                </p>
+                                <p className="text-muted mb-0">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=8300+Woodbine+Ave+unit+500+Markham+ON+L3R+9Y7" target="_blank" rel="noopener noreferrer" style={{color: '#6c757d'}}>
+                                        8300 Woodbine Ave, unit 500.<br/>Markham, ON L3R 9Y7
+                                    </a>
+                                </p>
                             </div>
                         </div>
-                        {/* End .col */}
-
-                        <div className="col-lg-5 col-xl-4">
-                            <div className="p-4 rounded shadow-sm bg-white">
-                                <AddressSidebar />
+                        <div className="col-lg-4 col-md-6 mb-4">
+                            <div className="p-4 rounded shadow-sm bg-white h-100 text-center">
+                                <div className="icon mb-3">
+                                    <span className="flaticon-phone-call" style={{fontSize: '48px', color: '#ff5a5f'}}></span>
+                                </div>
+                                <h5>Montreal</h5>
+                                <p className="mb-1">
+                                    <a href="tel:+15146514588" style={{color: '#ff5a5f', fontSize: '18px'}}>(514)-651-4588</a>
+                                </p>
+                                <p className="text-muted mb-0">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=9515+Boul+LaSalle+LaSalle+QC+H8R+2M9" target="_blank" rel="noopener noreferrer" style={{color: '#6c757d'}}>
+                                        9515 Boul. LaSalle, LaSalle<br/>QC H8R 2M9
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-12 mb-4">
+                            <div className="p-4 rounded shadow-sm bg-white h-100 text-center">
+                                <div className="icon mb-3">
+                                    <span className="flaticon-email" style={{fontSize: '48px', color: '#ff5a5f'}}></span>
+                                </div>
+                                <h5>Email Us</h5>
+                                <p className="mb-0">
+                                    <a href="mailto:info@jxre.ca" style={{color: '#ff5a5f', fontSize: '18px'}}>
+                                        info@jxre.ca
+                                    </a>
+                                </p>
+                                <p className="text-muted mt-2 mb-0">We'll respond within 24 hours</p>
                             </div>
                         </div>
                     </div>
-                    {/* End .row */}
-
 
                     <div className="row mt-5">
                         <div className="col-12">
@@ -64,17 +86,14 @@ const index = () => {
                         </div>
                     </div>
                 </div>
-                {/* End .container */}
             </section>
 
-            {/* <!-- Start Call to Action --> */}
             <section className="start-partners bgc-thm pt50 pb50 mt-5">
                 <div className="container">
                     <CallToAction />
                 </div>
             </section>
 
-            {/* <!-- Our Footer --> */}
             <section className="footer_one">
                 <div className="container">
                     <div className="row">
@@ -83,7 +102,6 @@ const index = () => {
                 </div>
             </section>
 
-            {/* <!-- Our Footer Bottom Area --> */}
             <section className="footer_middle_area pt40 pb40">
                 <div className="container">
                     <CopyrightFooter />

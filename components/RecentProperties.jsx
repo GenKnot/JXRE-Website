@@ -12,13 +12,10 @@ const RecentProperties = () => {
     useEffect(() => {
         const fetchProperties = async () => {
             try {
-
                 const response = await fetch(`${API_BASE_URL}/api/properties/?is_active=false&is_sold=false&page_size=9&ordering=-created_at`);
-
                 if (!response.ok) {
                     throw new Error('Failed to fetch properties');
                 }
-
                 const data = await response.json();
                 setProperties(data.results || []);
             } catch (error) {
@@ -27,10 +24,8 @@ const RecentProperties = () => {
                 setLoading(false);
             }
         };
-
         fetchProperties();
     }, []);
-
 
     const getPropertyTypeDisplay = (property) => {
         if (property.is_house) return "House";
@@ -41,15 +36,13 @@ const RecentProperties = () => {
         return "Commercial";
     };
 
-
     const getPriceDisplay = (property) => {
         if (property.is_sold) return "SOLD";
         if (property.property_status === 'for_lease') {
-            return `$${Number(property.monthly_rent).toLocaleString()}/month`;
+            return `${Number(property.monthly_rent).toLocaleString()}/month`;
         }
-        return `$${Number(property.price).toLocaleString()}`;
+        return `${Number(property.price).toLocaleString()}`;
     };
-
 
     const getStatusDisplay = (property) => {
         if (property.is_sold) return "Sold";
@@ -75,7 +68,6 @@ const RecentProperties = () => {
         );
     }
 
-
     const chunkArray = (arr, size) => {
         return Array.from({length: Math.ceil(arr.length / size)}, (v, i) =>
             arr.slice(i * size, i * size + size)
@@ -91,97 +83,91 @@ const RecentProperties = () => {
                     {row.map((property) => (
                         <div className="col-sm-12 col-md-6 col-lg-4" key={property.id}>
                             <div className="for_blog feat_property compact-property">
-                                <Link href={`/listing-details/${property.id}`}>
-                                    <div className="thumb property-thumb">
-                                        <div href={`/listing-details/${property.id}`}>
-                                            <div className="property-img-container"
-                                                 style={{position: 'relative', height: '220px'}}>
-                                                {property.featured_image ? (
-                                                    <Image
-                                                        fill
-                                                        style={{objectFit: 'cover'}}
-                                                        src={property.featured_image.image_url || '/assets/images/property/no-image.jpg'}
-                                                        alt={property.title}
-                                                    />
-                                                ) : (
-                                                    <div
-                                                        className="no-image-placeholder d-flex align-items-center justify-content-center bg-light"
-                                                        style={{height: '100%'}}>
-                                                        <span>No image available</span>
-                                                    </div>
-                                                )}
-                                            </div>
+                                <div className="thumb property-thumb">
+                                    <Link href={`/listing-details/${property.id}`}>
+                                        <div className="property-img-container" style={{position: 'relative', height: '220px'}}>
+                                            {property.featured_image ? (
+                                                <Image
+                                                    fill
+                                                    style={{objectFit: 'cover'}}
+                                                    src={property.featured_image.image_url || '/assets/images/property/fp1.jpg'}
+                                                    alt={property.title}
+                                                />
+                                            ) : (
+                                                <div className="no-image-placeholder d-flex align-items-center justify-content-center bg-light" style={{height: '100%'}}>
+                                                    <span>No image available</span>
+                                                </div>
+                                            )}
                                         </div>
-                                        <div className="thmb_cntnt">
-                                            <ul className="tag mb0">
-                                                {property.province && (
-                                                    <li className="list-inline-item">
-                                                        <a href="#" className="text-white">{property.province}</a>
-                                                    </li>
-                                                )}
+                                    </Link>
+                                    <div className="thmb_cntnt">
+                                        <ul className="tag mb0">
+                                            {property.province && (
                                                 <li className="list-inline-item">
-                                                    <a href="#" className="text-white">{getStatusDisplay(property)}</a>
+                                                    <span className="text-white">{property.province}</span>
                                                 </li>
-                                                {property.is_active && (
-                                                    <li className="list-inline-item">
-                                                        <a href="#" className="text-white">Active</a>
-                                                    </li>
-                                                )}
-                                            </ul>
-                                            <Link href={`/listing-details/${property.id}`} className="fp_price">
-                                                {getPriceDisplay(property)}
-                                            </Link>
-                                        </div>
+                                            )}
+                                            <li className="list-inline-item">
+                                                <span className="text-white">{getStatusDisplay(property)}</span>
+                                            </li>
+                                            {property.is_active && (
+                                                <li className="list-inline-item">
+                                                    <span className="text-white">Active</span>
+                                                </li>
+                                            )}
+                                        </ul>
+                                        <Link href={`/listing-details/${property.id}`} className="fp_price">
+                                            {getPriceDisplay(property)}
+                                        </Link>
                                     </div>
-                                    <div className="details">
-                                        <div className="tc_content">
-                                            <div className="d-flex justify-content-between align-items-center">
-                                                <p className="text-thm property-units mb-0">
-                                                    {getPropertyTypeDisplay(property)}
-                                                </p>
-                                            </div>
-                                            <h5 className="property-title mt-2 mb-0">
-                                                <Link href={`/listing-details/${property.id}`}>{property.title}</Link>
-                                            </h5>
-                                            <p>
-                                                <span className="flaticon-placeholder"></span>
-                                                {property.address}, {property.province}
+                                </div>
+                                <div className="details">
+                                    <div className="tc_content">
+                                        <div className="d-flex justify-content-between align-items-center">
+                                            <p className="text-thm property-units mb-0">
+                                                {getPropertyTypeDisplay(property)}
                                             </p>
-
-                                            <ul className="prop_details mb0">
-                                                {(property.is_house || property.is_townhouse || property.is_condo) ? (
-                                                    <>
-                                                        {property.bedrooms > 0 && (
-                                                            <li className="list-inline-item">
-                                                                <a href="#">Bedrooms: {property.bedrooms}</a>
-                                                            </li>
-                                                        )}
-                                                        {property.bathrooms > 0 && (
-                                                            <li className="list-inline-item">
-                                                                <a href="#">Bathrooms: {property.bathrooms}</a>
-                                                            </li>
-                                                        )}
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        {property.residential_units > 0 && (
-                                                            <li className="list-inline-item">
-                                                                <a href="#">{property.residential_units === 1 ? "Unit" : "Units"}: {property.residential_units}</a>
-                                                            </li>
-                                                        )}
-                                                        {property.commercial_units > 0 && (
-                                                            <li className="list-inline-item">
-                                                                <a href="#">
-                                                                    {property.commercial_units === 1 ? "Commercial Without Property" : "Commercial With Property"}
-                                                                </a>
-                                                            </li>
-                                                        )}
-                                                    </>
-                                                )}
-                                            </ul>
                                         </div>
+                                        <h5 className="property-title mt-2 mb-0">
+                                            <Link href={`/listing-details/${property.id}`}>{property.title}</Link>
+                                        </h5>
+                                        <p>
+                                            <span className="flaticon-placeholder"></span>
+                                            {property.address}, {property.province}
+                                        </p>
+                                        <ul className="prop_details mb0">
+                                            {(property.is_house || property.is_townhouse || property.is_condo) ? (
+                                                <>
+                                                    {property.bedrooms > 0 && (
+                                                        <li className="list-inline-item">
+                                                            <span>Bedrooms: {property.bedrooms}</span>
+                                                        </li>
+                                                    )}
+                                                    {property.bathrooms > 0 && (
+                                                        <li className="list-inline-item">
+                                                            <span>Bathrooms: {property.bathrooms}</span>
+                                                        </li>
+                                                    )}
+                                                </>
+                                            ) : (
+                                                <>
+                                                    {property.residential_units > 0 && (
+                                                        <li className="list-inline-item">
+                                                            <span>{property.residential_units === 1 ? "Unit" : "Units"}: {property.residential_units}</span>
+                                                        </li>
+                                                    )}
+                                                    {property.commercial_units > 0 && (
+                                                        <li className="list-inline-item">
+                                                            <span>
+                                                                {property.commercial_units === 1 ? "Commercial Without Property" : "Commercial With Property"}
+                                                            </span>
+                                                        </li>
+                                                    )}
+                                                </>
+                                            )}
+                                        </ul>
                                     </div>
-                                </Link>
+                                </div>
                             </div>
                         </div>
                     ))}

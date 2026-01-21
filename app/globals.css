@@ -105,3 +105,15 @@ a {
     color-scheme: dark;
   }
 }
+
+
+.hero-contact-btn {
+  border: 2px solid #fff;
+  color: #fff;
+  background: transparent;
+}
+
+.hero-contact-btn:hover {
+  background: #fff;
+  color: #333;
+}
