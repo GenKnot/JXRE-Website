@@ -82,11 +82,11 @@ const FeaturedProperties = () => {
                         <ul className="tag mb0">
                             {item.province && (
                                 <li className="list-inline-item">
-                                    <span>{item.province}</span>
+                                    <span style={{color: '#fff', fontSize: '13px'}}>{item.province}</span>
                                 </li>
                             )}
                             <li className="list-inline-item">
-                                <span>
+                                <span style={{color: '#fff', fontSize: '13px'}}>
                                     {item.property_status_display || (item.is_sold ? "Sold" : "For Sale")}
                                 </span>
                             </li>

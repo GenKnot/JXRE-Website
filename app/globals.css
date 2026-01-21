@@ -117,3 +117,13 @@ a {
   background: #fff;
   color: #333;
 }
+
+
+.thmb_cntnt .tag li span {
+  color: #fff !important;
+  font-size: 12px !important;
+  background: rgba(0,0,0,0.5);
+  padding: 3px 8px;
+  border-radius: 3px;
+  display: inline-block;
+}

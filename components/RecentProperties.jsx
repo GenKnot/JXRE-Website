@@ -104,15 +104,15 @@ const RecentProperties = () => {
                                         <ul className="tag mb0">
                                             {property.province && (
                                                 <li className="list-inline-item">
-                                                    <span className="text-white">{property.province}</span>
+                                                    <span style={{color: '#fff', fontSize: '13px'}}>{property.province}</span>
                                                 </li>
                                             )}
                                             <li className="list-inline-item">
-                                                <span className="text-white">{getStatusDisplay(property)}</span>
+                                                <span style={{color: '#fff', fontSize: '13px'}}>{getStatusDisplay(property)}</span>
                                             </li>
                                             {property.is_active && (
                                                 <li className="list-inline-item">
-                                                    <span className="text-white">Active</span>
+                                                    <span style={{color: '#fff', fontSize: '13px'}}>Active</span>
                                                 </li>
                                             )}
                                         </ul>
