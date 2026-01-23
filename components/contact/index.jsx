@@ -74,13 +74,13 @@ const index = () => {
                         <div className="col-12">
                             <div className="h400">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d178784.6221633522!2d-73.87105254241073!3d45.55748482099693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a541c64b70d%3A0x654e3138211fefef!2sMontreal%2C%20QC!5e0!3m2!1sen!2sca!4v1677613248693!5m2!1sen!2sca"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d369876.4897590818!2d-79.76424386093748!3d43.71815895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sGreater%20Toronto%20Area%2C%20ON!5e0!3m2!1sen!2sca!4v1706000000000!5m2!1sen!2sca"
                                     width="100%"
                                     height="400"
                                     style={{border:0}}
                                     allowFullScreen=""
                                     loading="lazy"
-                                    title="Montreal Map"
+                                    title="Greater Toronto Area Map"
                                 ></iframe>
                             </div>
                         </div>

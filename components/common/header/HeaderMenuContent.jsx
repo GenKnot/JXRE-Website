@@ -266,7 +266,7 @@ const HeaderMenuContent = ({float = ""}) => {
                     </li>
                     <li>
                         <Link href="/listing?type=other">
-                            Other Commercial
+                            Other
                         </Link>
                     </li>
                 </ul>
