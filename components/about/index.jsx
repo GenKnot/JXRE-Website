@@ -42,23 +42,16 @@ const index = () => {
                                 <p className="text-muted mb-4" style={{fontSize: '15px'}}>Licensed Real Estate Broker — Québec & Ontario</p>
                                 
                                 <p className="mb-4" style={{lineHeight: '1.8', fontSize: '16px'}}>
-                                    Julie Xu is the Founder and President of JXRE, a multifamily-focused investment advisory platform serving Toronto and key markets across Ontario, with deep operational experience in Québec.
+                                    Julie Xu is the Founder and President of JXRE, an investment platform focused on acquiring and optimizing institutional-grade multifamily assets across Canada's core markets.
                                 </p>
                                 <p className="mb-4" style={{lineHeight: '1.8', fontSize: '16px'}}>
-                                    With over a decade of experience in the multifamily sector, Julie has advised property owners and sophisticated investors on acquisitions, financing structures, and long-term hold strategies. In parallel, she is an active investor and owner-operator of multiple rental properties, giving her a practical, owner-level understanding of operations, financing, and cash flow management.
+                                    Operating at the intersection of capital and real estate, Julie advises investors strategically while also acting as a principal in her own transactions. This distinct positioning informs her ownership-driven approach to asset selection, financing strategy, and long-term value creation.
                                 </p>
                                 <p className="mb-4" style={{lineHeight: '1.8', fontSize: '16px'}}>
-                                    Julie's work emphasizes long-term asset stability and structural optimization rather than short-term transactions. She focuses on building thoughtful, durable professional relationships with investors who value discipline, execution, and long-term alignment.
+                                    Her investment philosophy prioritizes structural resilience over cyclical opportunity, emphasizing disciplined leverage and operational excellence to achieve compounding growth.
                                 </p>
-                                <hr className="my-4" />
-                                <p className="mb-4 text-muted" style={{lineHeight: '1.8', fontSize: '15px'}}>
-                                    Julie Xu 是 JXRE 创始人兼总裁，持有魁北克省及安大略省房地产经纪牌照，专注于 Multifamily 投资与资产管理，服务范围覆盖多伦多及安省核心市场，并在魁北克市场拥有多年一线实操经验。
-                                </p>
-                                <p className="mb-4 text-muted" style={{lineHeight: '1.8', fontSize: '15px'}}>
-                                    过去十余年中，Julie 持续为业主及专业投资人提供 Multifamily 资产的收购咨询、融资结构设计及长期持有规划服务。同时，她本人亦长期持有并直接运营多套 Multifamily 出租物业，对资产运营、融资安排及现金流管理具备扎实而深入的实务理解。
-                                </p>
-                                <p className="mb-0 text-muted" style={{lineHeight: '1.8', fontSize: '15px'}}>
-                                    Julie 的工作重点在于 Multifamily 资产的长期稳定性与结构优化，而非短期交易结果，致力于与投资人建立理性、长期、可持续的专业合作关系。
+                                <p className="mb-0" style={{lineHeight: '1.8', fontSize: '16px'}}>
+                                    Julie partners selectively with investors who maintain a long-term orientation and a commitment to rational decision-making and high-quality execution, building relationships defined by depth, alignment, and durability.
                                 </p>
                             </div>
                         </div>
