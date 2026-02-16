@@ -8,9 +8,7 @@ const Footer = () => {
           <div className="footer_about_widget">
             <h4>JXRE</h4>
             <p>
-              Specializing in premium multifamily  investment properties in Quebec and Ontario.
-              Our expert team helps investors acquire high-yield income properties with financing
-              solutions and rental management services.
+              JXRE is a privately operated multifamily investment platform focused on acquiring and operating resilient rental assets across Ontario and Quebec.
             </p>
           </div>
         </div>

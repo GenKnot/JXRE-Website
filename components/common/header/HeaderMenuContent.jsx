@@ -477,32 +477,12 @@ const HeaderMenuContent = ({float = ""}) => {
                 </Link>
             </li>
 
-            <li>
-                <Link
-                    href="/contact"
-                    className={pathname === "/contact" ? "ui-active" : undefined}
-                >
-                    Contact
-                </Link>
-            </li>
-            {/* End .dropitem */}
-
-            {/*<li className={`list-inline-item list_s ${float}`}>*/}
-            {/*  <a*/}
-            {/*    href="#"*/}
-            {/*    className="btn flaticon-user"*/}
-            {/*    data-bs-toggle="modal"*/}
-            {/*    data-bs-target=".bd-example-modal-lg"*/}
-            {/*  >*/}
-            {/*    <span className="dn-lg">Login/Register</span>*/}
-            {/*  </a>*/}
-            {/*</li>*/}
             {/* End .dropitem */}
 
             <li className={`list-inline-item add_listing ${float}`}>
-                <Link href="/listing">
+                <Link href="/contact">
                     {/*<span className="flaticon-plus"></span>*/}
-                    <span className="dn-lg">All Properties</span>
+                    <span className="dn-lg">Contact Us</span>
                 </Link>
             </li>
             {/* End .dropitem */}

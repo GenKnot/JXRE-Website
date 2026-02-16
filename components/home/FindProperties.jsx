@@ -83,9 +83,9 @@ const FindProperties = () => {
                   <div className="details">
                     <h4>{item.name}</h4>
                     {loading ? (
-                        <p>Loading properties...</p>
+                        <p>Loading transactions...</p>
                     ) : (
-                        <p>{item.number} Properties</p>
+                        <p>{item.number} Transactions</p>
                     )}
                   </div>
                 </div>

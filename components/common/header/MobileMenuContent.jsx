@@ -364,30 +364,15 @@ const MobileMenuContent = () => {
                         </MenuItem>
                         <MenuItem>
                             <div onClick={() => router.push("/listing?type=other")}>
-                                Other Commercial
+                                Other
                             </div>
                         </MenuItem>
                     </SubMenu>
 
                     <MenuItem>
-                        <div onClick={() => router.push("/#new-properties")}>
-                            New Properties
-                        </div>
-                    </MenuItem>
-
-                    <MenuItem>
                         <div onClick={() => router.push("/about")}
                              className={pathname === "/about" ? "ui-active" : 'inactive-mobile-menu'}>
                             About
-                        </div>
-                    </MenuItem>
-
-                    <MenuItem>
-                        <div
-                            onClick={() => router.push("/contact")}
-                            className={pathname === "/contact" ? "ui-active" : 'inactive-mobile-menu'}
-                        >
-                            Contact
                         </div>
                     </MenuItem>
 
@@ -418,11 +403,11 @@ const MobileMenuContent = () => {
 
 
             <Link
-              href="/listing"
+              href="/contact"
               className="btn btn-block btn-lg btn-thm circle"
               style={{width:'90%',margin:'0px auto'}}
             >
-                All Properties
+                Contact Us
             </Link>
         </>
 

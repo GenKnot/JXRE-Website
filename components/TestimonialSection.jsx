@@ -39,7 +39,7 @@ const TestimonialSection = () => {
                     <div className="row align-items-center">
                         <div className="col-lg-6">
                             <div className="main-title">
-                                <h2 className="mb-2">What Our Clients Say</h2>
+                                <h2 className="mb-2">Feedback from Clients & Partners</h2>
                                 <p className="subtitle mb-0">Real experiences from our valued customers</p>
                             </div>
                         </div>
@@ -49,7 +49,7 @@ const TestimonialSection = () => {
                                 onClick={openModal}
                             >
                                 <i className="fa fa-pencil me-2"></i>
-                                Share Your Experience
+                                Share Feedback
                             </button>
                         </div>
                     </div>

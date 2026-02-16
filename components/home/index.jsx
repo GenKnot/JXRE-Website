@@ -27,8 +27,8 @@ const Index = () => {
                     <div className="row">
                         <div className="col-lg-6 offset-lg-3">
                             <div className="main-title text-center mb40">
-                                <h2>Featured Properties</h2>
-                                <p>Exceptional multi-family investments in prime locations.</p>
+                                <h2>Portfolio Snapshot</h2>
+                                <p>A selection of operating assets and completed transactions</p>
                             </div>
                         </div>
                         <div className="col-lg-12">
@@ -46,9 +46,8 @@ const Index = () => {
                     <div className="row">
                         <div className="col-lg-6 offset-lg-3">
                             <div className="main-title text-center">
-                                <h2>Find Properties in These Provinces</h2>
-                                <p>Explore our curated selection of investment properties in Canada's premier real
-                                    estate markets.</p>
+                                <h2>Core Markets</h2>
+                                <p>Focus on resilient, supply-constrained rental markets</p>
                             </div>
                         </div>
                     </div>
@@ -64,8 +63,8 @@ const Index = () => {
                     <div className="row">
                         <div className="col-lg-6 offset-lg-3">
                             <div className="main-title text-center">
-                                <h2>Useful Tools</h2>
-                                <p>Free calculators to help you plan your real estate investment</p>
+                                <h2>Resources</h2>
+                                <p>Market and regulatory references for Ontario & Quebec</p>
                             </div>
                         </div>
                     </div>
@@ -89,40 +88,6 @@ const Index = () => {
                 </div>
                 {/* End container */}
             </section>
-
-            {/* <!-- Our Blog --> */}
-            <section id="new-properties" className="our-blog bgc-f7 pb30">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-6 offset-lg-3">
-                            <div className="main-title text-center">
-                                <h2>New Investment Opportunities</h2>
-                                <p>Discover our latest multi-family properties with excellent income potential</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <RecentProperties/>
-                    </div>
-                </div>
-            </section>
-
-            {/*/!* <!-- Our Partners --> *!/*/}
-            {/*<section id="our-partners" className="our-partners">*/}
-            {/*  <div className="container">*/}
-            {/*    <div className="row">*/}
-            {/*      <div className="col-lg-6 offset-lg-3">*/}
-            {/*        <div className="main-title text-center">*/}
-            {/*          <h2>Our Partners</h2>*/}
-            {/*          <p>We only work with the best companies around the globe</p>*/}
-            {/*        </div>*/}
-            {/*      </div>*/}
-            {/*    </div>*/}
-            {/*    <div className="row">*/}
-            {/*      <Partners />*/}
-            {/*    </div>*/}
-            {/*  </div>*/}
-            {/*</section>*/}
 
             {/* <!-- Start Call to Action --> */}
             <section className="start-partners bgc-thm pt50 pb50">
