@@ -359,7 +359,7 @@ const MobileMenuContent = () => {
                     <SubMenu label="Properties">
                         <MenuItem>
                             <div onClick={() => router.push("/listing?type=multifamily")}>
-                                Multi-family
+                                Multifamily
                             </div>
                         </MenuItem>
                         <MenuItem>

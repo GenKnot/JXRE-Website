@@ -261,7 +261,7 @@ const HeaderMenuContent = ({float = ""}) => {
                 <ul className="sub-menu">
                     <li>
                         <Link href="/listing?type=multifamily">
-                            Multi-family
+                            Multifamily
                         </Link>
                     </li>
                     <li>
