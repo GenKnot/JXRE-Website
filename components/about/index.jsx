@@ -29,17 +29,16 @@ const index = () => {
                                     <div style={{
                                         width: '120px',
                                         height: '120px',
-                                        borderRadius: '50%',
+                                        borderRadius: '16px',
                                         overflow: 'hidden',
                                         border: '2px solid #e0e0e0',
                                         flexShrink: 0,
                                     }}>
-                                        <Image
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img
                                             src="/assets/images/about/avatar.jpg"
                                             alt="Julie Xu"
-                                            width={120}
-                                            height={120}
-                                            style={{objectFit: 'cover', width: '120px', height: '120px'}}
+                                            style={{width: '120px', height: '120px', objectFit: 'cover', objectPosition: 'center', display: 'block'}}
                                         />
                                     </div>
                                     <div>
