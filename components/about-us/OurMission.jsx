@@ -80,6 +80,29 @@ const OurMission = () => {
           />
           <PopupVideo />
         </div>
+        {/* Agent Avatar */}
+        <div style={{ display: "flex", alignItems: "center", gap: "12px", marginTop: "20px" }}>
+          <div style={{
+            width: "56px",
+            height: "56px",
+            borderRadius: "50%",
+            overflow: "hidden",
+            border: "3px solid #e8e8e8",
+            flexShrink: 0,
+            position: "relative",
+          }}>
+            <Image
+              fill
+              style={{ objectFit: "cover" }}
+              src="/assets/images/about/avatar.jpg"
+              alt="Agent Avatar"
+            />
+          </div>
+          <div>
+            <p style={{ margin: 0, fontWeight: 600, fontSize: "14px" }}>Your Name</p>
+            <p style={{ margin: 0, fontSize: "12px", color: "#888" }}>Real Estate Agent</p>
+          </div>
+        </div>
       </div>
     </>
   );

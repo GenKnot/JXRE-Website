@@ -22,24 +22,32 @@ const index = () => {
                         </div>
                     </div>
 
-                    <div className="row align-items-center">
-                        <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                            <div className="about-img text-center">
-                                <Image
-                                    src="/1.jpg"
-                                    alt="JXRE Founder"
-                                    width={400}
-                                    height={500}
-                                    className="rounded shadow img-fluid"
-                                    style={{objectFit: 'cover', maxWidth: '100%', height: 'auto'}}
-                                />
-                            </div>
-                        </div>
-                        <div className="col-lg-7 col-md-6">
+                    <div className="row">
+                        <div className="col-12">
                             <div className="about-content">
-                                <h3 className="mb-2 text-start">Julie Xu</h3>
-                                <p className="text-muted mb-1" style={{fontSize: '15px'}}>Founder & President, JXRE</p>
-                                <p className="text-muted mb-4" style={{fontSize: '15px'}}>Licensed Real Estate Broker — Québec & Ontario</p>
+                                <div className="d-flex align-items-center mb-4 justify-content-center" style={{gap: '20px'}}>
+                                    <div style={{
+                                        width: '120px',
+                                        height: '120px',
+                                        borderRadius: '50%',
+                                        overflow: 'hidden',
+                                        border: '2px solid #e0e0e0',
+                                        flexShrink: 0,
+                                    }}>
+                                        <Image
+                                            src="/assets/images/about/avatar.jpg"
+                                            alt="Julie Xu"
+                                            width={120}
+                                            height={120}
+                                            style={{objectFit: 'cover', width: '120px', height: '120px'}}
+                                        />
+                                    </div>
+                                    <div>
+                                        <h3 className="mb-1">Julie Xu</h3>
+                                        <p className="text-muted mb-0" style={{fontSize: '15px'}}>Founder & President, JXRE</p>
+                                        <p className="text-muted mb-0" style={{fontSize: '15px'}}>Licensed Real Estate Broker — Québec & Ontario</p>
+                                    </div>
+                                </div>
                                 
                                 <p className="mb-4" style={{lineHeight: '1.8', fontSize: '16px'}}>
                                     Julie Xu is the Founder and President of JXRE, an investment platform focused on acquiring and optimizing institutional-grade multifamily assets across Canada's core markets.

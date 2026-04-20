@@ -42,41 +42,46 @@ const Team = () => {
       <Slider {...settings} arrows={true}>
         {agentsTeam.slice(0, 6).map((item) => (
           <div className="item" key={item.id}>
-            <div className="team_member">
-              <div className="thumb">
-                <Image
-                  width={245}
-                  height={307}
-                  className="img-fluid w100 h-100 cover"
-                  src={item.img}
-                  alt="5.jpg"
-                />
-                <div className="overylay">
-                  <ul className="social_icon">
-                    {item.socialList.map((social, i) => (
-                      <li className="list-inline-item" key={i}>
-                        <a
-                          href={social.liveLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <i className={`fa ${social.icon}`}></i>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+            <div className="team_member text-center" style={{ padding: "20px 10px" }}>
+              {/* Avatar */}
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: "12px" }}>
+                <div style={{
+                  width: "80px",
+                  height: "80px",
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  border: "3px solid #e8e8e8",
+                  flexShrink: 0,
+                  position: "relative",
+                }}>
+                  <Image
+                    fill
+                    style={{ objectFit: "cover" }}
+                    src={item.img}
+                    alt={item.name}
+                  />
                 </div>
               </div>
-              {/* End .thumb */}
 
               <div className="details">
-                <h4>
-                  {" "}
+                <h4 style={{ marginBottom: "4px" }}>
                   <Link href={`/agent-details/${item.id}`}>{item.name}</Link>
                 </h4>
-                <p>{item.type}</p>
+                <p style={{ marginBottom: "8px" }}>{item.type}</p>
+                <ul className="social_icon" style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", justifyContent: "center", gap: "8px" }}>
+                  {item.socialList.map((social, i) => (
+                    <li className="list-inline-item" key={i}>
+                      <a
+                        href={social.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <i className={`fa ${social.icon}`}></i>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              {/* End .details */}
             </div>
           </div>
         ))}
